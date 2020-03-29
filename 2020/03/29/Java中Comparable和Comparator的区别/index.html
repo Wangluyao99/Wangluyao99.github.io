@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>==、equals和HashCode的区别与联系 | 王璐瑶的Hexo博客</title>
+  <title>Java中Comparable和Comparator的区别 | 王璐瑶的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在java中： &#x3D;&#x3D;是运算符，用于比较两个变量是否相等。 equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟&#x3D;&#x3D;的结果一样。Object的equals方法如下： 123public boolean equals(Object obj) &amp;#123;    return (this &#x3D;&#x3D; obj);&amp;#125;">
+  <meta name="description" content="Java 中为我们提供了两种比较机制：Comparable 和 Comparator，二者都是用来实现对象的比较、排序。 下面分别对Comparable 和 Comparator做具体介绍并总结。          ComparableComparable可以认为是一个内比较器，实现了Comparable接口的类有一个特点，就是这些类是可以和自己比较的，至于具体和另一个实现了Comparable接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="&#x3D;&#x3D;、equals和HashCode的区别与联系">
-<meta property="og:url" content="http://yoursite.com/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/index.html">
+<meta property="og:title" content="Java中Comparable和Comparator的区别">
+<meta property="og:url" content="http://yoursite.com/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="王璐瑶的Hexo博客">
-<meta property="og:description" content="在java中： &#x3D;&#x3D;是运算符，用于比较两个变量是否相等。 equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟&#x3D;&#x3D;的结果一样。Object的equals方法如下： 123public boolean equals(Object obj) &amp;#123;    return (this &#x3D;&#x3D; obj);&amp;#125;">
+<meta property="og:description" content="Java 中为我们提供了两种比较机制：Comparable 和 Comparator，二者都是用来实现对象的比较、排序。 下面分别对Comparable 和 Comparator做具体介绍并总结。          ComparableComparable可以认为是一个内比较器，实现了Comparable接口的类有一个特点，就是这些类是可以和自己比较的，至于具体和另一个实现了Comparable接">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-28T07:13:42.573Z">
-<meta property="article:modified_time" content="2020-03-28T08:28:09.045Z">
+<meta property="article:published_time" content="2020-03-29T12:40:21.334Z">
+<meta property="article:modified_time" content="2020-03-29T12:40:21.736Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -142,50 +142,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-==、equals和HashCode的区别与联系" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java中Comparable和Comparator的区别" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ==、equals和HashCode的区别与联系
+      Java中Comparable和Comparator的区别
     </h1>
   
 
         
-        <a href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/" class="archive-article-date">
-  	<time datetime="2020-03-28T07:13:42.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
+        <a href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-03-29T12:40:21.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在java中：</p>
-<p>==是运算符，用于比较两个变量是否相等。</p>
-<p>equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟==的结果一样。Object的equals方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <p>Java 中为我们提供了两种比较机制：Comparable 和 Comparator，二者都是用来实现对象的比较、排序。</p>
+<p>下面分别对Comparable 和 Comparator做具体介绍并总结。        </p>
+<hr>
+<h2 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h2><p>Comparable可以认为是一个内比较器，实现了Comparable接口的类有一个特点，就是这些类是可以和自己比较的，至于具体和另一个实现了Comparable接口的类如何比较，则依赖compareTo方法的实现。</p>
 <a id="more"></a>
 
-<p>hashCode也是Object类的一个方法。返回一个离散的int型整数。在集合类操作中使用，为了提高查询速度。（HashMap，HashSet等）</p>
-<p>有了这三个基础概念，区别就简单了。</p>
-<p>java中的数据类型，可分为两类： </p>
-<p>1.基本数据类型，byte,short,char,int,long,float,double,boolean<br>  他们之间的比较，应用双等号（==）,比较的是他们的值。 </p>
-<p>2.复合数据类型(类) :</p>
-<p>  当他们用（ == ）进行比较的时候，比较的是他们在内存中的存放地址，所以，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。 JAVA当中所有的类都是继承于Object这个基类的，在Object中的基类中定义了一个equals的方法，这个方法的初始行为是比较对象的内存地址，但在一些类库当中这个方法被覆盖掉了，如String,Integer,Date在这些类当中equals有其自身的实现，而不再是比较类在堆内存中的存放地址了。<br>  对于复合数据类型之间进行equals比较，在没有覆写equals方法的情况下，他们之间的比较还是基于他们在内存中的存放位置的地址值的，因为Object的equals方法也是用双等号（ == ）进行比较的，所以比较后的结果跟双等号（==）的结果相同。</p>
-<p>如果两个对象根据equals()方法比较是相等的，那么调用这两个对象中任意一个对象的hashCode方法都必须产生同样的整数结果。<br>如果两个对象根据equals()方法比较是不相等的，那么调用这两个对象中任意一个对象的hashCode方法，则不一定要产生相同的整数结果</p>
-<p>从而在集合操作的时候有如下规则：</p>
-<p>将对象放入到集合中时，首先判断要放入对象的hashcode值与集合中的任意一个元素的hashcode值是否相等，如果不相等直接将该对象放入集合中。如果hashcode值相等，然后再通过equals方法判断要放入对象与集合中的任意一个对象是否相等，如果equals判断不相等，直接将该元素放入到集合中，否则不放入。</p>
-<p>回过来说get的时候，HashMap也先调key.hashCode()算出数组下标，然后看equals如果是true就是找到了，所以就涉及了equals。</p>
-<p>《Effective Java》书中有两条是关于equals和hashCode的：</p>
-<p>覆盖equals时需要遵守的通用约定：<br>  覆盖equals方法看起来似乎很简单，但是如果覆盖不当会导致错误，并且后果相当严重。《Effective Java》一书中提到“最容易避免这类问题的办法就是不覆盖equals方法”，这句话貌似很搞笑，其实想想也不无道理，其实在这种情况下，类的每个实例都只与它自身相等。如果满足了以下任何一个条件，这就正是所期望的结果：<br>类的每个实例本质上都是唯一的。对于代表活动实体而不是值的类来说却是如此，例如Thread。Object提供的equals实现对于这些类来说正是正确的行为。<br>不关心类是否提供了“逻辑相等”的测试功能。假如Random覆盖了equals，以检查两个Random实例是否产生相同的随机数序列，但是设计者并不认为客户需要或者期望这样的功能。在这样的情况下，从Object继承得到的equals实现已经足够了。<br>超类已经覆盖了equals，从超类继承过来的行为对于子类也是合适的。大多数的Set实现都从AbstractSet继承equals实现，List实现从AbstractList继承equals实现，Map实现从AbstractMap继承equals实现。<br>类是私有的或者是包级私有的，可以确定它的equals方法永远不会被调用。在这种情况下，无疑是应该覆盖equals方法的，以防止它被意外调用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span></span>&#123; </span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(); <span class="comment">//Method is never called </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果add进入一个Collection的对象想要Collections的sort方法帮你自动进行排序的话，那么这个对象必须实现Comparable接口。compareTo方法的返回值是int，有三种情况：</p>
+<blockquote>
+<ul>
+<li>比较者大于被比较者，返回正整数</li>
+<li>比较者等于被比较者，返回0</li>
+<li>比较者小于被比较者，返回负整数</li>
+</ul>
+</blockquote>
+<p>写个很简单的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Domain</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Domain</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">   <span class="keyword">private</span> String str;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Domain</span><span class="params">(String str)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.str = str;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Domain domain)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (<span class="keyword">this</span>.str.compareTo(domain.str) &gt; <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.str.compareTo(domain.str) == <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">else</span> </span><br><span class="line">           <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getStr</span><span class="params">()</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> str;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>  在覆盖equals方法的时候，你必须要遵守它的通用约定。下面是约定的内容，来自Object的规范[JavaSE6]<br>自反性。对于任何非null的引用值x，x.equals(x)必须返回true。<br>对称性。对于任何非null的引用值x和y，当且仅当y.equals(x)返回true时，x.equals(y)必须返回true<br>传递性。对于任何非null的引用值x、y和z，如果x.equals(y)返回true，并且y.equals(z)也返回true，那么x.equals(z)也必须返回true。<br>一致性。对于任何非null的引用值x和y，只要equals的比较操作在对象中所用的信息没有被修改，多次调用该x.equals(y)就会一直地返回true，或者一致地返回false。<br>对于任何非null的引用值x，x.equals(null)必须返回false。</p>
-<p>  结合以上要求，得出了以下实现高质量equals方法的诀窍：<br>1.使用==符号检查“参数是否为这个对象的引用”。如果是，则返回true。这只不过是一种性能优化，如果比较操作有可能很昂贵，就值得这么做。<br>2.使用instanceof操作符检查“参数是否为正确的类型”。如果不是，则返回false。一般来说，所谓“正确的类型”是指equals方法所在的那个类。<br>3.把参数转换成正确的类型。因为转换之前进行过instanceof测试，所以确保会成功。<br>4.对于该类中的每个“关键”域，检查参数中的域是否与该对象中对应的域相匹配。如果这些测试全部成功，则返回true;否则返回false。<br>5.当编写完成了equals方法之后，检查“对称性”、“传递性”、“一致性”。 </p>
-<p>==<strong>覆盖equals时总要覆盖hashCode</strong>==<br>  一个很常见的错误根源在于没有覆盖hashCode方法。在每个覆盖了equals方法的类中，也必须覆盖hashCode方法。如果不这样做的话，就会违反Object.hashCode的通用约定，从而导致该类无法结合所有基于散列的集合一起正常运作，这样的集合包括HashMap、HashSet和Hashtable。<br>在应用程序的执行期间，只要对象的equals方法的比较操作所用到的信息没有被修改，那么对这同一个对象调用多次，hashCode方法都必须始终如一地返回同一个整数。在同一个应用程序的多次执行过程中，每次执行所返回的整数可以不一致。<br>如果两个对象根据equals()方法比较是相等的，那么调用这两个对象中任意一个对象的hashCode方法都必须产生同样的整数结果。<br>如果两个对象根据equals()方法比较是不相等的，那么调用这两个对象中任意一个对象的hashCode方法，则不一定要产生相同的整数结果。但是程序员应该知道，给不相等的对象产生截然不同的整数结果，有可能提高散列表的性能。</p>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       Domain d1 = <span class="keyword">new</span> Domain(<span class="string">"c"</span>);</span><br><span class="line">       Domain d2 = <span class="keyword">new</span> Domain(<span class="string">"c"</span>);</span><br><span class="line">       Domain d3 = <span class="keyword">new</span> Domain(<span class="string">"b"</span>);</span><br><span class="line">       Domain d4 = <span class="keyword">new</span> Domain(<span class="string">"d"</span>);</span><br><span class="line">       System.out.println(d1.compareTo(d2));</span><br><span class="line">       System.out.println(d1.compareTo(d3));</span><br><span class="line">       System.out.println(d1.compareTo(d4));</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：</p>
+<blockquote>
+<p>0<br>1<br>-1</p>
+</blockquote>
+<p>注意一下，前面说实现Comparable接口的类是可以支持和自己比较的，但是其实代码里面Comparable的泛型未必就一定要是Domain，将泛型指定为String或者指定为其他任何任何类型都可以，只要开发者指定了具体的比较算法就行。</p>
+<hr>
+<h2 id="Comparator"><a href="#Comparator" class="headerlink" title="Comparator"></a>Comparator</h2><p>Comparator接口里面有一个compare方法，方法有两个参数T o1和T o2，是泛型的表示方式，分别表示待比较的两个对象，方法返回值和Comparable接口一样是int，有三种情况：</p>
+<blockquote>
+<ul>
+<li>o1大于o2，返回正整数</li>
+<li>o1等于o2，返回0</li>
+<li>o1小于o3，返回负整数</li>
+</ul>
+</blockquote>
+<p>写个很简单的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DomainComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Domain</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Domain domain1, Domain domain2)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (domain1.getStr().compareTo(domain2.getStr()) &gt; <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">else</span> <span class="keyword">if</span> (domain1.getStr().compareTo(domain2.getStr()) == <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">else</span> </span><br><span class="line">           <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   Domain d1 = <span class="keyword">new</span> Domain(<span class="string">"c"</span>);</span><br><span class="line">   Domain d2 = <span class="keyword">new</span> Domain(<span class="string">"c"</span>);</span><br><span class="line">   Domain d3 = <span class="keyword">new</span> Domain(<span class="string">"b"</span>);</span><br><span class="line">   Domain d4 = <span class="keyword">new</span> Domain(<span class="string">"d"</span>);</span><br><span class="line">   DomainComparator dc = <span class="keyword">new</span> DomainComparator();</span><br><span class="line">   System.out.println(dc.compare(d1, d2));</span><br><span class="line">   System.out.println(dc.compare(d1, d3));</span><br><span class="line">   System.out.println(dc.compare(d1, d4));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看一下运行结果：</p>
+<blockquote>
+<p>0<br>1<br>-1</p>
+</blockquote>
+<p>因为泛型指定死了，所以实现Comparator接口的实现类只能是两个相同的对象（不能一个Domain、一个String）进行比较了，实现Comparator接口的实现类一般都会以”待比较的实体类+Comparator”来命名</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果实现类没有实现Comparable接口，又想对两个类进行比较（或者实现类实现了Comparable接口，但是对compareTo方法内的比较算法不满意），那么可以实现Comparator接口，自定义一个比较器，写比较算法。</p>
+<p>实现Comparable接口的方式比实现Comparator接口的耦合性要强一些，如果要修改比较算法，要修改Comparable接口的实现类，而实现Comparator的类是在外部进行比较的，不需要对实现类有任何修改。因此：</p>
+<blockquote>
+<ul>
+<li>对于一些普通的数据类型（比如 String, Integer, Double…），它们默认实现了Comparable 接口，实现了 compareTo 方法，我们可以直接使用。</li>
+<li>而对于一些自定义类，它们可能在不同情况下需要实现不同的比较策略，我们可以新创建 Comparator 接口，然后使用特定的 Comparator 实现进行比较。</li>
+</ul>
+</blockquote>
+<p><strong>值得注意：</strong></p>
+<blockquote>
+<ul>
+<li>Comparator位于java.util包下，而Comparable位于java.lang包下</li>
+<li>实现Comparable接口的方式比实现Comparator接口的耦合性要强</li>
+</ul>
+</blockquote>
 
       
 
@@ -265,7 +303,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -279,15 +317,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java中Comparable和Comparator的区别
-        
-      </div>
-    </a>
   
+    <a href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">==、equals和HashCode的区别与联系</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

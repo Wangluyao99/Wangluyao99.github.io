@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/4 | 王璐瑶的Hexo博客</title>
+  <title>MySQL 知识总结 | 王璐瑶的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep Working">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王璐瑶的Hexo博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/04/index.html">
+  <meta name="description" content="MySQL 知识总结 一、MySQL建索引需要遵循哪些原则呢？ 1.选择唯一性索引唯一性索引的值是唯一的，可以更快速的通过该索引来确定某条记录。 2.为经常需要排序、分组和联合操作的字段建立索引 3.为常作为查询条件的字段建立索引">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 知识总结">
+<meta property="og:url" content="http://yoursite.com/2020/04/05/MySQL%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="王璐瑶的Hexo博客">
-<meta property="og:description" content="Keep Working">
+<meta property="og:description" content="MySQL 知识总结 一、MySQL建索引需要遵循哪些原则呢？ 1.选择唯一性索引唯一性索引的值是唯一的，可以更快速的通过该索引来确定某条记录。 2.为经常需要排序、分组和联合操作的字段建立索引 3.为常作为查询条件的字段建立索引">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-05T13:49:35.547Z">
+<meta property="article:modified_time" content="2020-04-05T13:49:35.970Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -140,130 +142,206 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-MySQL 知识总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      MySQL 知识总结
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/05/MySQL%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="archive-article-date">
+
+        
+        <a href="/2020/04/05/MySQL%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="archive-article-date">
   	<time datetime="2020-04-05T13:49:35.547Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/05/MySQL%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">MySQL 知识总结</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MySQL 知识总结</p>
+<p>一、MySQL建索引需要遵循哪些原则呢？</p>
+<p>1.选择唯一性索引<br>唯一性索引的值是唯一的，可以更快速的通过该索引来确定某条记录。</p>
+<p>2.为经常需要排序、分组和联合操作的字段建立索引</p>
+<p>3.为常作为查询条件的字段建立索引</p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>4.限制索引的数目<br>索引的数目不是越多越好。每个索引都需要占用磁盘空间，索引越多，需要的磁盘空间就越大。</p>
+<p>5.尽量使用数据量少的索引<br>如果索引的值很长，那么查询的速度会受到影响。</p>
+<p>6.尽量使用前缀来索引<br>如果索引字段的值很长，最好使用值的前缀来索引。</p>
+<p>7.删除不再使用或者很少使用的索引</p>
+<p>8.最左前缀匹配原则，非常重要的原则。<br>mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a 1=”” and=”” b=”2” c=”“&gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</p>
+<p>9.=和in可以乱序。<br>比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式</p>
+<p>10.尽量选择区分度高的列作为索引。</p>
+<p>11.索引列不能参与计算</p>
+<p>12.尽量的扩展索引，不要新建索引。</p>
+<p>二、盘点那些面试中最常问的MySQL问题</p>
+<p>1、MySQL中myisam与innodb的区别<br>MyISAM：</p>
+<pre><code>不支持事务，但是每次查询都是原子的；
 
+支持表级锁，即每次操作对整个表加锁；
+
+存储表的总行数；
+
+一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；
+
+采用非聚集索引，索引文件的数据域存储指向数据文件的指针。
+辅索引与主索引基本一致，但是辅索引不用保证唯一性。</code></pre><p>InnoDb：</p>
+<pre><code>支持ACID的事务，支持事务的四种隔离级别；
+
+支持行级锁及外键约束：因此可以支持写并发；
+
+不存储总行数；
+
+一个InnoDb引擎存储在一个文件空间
+（共享表空间，表大小不受操作系统控制，一个表可能分布在多个文件里），
+也有可能为多个（设置为独立表空，表大小受操作系统文件大小限制，一般为2G），
+受操作系统文件大小的限制；
+
+主键索引采用聚集索引（索引的数据域存储数据文件本身），辅索引的数据域存储主键的值；
+因此从辅索引查找数据，需要先通过辅索引找到主键值，再访问辅索引；
+最好使用自增主键，防止插入数据时，为维持B+树结构，文件的大调整。</code></pre><p>两者的适用场景：</p>
+<pre><code>因为MyISAM相对简单所以在效率上要优于InnoDB.如果系统读多，写少。对原子性要求低。
+那么MyISAM最好的选择。且MyISAM恢复速度快。可直接用备份覆盖恢复。
+
+如果系统读少，写多的时候，尤其是并发写入高的时候。InnoDB就是首选了。</code></pre><p>2、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。<br>普通索引：<br>        没有任何限制条件的索引，该索引可以在任何数据类型中创建。</p>
+<p>唯一索引：<br>        使用UNIQUE参数可以设置唯一索引。创建该索引时，索引列的值必须唯一，但允许有空值。<br>        通过唯一索引，用户可以快速地定位某条记录，主键索引是一种特殊的唯一索引。</p>
+<p>全文索引：<br>        仅可用于 MyISAM 表，针对较大的数据，生成全文索引耗时耗空间。</p>
+<p>空间索引：<br>        只能建立在空间数据类型上。这样可以提高系统获取空间数据类型的效率。<br>        仅可用于 MyISAM 表，索引的字段不能为空值。使用SPATIAL参数可以设置索引为空间索引。</p>
+<p>单列索引：<br>        只对应一个字段的索引。</p>
+<p>多列索引：<br>        在表的多个字段上创建一个索引。该索引指向创建时对应的多个字段，<br>        用户可以通过这几个字段进行查询，想使用该索引，用户必须使用这些字段中的一个字段。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/05/MySQL%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/04/HashMap%E7%9A%84%E9%83%A8%E5%88%86%E6%BA%90%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2020-04-04T06:46:35.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/04/HashMap%E7%9A%84%E9%83%A8%E5%88%86%E6%BA%90%E7%A0%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HashMap的部分源码</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/04/HashMap%E7%9A%84%E9%83%A8%E5%88%86%E6%BA%90%E7%A0%81/">HashMap的部分源码</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/03/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-04-03T13:37:04.040Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/03/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/">Java中的各种集合</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/02/tcp%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-04-02T13:07:06.744Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/02/tcp%E7%AC%94%E8%AE%B0/">tcp笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -286,8 +364,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

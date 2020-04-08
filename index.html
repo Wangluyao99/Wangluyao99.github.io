@@ -142,6 +142,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL数据库的事务隔离" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/">MySQL数据库的事务隔离</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/" class="archive-article-date">
+  	<time datetime="2020-04-08T13:33:02.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="MySQL数据库的事务隔离？"><a href="#MySQL数据库的事务隔离？" class="headerlink" title="MySQL数据库的事务隔离？"></a>MySQL数据库的事务隔离？</h4><p>MySQL 的事务隔离是在 MySQL. ini 配置文件里添加的，在文件的最后添加：</p>
+<blockquote>
+<p>transaction-isolation = REPEATABLE-READ</p>
+</blockquote>
+<p>可用的配置值：READ-UNCOMMITTED、READ-COMMITTED、REPEATABLE-READ、SERIALIZABLE。</p>
+<ul>
+<li>READ-UNCOMMITTED：未提交读，最低隔离级别、事务未提交前，就可被其他事务读取（会出现幻读、脏读、不可重复读）。</li>
+<li>READ-COMMITTED：提交读，一个事务提交后才能被其他事务读取到（会造成幻读、不可重复读）。</li>
+<li>REPEATABLE-READ：可重复读，默认级别，保证多次读取同一个数据时，其值都和事务开始时候的内容是一致，禁止读取到别的事务未提交的数据（会造成幻读）。</li>
+<li>SERIALIZABLE：序列化，代价最高最可靠的隔离级别，事务需要排队执行，该隔离级别能防止脏读、不可重复读、幻读。</li>
+</ul>
+<p><strong>脏读</strong> ：表示一个事务能够读取另一个事务中还未提交的数据。比如，某个事务尝试插入记录 A，此时该事务还未提交，然后另一个事务尝试读取到了记录 A。</p>
+<p><strong>不可重复读</strong> ：在同一事务中，两次读取同一数据，得到内容不同，侧重点在于数据修改。</p>
+<p><strong>幻读</strong> ：同一事务中，用同样的操作读取两次，得到的记录数不相同，幻读的侧重点在于两次读取的纪录数量不一致。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-在看题中积累的知识点！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,7 +238,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="在看题中积累的知识点！"><a href="#在看题中积累的知识点！" class="headerlink" title="在看题中积累的知识点！"></a>在看题中积累的知识点！</h4><h5 id="synchronized-和volatile-关键字的区别？"><a href="#synchronized-和volatile-关键字的区别？" class="headerlink" title="synchronized 和volatile 关键字的区别？"></a>synchronized 和volatile 关键字的区别？</h5><p>synchronized 和volatile的作用：<br>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。<br>2）禁止进行指令重排序。<br>volatile 本质是在告诉jvm 当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取；synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。<br>synchronized 和volatile的区别：<br>1）volatile 仅能使用在变量级别；synchronized 则可以使用在变量、方法、和类级别的<br>2）volatile 仅能实现变量的修改可见性，并不能保证原子性；synchronized 则可以保证变量的修改可见性和原子性<br>3）volatile 不会造成线程的阻塞；synchronized 可能会造成线程的阻塞。<br>4）volatile 标记的变量不会被编译器优化；synchronized 标记的变量可以被编译器优化</p>
+        <h5 id="synchronized-和volatile-关键字的区别？"><a href="#synchronized-和volatile-关键字的区别？" class="headerlink" title="synchronized 和volatile 关键字的区别？"></a>synchronized 和volatile 关键字的区别？</h5><p>synchronized 和volatile的作用：<br>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。<br>2）禁止进行指令重排序。<br>volatile 本质是在告诉jvm 当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取；synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。<br>synchronized 和volatile的区别：<br>1）volatile 仅能使用在变量级别；synchronized 则可以使用在变量、方法、和类级别的<br>2）volatile 仅能实现变量的修改可见性，并不能保证原子性；synchronized 则可以保证变量的修改可见性和原子性<br>3）volatile 不会造成线程的阻塞；synchronized 可能会造成线程的阻塞。<br>4）volatile 标记的变量不会被编译器优化；synchronized 标记的变量可以被编译器优化</p>
         
       
 

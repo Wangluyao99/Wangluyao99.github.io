@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 王璐瑶的Hexo博客</title>
+  <title>MySQL中myisam与innodb的区别 | 王璐瑶的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep Working">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王璐瑶的Hexo博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="1、MySQL中myisam与innodb的区别MyISAM：  不支持事务，但是每次查询都是原子的；  支持表级锁，即每次操作对整个表加锁；  存储表的总行数；  一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；  采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯一性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL中myisam与innodb的区别">
+<meta property="og:url" content="http://yoursite.com/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="王璐瑶的Hexo博客">
-<meta property="og:description" content="Keep Working">
+<meta property="og:description" content="1、MySQL中myisam与innodb的区别MyISAM：  不支持事务，但是每次查询都是原子的；  支持表级锁，即每次操作对整个表加锁；  存储表的总行数；  一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；  采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯一性。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-10T13:47:02.431Z">
+<meta property="article:modified_time" content="2020-04-10T13:47:03.575Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -140,295 +142,212 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-MySQL中myisam与innodb的区别" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      MySQL中myisam与innodb的区别
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+
+        
+        <a href="/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
   	<time datetime="2020-04-10T13:47:02.431Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/">MySQL中myisam与innodb的区别</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、MySQL中myisam与innodb的区别"><a href="#1、MySQL中myisam与innodb的区别" class="headerlink" title="1、MySQL中myisam与innodb的区别"></a>1、MySQL中myisam与innodb的区别</h3><p><strong>MyISAM：</strong></p>
+<ul>
+<li><p>不支持事务，但是每次查询都是原子的；</p>
+</li>
+<li><p>支持表级锁，即每次操作对整个表加锁；</p>
+</li>
+<li><p>存储表的总行数；</p>
+</li>
+<li><p>一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；</p>
+</li>
+<li><p>采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯一性。</p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
-          
+</li>
+</ul>
+<p><strong>InnoDb：</strong></p>
+<ul>
+<li>支持ACID的事务，支持事务的四种隔离级别；</li>
+<li>支持行级锁及外键约束：因此可以支持写并发；</li>
+<li>不存储总行数；</li>
+<li>一个InnoDb引擎存储在一个文件空间（共享表空间，表大小不受操作系统控制，一个表可能分布在多个文件里），也有可能为多个（设置为独立表空，表大小受操作系统文件大小限制，一般为2G），受操作系统文件大小的限制；</li>
+<li>主键索引采用聚集索引（索引的数据域存储数据文件本身），辅索引的数据域存储主键的值；因此从辅索引查找数据，需要先通过辅索引找到主键值，再访问辅索引；最好使用自增主键，防止插入数据时，为维持B+树结构，文件的大调整。</li>
+</ul>
+<p><strong>两者的适用场景：</strong></p>
+<p>因为MyISAM相对简单所以在效率上要优于InnoDB.如果系统读多，写少。对原子性要求低。那么MyISAM最好的选择。且MyISAM恢复速度快。可直接用备份覆盖恢复。</p>
+<p>如果系统读少，写多的时候，尤其是并发写入高的时候。InnoDB就是首选了。</p>
+<h3 id="2、MySQL-int和char隐式类型转换需要注意什么？"><a href="#2、MySQL-int和char隐式类型转换需要注意什么？" class="headerlink" title="2、MySQL int和char隐式类型转换需要注意什么？"></a>2、MySQL int和char隐式类型转换需要注意什么？</h3><p>主要需要记住下面两点：</p>
+<p>1、当查询字段是INT类型，如果查询条件为CHAR，将查询条件转换为INT，如果是字符串前导都是数字，将截取前导数字用来比较，如果没有前导数字，则转换为0。</p>
+<p>2.、当查询字段是CHAR/VARCHAR类型，如果查询条件为INT，将查询字段转换为INT再进行比较，可能会造成全表扫描。</p>
+<p><strong>答案解析</strong></p>
+<p>有如下一张测试表product，id为int类型，name为varchar类型。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">| id | name   |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">|  1 | apple   |</span><br><span class="line">|  2 | banana |</span><br><span class="line">|  3 | 99cat   |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br></pre></td></tr></table></figure>
 
+<p>情况1:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 查询条件转化为数字1再比较</span><br><span class="line">mysql&gt; select * from product where id = '1abc23';</span><br><span class="line">+<span class="comment">----+---------+</span></span><br><span class="line">| id | name  |</span><br><span class="line">+<span class="comment">----+---------+</span></span><br><span class="line">|  1 | apple  |</span><br><span class="line">+<span class="comment">----+---------+</span></span><br></pre></td></tr></table></figure>
+
+<p>情况2:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 查询字段全部转化成数字，id:1和id:2字段值转化为0，id:3转化成99，再比较</span><br><span class="line">mysql&gt; select * from product where name=0;</span><br><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">| id | name   |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">|  1 | apple   |</span><br><span class="line">|  2 | banana |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、MySQL-如何高效率随机获取N条数据？"><a href="#3、MySQL-如何高效率随机获取N条数据？" class="headerlink" title="3、MySQL 如何高效率随机获取N条数据？"></a>3、MySQL 如何高效率随机获取N条数据？</h3><p>假设表叫做mm_account。</p>
+<p>ID连续的情况下（注意不能带where，否则结果不好）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	*</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	<span class="string">`mm_account`</span> <span class="keyword">AS</span> t1 <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">ROUND</span>(<span class="keyword">RAND</span>() * (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span><span class="string">`mm_account`</span>)) <span class="keyword">AS</span> <span class="keyword">id</span>) <span class="keyword">AS</span> t2</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">	t1.id &gt;= t2.id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">	t1.id <span class="keyword">ASC</span> </span><br><span class="line"><span class="keyword">LIMIT</span> </span><br><span class="line">	<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+
+<p>ID不连续的情况下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	* </span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	<span class="string">`mm_account`</span> </span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">	<span class="keyword">id</span> &gt;= (<span class="keyword">SELECT</span> <span class="keyword">floor</span>(<span class="keyword">RAND</span>() * (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> <span class="string">`mm_account`</span>)))  <span class="keyword">and</span> city=<span class="string">"city_91"</span> <span class="keyword">and</span> showSex=<span class="number">1</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">	<span class="keyword">id</span> </span><br><span class="line"><span class="keyword">LIMIT</span> </span><br><span class="line">	<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果有一个字段叫id，最快的方法如下（随机获取5条）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * </span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	mm_account </span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">	<span class="keyword">id</span> &gt;= ((<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> mm_account)-(<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> mm_account)) * <span class="keyword">RAND</span>() + (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> mm_account)</span><br><span class="line"><span class="keyword">limit</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果带where语句，上面就不适合了，带where语句请看下面：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	<span class="string">`mm_account`</span> <span class="keyword">AS</span> t1 <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">ROUND</span>(<span class="keyword">RAND</span>() * (</span><br><span class="line">(<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> <span class="string">`mm_account`</span> <span class="keyword">where</span> <span class="keyword">id</span>&lt;<span class="number">1000</span> )-(<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> <span class="string">`mm_account`</span> <span class="keyword">where</span> <span class="keyword">id</span>&lt;<span class="number">1000</span> ))+(<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> <span class="string">`mm_account`</span> <span class="keyword">where</span> <span class="keyword">id</span>&lt;<span class="number">1000</span> )) <span class="keyword">AS</span> <span class="keyword">id</span>) <span class="keyword">AS</span> t2</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">	t1.id &gt;= t2.id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">	t1.id </span><br><span class="line"><span class="keyword">LIMIT</span> </span><br><span class="line">	<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。"><a href="#4、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。" class="headerlink" title="4、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。"></a>4、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。</h3><p><strong>普通索引：</strong>没有任何限制条件的索引，该索引可以在任何数据类型中创建。</p>
+<p><strong>唯一索引：</strong>使用UNIQUE参数可以设置唯一索引。创建该索引时，索引列的值必须唯一，但允许有空值。通过唯一索引，用户可以快速地定位某条记录，主键索引是一种特殊的唯一索引。</p>
+<p><strong>全文索引：</strong>仅可用于 MyISAM 表，针对较大的数据，生成全文索引耗时耗空间。</p>
+<p><strong>空间索引：</strong>只能建立在空间数据类型上。这样可以提高系统获取空间数据类型的效率。仅可用于 MyISAM 表，索引的字段不能为空值。使用SPATIAL参数可以设置索引为空间索引。</p>
+<p><strong>单列索引：</strong>只对应一个字段的索引。</p>
+<p><strong>多列索引：</strong>在表的多个字段上创建一个索引。该索引指向创建时对应的多个字段，用户可以通过这几个字段进行查询，想使用该索引，用户必须使用这些字段中的一个字段。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/" class="archive-article-date">
-  	<time datetime="2020-04-08T13:33:02.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL数据库的事务隔离</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/">MySQL数据库的事务隔离</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/07/%E5%9C%A8%E7%9C%8B%E9%A2%98%E4%B8%AD%E7%A7%AF%E7%B4%AF%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81/" class="archive-article-date">
-  	<time datetime="2020-04-07T12:29:10.042Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/07/%E5%9C%A8%E7%9C%8B%E9%A2%98%E4%B8%AD%E7%A7%AF%E7%B4%AF%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81/">在看题中积累的知识点！</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/06/%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2020-04-06T11:54:54.681Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/06/%E5%9F%BA%E7%A1%80/">基础</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/05/MySQL%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-04-05T13:49:35.547Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/05/MySQL%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">MySQL 知识总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/04/HashMap%E7%9A%84%E9%83%A8%E5%88%86%E6%BA%90%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2020-04-04T06:46:35.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/04/HashMap%E7%9A%84%E9%83%A8%E5%88%86%E6%BA%90%E7%A0%81/">HashMap的部分源码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/03/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-04-03T13:37:04.040Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/03/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/">Java中的各种集合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/02/tcp%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-04-02T13:07:06.744Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/02/tcp%E7%AC%94%E8%AE%B0/">tcp笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/30/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-30T12:25:39.990Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/30/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/">MySQL支持的索引类型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-03-29T12:40:21.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/">Java中Comparable和Comparator的区别</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -452,8 +371,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

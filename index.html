@@ -142,6 +142,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL中myisam与innodb的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/">MySQL中myisam与innodb的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-04-10T13:47:02.431Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、MySQL中myisam与innodb的区别"><a href="#1、MySQL中myisam与innodb的区别" class="headerlink" title="1、MySQL中myisam与innodb的区别"></a>1、MySQL中myisam与innodb的区别</h3><p><strong>MyISAM：</strong></p>
+<ul>
+<li><p>不支持事务，但是每次查询都是原子的；</p>
+</li>
+<li><p>支持表级锁，即每次操作对整个表加锁；</p>
+</li>
+<li><p>存储表的总行数；</p>
+</li>
+<li><p>一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；</p>
+</li>
+<li><p>采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯一性。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL数据库的事务隔离" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,21 +235,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="MySQL数据库的事务隔离？"><a href="#MySQL数据库的事务隔离？" class="headerlink" title="MySQL数据库的事务隔离？"></a>MySQL数据库的事务隔离？</h4><p>MySQL 的事务隔离是在 MySQL. ini 配置文件里添加的，在文件的最后添加：</p>
-<blockquote>
-<p>transaction-isolation = REPEATABLE-READ</p>
-</blockquote>
-<p>可用的配置值：READ-UNCOMMITTED、READ-COMMITTED、REPEATABLE-READ、SERIALIZABLE。</p>
+        <p>MySQL数据库事务隔离：</p>
 <ul>
 <li>READ-UNCOMMITTED：未提交读，最低隔离级别、事务未提交前，就可被其他事务读取（会出现幻读、脏读、不可重复读）。</li>
 <li>READ-COMMITTED：提交读，一个事务提交后才能被其他事务读取到（会造成幻读、不可重复读）。</li>
 <li>REPEATABLE-READ：可重复读，默认级别，保证多次读取同一个数据时，其值都和事务开始时候的内容是一致，禁止读取到别的事务未提交的数据（会造成幻读）。</li>
-<li>SERIALIZABLE：序列化，代价最高最可靠的隔离级别，事务需要排队执行，该隔离级别能防止脏读、不可重复读、幻读。</li>
-</ul>
-<p><strong>脏读</strong> ：表示一个事务能够读取另一个事务中还未提交的数据。比如，某个事务尝试插入记录 A，此时该事务还未提交，然后另一个事务尝试读取到了记录 A。</p>
-<p><strong>不可重复读</strong> ：在同一事务中，两次读取同一数据，得到内容不同，侧重点在于数据修改。</p>
-<p><strong>幻读</strong> ：同一事务中，用同样的操作读取两次，得到的记录数不相同，幻读的侧重点在于两次读取的纪录数量不一致。</p>
-
+<li>SERIALIZABLE：序列化，代价最高最可靠的隔离级别，事务需要排队执行，该隔离级别能防止脏读、不可重复读、幻读。
+        
       
 
       
@@ -238,7 +303,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="synchronized-和volatile-关键字的区别？"><a href="#synchronized-和volatile-关键字的区别？" class="headerlink" title="synchronized 和volatile 关键字的区别？"></a>synchronized 和volatile 关键字的区别？</h5><p>synchronized 和volatile的作用：<br>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。<br>2）禁止进行指令重排序。<br>volatile 本质是在告诉jvm 当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取；synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。<br>synchronized 和volatile的区别：<br>1）volatile 仅能使用在变量级别；synchronized 则可以使用在变量、方法、和类级别的<br>2）volatile 仅能实现变量的修改可见性，并不能保证原子性；synchronized 则可以保证变量的修改可见性和原子性<br>3）volatile 不会造成线程的阻塞；synchronized 可能会造成线程的阻塞。<br>4）volatile 标记的变量不会被编译器优化；synchronized 标记的变量可以被编译器优化</p>
+        <h5 id="synchronized-和volatile-关键字的区别？"><a href="#synchronized-和volatile-关键字的区别？" class="headerlink" title="synchronized 和volatile 关键字的区别？"></a>synchronized 和volatile 关键字的区别？</h5><p>synchronized 和volatile的作用：<br>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。<br>2）禁止进行指令重排序。<br>volatile 本质是在告诉jvm 当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取；synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。</p>
         
       
 
@@ -301,14 +366,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>final修饰的类，类的属性可以改吗</strong>？</p>
-<p>分2种情况:</p>
+        <p><strong>final修饰的类，类的属性可以改吗</strong>？<br>分2种情况:</p>
 <ol>
 <li>基础数据类型，final修饰肯定不能变</li>
 <li>引用数据类型，final修饰是引用地址不能变，但是内容是可变的</li>
 </ol>
-<p><strong>i++是线程安全的吗</strong>？</p>
-<p>分2种情况:</p>
+<p><strong>i++是线程安全的吗</strong>？<br>分2种情况:</p>
 <ol>
 <li>局部变量肯定是线程安全的（原因：方法内局部变量是线程私有的）</li>
 <li>成员变量多个线程共享时，就不是线程安全的（原因：成员变量是线程共享的）</li>
@@ -749,72 +812,10 @@
 
 
   
-    <article id="post-==、equals和HashCode的区别与联系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/">==、equals和HashCode的区别与联系</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/" class="archive-article-date">
-  	<time datetime="2020-03-28T07:13:42.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在java中：</p>
-<p>==是运算符，用于比较两个变量是否相等。</p>
-<p>equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟==的结果一样。Object的equals方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 

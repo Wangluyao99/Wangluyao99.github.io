@@ -16,7 +16,7 @@
 <meta property="og:description" content="1、MySQL中myisam与innodb的区别MyISAM：  不支持事务，但是每次查询都是原子的；  支持表级锁，即每次操作对整个表加锁；  存储表的总行数；  一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；  采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯一性。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-10T13:47:02.431Z">
-<meta property="article:modified_time" content="2020-04-10T13:47:03.575Z">
+<meta property="article:modified_time" content="2020-04-10T13:51:23.861Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -188,38 +188,6 @@
 <p><strong>两者的适用场景：</strong></p>
 <p>因为MyISAM相对简单所以在效率上要优于InnoDB.如果系统读多，写少。对原子性要求低。那么MyISAM最好的选择。且MyISAM恢复速度快。可直接用备份覆盖恢复。</p>
 <p>如果系统读少，写多的时候，尤其是并发写入高的时候。InnoDB就是首选了。</p>
-<h3 id="2、MySQL-int和char隐式类型转换需要注意什么？"><a href="#2、MySQL-int和char隐式类型转换需要注意什么？" class="headerlink" title="2、MySQL int和char隐式类型转换需要注意什么？"></a>2、MySQL int和char隐式类型转换需要注意什么？</h3><p>主要需要记住下面两点：</p>
-<p>1、当查询字段是INT类型，如果查询条件为CHAR，将查询条件转换为INT，如果是字符串前导都是数字，将截取前导数字用来比较，如果没有前导数字，则转换为0。</p>
-<p>2.、当查询字段是CHAR/VARCHAR类型，如果查询条件为INT，将查询字段转换为INT再进行比较，可能会造成全表扫描。</p>
-<p><strong>答案解析</strong></p>
-<p>有如下一张测试表product，id为int类型，name为varchar类型。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">| id | name   |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">|  1 | apple   |</span><br><span class="line">|  2 | banana |</span><br><span class="line">|  3 | 99cat   |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br></pre></td></tr></table></figure>
-
-<p>情况1:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 查询条件转化为数字1再比较</span><br><span class="line">mysql&gt; select * from product where id = '1abc23';</span><br><span class="line">+<span class="comment">----+---------+</span></span><br><span class="line">| id | name  |</span><br><span class="line">+<span class="comment">----+---------+</span></span><br><span class="line">|  1 | apple  |</span><br><span class="line">+<span class="comment">----+---------+</span></span><br></pre></td></tr></table></figure>
-
-<p>情况2:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 查询字段全部转化成数字，id:1和id:2字段值转化为0，id:3转化成99，再比较</span><br><span class="line">mysql&gt; select * from product where name=0;</span><br><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">| id | name   |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br><span class="line">|  1 | apple   |</span><br><span class="line">|  2 | banana |</span><br><span class="line">+<span class="comment">----+----------+</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3、MySQL-如何高效率随机获取N条数据？"><a href="#3、MySQL-如何高效率随机获取N条数据？" class="headerlink" title="3、MySQL 如何高效率随机获取N条数据？"></a>3、MySQL 如何高效率随机获取N条数据？</h3><p>假设表叫做mm_account。</p>
-<p>ID连续的情况下（注意不能带where，否则结果不好）：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	*</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	<span class="string">`mm_account`</span> <span class="keyword">AS</span> t1 <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">ROUND</span>(<span class="keyword">RAND</span>() * (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span><span class="string">`mm_account`</span>)) <span class="keyword">AS</span> <span class="keyword">id</span>) <span class="keyword">AS</span> t2</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">	t1.id &gt;= t2.id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">	t1.id <span class="keyword">ASC</span> </span><br><span class="line"><span class="keyword">LIMIT</span> </span><br><span class="line">	<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-
-<p>ID不连续的情况下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	* </span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	<span class="string">`mm_account`</span> </span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">	<span class="keyword">id</span> &gt;= (<span class="keyword">SELECT</span> <span class="keyword">floor</span>(<span class="keyword">RAND</span>() * (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> <span class="string">`mm_account`</span>)))  <span class="keyword">and</span> city=<span class="string">"city_91"</span> <span class="keyword">and</span> showSex=<span class="number">1</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">	<span class="keyword">id</span> </span><br><span class="line"><span class="keyword">LIMIT</span> </span><br><span class="line">	<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-
-<p>如果有一个字段叫id，最快的方法如下（随机获取5条）：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * </span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	mm_account </span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">	<span class="keyword">id</span> &gt;= ((<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> mm_account)-(<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> mm_account)) * <span class="keyword">RAND</span>() + (<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> mm_account)</span><br><span class="line"><span class="keyword">limit</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
-<p>如果带where语句，上面就不适合了，带where语句请看下面：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">	<span class="string">`mm_account`</span> <span class="keyword">AS</span> t1 <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="keyword">ROUND</span>(<span class="keyword">RAND</span>() * (</span><br><span class="line">(<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> <span class="string">`mm_account`</span> <span class="keyword">where</span> <span class="keyword">id</span>&lt;<span class="number">1000</span> )-(<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> <span class="string">`mm_account`</span> <span class="keyword">where</span> <span class="keyword">id</span>&lt;<span class="number">1000</span> ))+(<span class="keyword">SELECT</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> <span class="string">`mm_account`</span> <span class="keyword">where</span> <span class="keyword">id</span>&lt;<span class="number">1000</span> )) <span class="keyword">AS</span> <span class="keyword">id</span>) <span class="keyword">AS</span> t2</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">	t1.id &gt;= t2.id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">	t1.id </span><br><span class="line"><span class="keyword">LIMIT</span> </span><br><span class="line">	<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。"><a href="#4、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。" class="headerlink" title="4、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。"></a>4、说说你知道的MySQL的索引类型，并分别简述一下各自的场景。</h3><p><strong>普通索引：</strong>没有任何限制条件的索引，该索引可以在任何数据类型中创建。</p>
-<p><strong>唯一索引：</strong>使用UNIQUE参数可以设置唯一索引。创建该索引时，索引列的值必须唯一，但允许有空值。通过唯一索引，用户可以快速地定位某条记录，主键索引是一种特殊的唯一索引。</p>
-<p><strong>全文索引：</strong>仅可用于 MyISAM 表，针对较大的数据，生成全文索引耗时耗空间。</p>
-<p><strong>空间索引：</strong>只能建立在空间数据类型上。这样可以提高系统获取空间数据类型的效率。仅可用于 MyISAM 表，索引的字段不能为空值。使用SPATIAL参数可以设置索引为空间索引。</p>
-<p><strong>单列索引：</strong>只对应一个字段的索引。</p>
-<p><strong>多列索引：</strong>在表的多个字段上创建一个索引。该索引指向创建时对应的多个字段，用户可以通过这几个字段进行查询，想使用该索引，用户必须使用这些字段中的一个字段。</p>
 
       
 
@@ -312,6 +280,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/04/11/%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F%E5%BF%85%E9%A1%BB%E4%B8%BA2%20%E7%9A%84%E5%B9%82%EF%BC%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          为什么HashMap中初始容量必须为2 的幂？
+        
+      </div>
+    </a>
   
   
     <a href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/" id="article-nav-older" class="article-nav-link-wrap">

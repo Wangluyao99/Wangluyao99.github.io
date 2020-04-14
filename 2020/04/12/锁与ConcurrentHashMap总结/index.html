@@ -16,7 +16,7 @@
 <meta property="og:description" content="锁的分类？分段锁分段锁其实是一种锁的设计，并不是具体的一种锁，对于ConcurrentHashMap而言，其并发的实现就是通过分段锁的形式来实现高效的并发操作。 我们以ConcurrentHashMap来说一下分段锁的含义以及设计思想，ConcurrentHashMap中的分段锁称为Segment，它即类似于HashMap（JDK7与JDK8中HashMap的实现）的结构，即内部拥有一个Entry">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-12T08:08:05.811Z">
-<meta property="article:modified_time" content="2020-04-12T08:15:55.937Z">
+<meta property="article:modified_time" content="2020-04-12T08:22:52.680Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -189,13 +189,12 @@
 </ul>
 <h6 id="3-1、ABA问题"><a href="#3-1、ABA问题" class="headerlink" title="3.1、ABA问题"></a>3.1、ABA问题</h6><p>​        设想一个场景，当线程1对值为A的value正在进行操作，但是，线程2这时进来，将value改为B，并在线程1结束之前，又将value改为了A，看上去一切都没变，这时，线程1完成了CAS操作。但是，如果value是一个链表呢？虽然其链表头没有变，但是不能保证，他的链表内容没有发生变化。</p>
 <p>​        通常，为了避免ABA问题的隐患，CAS会使用版本号机制，数据发生变化版本号加一。</p>
-<h5 id="4、ConcurrentHahMap如何保证线程安全"><a href="#4、ConcurrentHahMap如何保证线程安全" class="headerlink" title="4、ConcurrentHahMap如何保证线程安全"></a>4、ConcurrentHahMap如何保证线程安全</h5><h6 id="4-1、初始化数据结构时的线程安全"><a href="#4-1、初始化数据结构时的线程安全" class="headerlink" title="4.1、初始化数据结构时的线程安全"></a>4.1、初始化数据结构时的线程安全</h6><ol>
-<li>HashMap的底层数据结构：<pre><code>是以一个Node对象数组来存放数据，Hash冲突时会形成Node链表，在链表长度超过8，Node数组超过64时会将链表结构转换为红黑树，值得注意的是，Node数组中value和next指针使用了volatile来保证其可见性。
-在JDK1.8中，初始化ConcurrentHashMap的时候这个Node[]数组是还未初始化的，会等到第一次put方法调用时才初始化，此时是会有并发问题的，如果多个线程同时初始化Node数组怎么办？
-table变量使用了volatile来保证每次获取到的都是最新写入的值。</code></pre></li>
-<li>就算有多个线程同时进行put操作，在初始化数组时使用了乐观锁CAS操作来决定到底是哪个线程有资格进行初始化，其他线程均只能等待。</li>
-<li>用到的并发技巧：</li>
-</ol>
+<h5 id="4、ConcurrentHahMap如何保证线程安全"><a href="#4、ConcurrentHahMap如何保证线程安全" class="headerlink" title="4、ConcurrentHahMap如何保证线程安全"></a>4、ConcurrentHahMap如何保证线程安全</h5><h6 id="4-1、初始化数据结构时的线程安全"><a href="#4-1、初始化数据结构时的线程安全" class="headerlink" title="4.1、初始化数据结构时的线程安全"></a>4.1、初始化数据结构时的线程安全</h6><p>HashMap的底层数据结构：<br>        是以一个Node对象数组来存放数据，Hash冲突时会形成Node链表，在链表长度超过8，Node数组超过64时会将链表结构转换为红黑树，值得注意的是，Node数组中value和next指针使用了volatile来保证其可见性。</p>
+<p>​        在JDK1.8中，初始化ConcurrentHashMap的时候这个Node[]数组是还未初始化的，会等到第一次put方法调用时才初始化，此时是会有并发问题的，如果多个线程同时初始化Node数组怎么办？</p>
+<p>​        table变量使用了volatile来保证每次获取到的都是最新写入的值。</p>
+<p>总结：</p>
+<p>就算有多个线程同时进行put操作，在初始化数组时使用了乐观锁CAS操作来决定到底是哪个线程有资格进行初始化，其他线程均只能等待。</p>
+<p>用到的并发技巧：</p>
 <ul>
 <li>volatile变量（sizeCtl）：它是一个标记位，用来告诉其他线程这个坑位有没有人在，其线程间的可见性由volatile保证。</li>
 <li>CAS操作：CAS操作保证了设置sizeCtl标记位的原子性，保证了只有一个线程能设置成功。</li>

@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>分库分表之后，id 主键如何处理？ | 王璐瑶的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分库分表之后，id 主键如何处理？数据库自增 id​        系统里每次得到一个 id，都是往一个库的一个表里插入一条没什么业务含义的数据，然后获取一个数据库自增的一个 id。拿到这个 id 之后再往对应的分库分表里去写入。 这个方案的好处就是方便简单，缺点就是单库生成自增 id，要是高并发的话，就会有瓶颈的；如果你硬是要改进一下，那么就专门开一个服务出来，这个服务每次就拿到当前 id 最大">
+  <meta name="description" content="分库分表之后，id 主键如何处理？数据库自增 id​        系统里每次得到一个 id，都是往一个库的一个表里插入一条没什么业务含义的数据，然后获取一个数据库自增的一个 id。拿到这个 id 之后再往对应的分库分表里去写入。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分库分表之后，id 主键如何处理？">
 <meta property="og:url" content="http://yoursite.com/2020/04/19/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E4%B9%8B%E5%90%8E%EF%BC%8Cid%20%E4%B8%BB%E9%94%AE%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%EF%BC%9F/index.html">
 <meta property="og:site_name" content="王璐瑶的Hexo博客">
-<meta property="og:description" content="分库分表之后，id 主键如何处理？数据库自增 id​        系统里每次得到一个 id，都是往一个库的一个表里插入一条没什么业务含义的数据，然后获取一个数据库自增的一个 id。拿到这个 id 之后再往对应的分库分表里去写入。 这个方案的好处就是方便简单，缺点就是单库生成自增 id，要是高并发的话，就会有瓶颈的；如果你硬是要改进一下，那么就专门开一个服务出来，这个服务每次就拿到当前 id 最大">
+<meta property="og:description" content="分库分表之后，id 主键如何处理？数据库自增 id​        系统里每次得到一个 id，都是往一个库的一个表里插入一条没什么业务含义的数据，然后获取一个数据库自增的一个 id。拿到这个 id 之后再往对应的分库分表里去写入。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-19T13:19:00.415Z">
-<meta property="article:modified_time" content="2020-04-19T13:19:00.691Z">
+<meta property="article:modified_time" content="2020-04-19T13:27:10.616Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -163,11 +163,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="分库分表之后，id-主键如何处理？"><a href="#分库分表之后，id-主键如何处理？" class="headerlink" title="分库分表之后，id 主键如何处理？"></a><strong>分库分表之后，id 主键如何处理？</strong></h3><h4 id="数据库自增-id"><a href="#数据库自增-id" class="headerlink" title="数据库自增 id"></a>数据库自增 id</h4><p>​        系统里每次得到一个 id，都是往一个库的一个表里插入一条没什么业务含义的数据，然后获取一个数据库自增的一个 id。拿到这个 id 之后再往对应的分库分表里去写入。</p>
+<a id="more"></a>
+
 <p>这个方案的好处就是方便简单，缺点就是单库生成自增 id，要是高并发的话，就会有瓶颈的；如果你硬是要改进一下，那么就专门开一个服务出来，这个服务每次就拿到当前 id 最大值，然后自己递增几个 id，一次性返回一批 id，然后再把当前最大 id 值修改成递增几个 id 之后的一个值；但是无论如何都是基于单个数据库。</p>
 <p>​        适合的场景：你分库分表就俩原因，要不就是单库并发太高，要不就是单库数据量太大；除非是你并发不高，但是数据量太大导致的分库分表扩容，你可以用这个方案，因为可能每秒最高并发最多就几百，那么就走单独的一个库和表生成自增主键即可。</p>
 <h4 id="UUID"><a href="#UUID" class="headerlink" title="UUID"></a>UUID</h4><p>​        好处就是本地生成，不要基于数据库来了；不好之处就是，UUID 太长了、占用空间大，作为主键性能太差了；更重要的是，UUID 不具有有序性，会导致 B+ 树索引在写的时候有过多的随机写操作（连续的 ID 可以产生部分顺序写），还有，由于在写的时候不能产生有顺序的 append 操作，而需要进行 insert 操作，将会读取整个 B+ 树节点到内存，在插入这条记录后会将整个节点写回磁盘，这种操作在记录占用空间比较大的情况下，性能下降明显。</p>
 <p>​        适合的场景：如果你是要随机生成个什么文件名、编号之类的，你可以用 UUID，但是作为主键是不能用 UUID 的。</p>
-<h4 id="snowflake-算法"><a href="#snowflake-算法" class="headerlink" title="snowflake 算法"></a>snowflake 算法</h4><p>​        64 位的 long 型的 id，1 个 bit 是不用的，用其中的 41 bit 作为毫秒数，用 10 bit 作为工作机器 id，12 bit 作为序列号。</p>
+<h4 id="snowflake-雪花算法"><a href="#snowflake-雪花算法" class="headerlink" title="snowflake 雪花算法"></a>snowflake 雪花算法</h4><p>​        64 位的 long 型的 id，1 个 bit 是不用的，用其中的 41 bit 作为毫秒数，用 10 bit 作为工作机器 id，12 bit 作为序列号。</p>
 
       
 
@@ -260,6 +262,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/04/19/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          索引失效的条件
+        
+      </div>
+    </a>
   
   
     <a href="/2020/04/14/https%E5%8F%98%E6%88%90ssh/" id="article-nav-older" class="article-nav-link-wrap">

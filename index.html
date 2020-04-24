@@ -142,6 +142,143 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-线程池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="archive-article-date">
+  	<time datetime="2020-04-24T13:45:09.884Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>线程池</strong></p>
+<p>一、创建线程的方式：</p>
+<p>1、继承thread类<br>2、 实现Runnable接口<br>3、 实现Callable接口<br>4、通过线程池去创建</p>
+<p>二、线程池优点：</p>
+<p>线程池顾名思义就是一个装线程的池子</p>
+<p>1、可以降低资源的消耗，通过重复利用已经创建的线程，降低线程创建和销毁对性能的影响。<br>2、提高响应速度，当任务到达时可以不需要等待线程创建就能立即执行。<br>3、提高线程的管理，线程创建和销毁统一管理，不会消耗过多的系统资源。</p>
+<p>三、线程池的常见种类<br>1、newCachedThreadPool：一个可以无限扩大的线程池，适用于任务量比较大，但是任务执行时间很短，60s以内，不会造成CPU的过渡切换。<br>2、newFixedThreadPool：创建一个固定大小的线程池，适用于任务数量比较固定，并且执行时间比较长的任务。<br>3、newSingleThreadExecutor：创建一个单线程的线程池，适用于需要保证顺序执行的任务。<br>4、newScheduledThreadPool：适用于执行延迟或者周期性的任务</p>
+<p>四、创建线程池的参数</p>
+<p>1、线程池的核心线程数 - 可以理解成线程池最少存在几个线程<br>2、线程池的最大线程数 - 所允许存在的最多数量<br>3、线程存活时间 - 线程池中的线程数大于核心线程数量的时候，线程的空闲时间如果超过这个设定值，线程就会被销毁，直到线程池中的线程数量小于或者等于核心线程数<br>4、任务队列 - 用于保存那些等待执行的任务<br>5、线程工厂 - 用于创建新的线程<br>6、线程的饱和策略 - 当线程池和队列都满了的话，再加入进来的任务会执行哪种策略</p>
+<p>五、总结：</p>
+<p>线程池按以下行为执行任务：<br>1、当线程数小于核心线程数时，创建线程。<br>2、当线程数大于等于核心线程数，且任务队列未满时，将任务放入任务队列。<br>3、当线程数大于等于核心线程数，且任务队列已满。<br>若线程数小于最大线程数，创建线程。<br>若线程数等于最大线程数，抛出异常，拒绝任务。</p>
+<p><img src="D:%5Clenovo%5Cblog%5Csource%5Cimages%5C%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%81%E7%A8%8B.jpg" alt="线程池流程"></p>
+<p>（注：内容来自网络学习整理。图片来自微信公众号：我是程序汪）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MySQL中的表连接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/">MySQL中的表连接</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/" class="archive-article-date">
+  	<time datetime="2020-04-20T14:28:24.687Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-索引失效的条件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -650,141 +787,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-在看题中积累的知识点！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/07/%E5%9C%A8%E7%9C%8B%E9%A2%98%E4%B8%AD%E7%A7%AF%E7%B4%AF%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81/">在看题中积累的知识点！</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/07/%E5%9C%A8%E7%9C%8B%E9%A2%98%E4%B8%AD%E7%A7%AF%E7%B4%AF%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81/" class="archive-article-date">
-  	<time datetime="2020-04-07T12:29:10.042Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="synchronized-和volatile-关键字的区别？"><a href="#synchronized-和volatile-关键字的区别？" class="headerlink" title="synchronized 和volatile 关键字的区别？"></a>synchronized 和volatile 关键字的区别？</h5><p>synchronized 和volatile的作用：<br>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。<br>2）禁止进行指令重排序。<br>volatile 本质是在告诉jvm 当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取；synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/07/%E5%9C%A8%E7%9C%8B%E9%A2%98%E4%B8%AD%E7%A7%AF%E7%B4%AF%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/06/%E5%9F%BA%E7%A1%80/">基础</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/06/%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2020-04-06T11:54:54.681Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>final修饰的类，类的属性可以改吗</strong>？<br>分2种情况:</p>
-<ol>
-<li>基础数据类型，final修饰肯定不能变</li>
-<li>引用数据类型，final修饰是引用地址不能变，但是内容是可变的</li>
-</ol>
-<p><strong>i++是线程安全的吗</strong>？<br>分2种情况:</p>
-<ol>
-<li>局部变量肯定是线程安全的（原因：方法内局部变量是线程私有的）</li>
-<li>成员变量多个线程共享时，就不是线程安全的（原因：成员变量是线程共享的）</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/06/%E5%9F%BA%E7%A1%80/">展开全文 >></a>
         </p>
       
 

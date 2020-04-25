@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MySQL中的表连接 | 王璐瑶的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="�����ӣ�        ����A��B���������ӣ�ʹ�������ӵĻ�������A����B���ܹ�ƥ���ϵļ�¼��ѯ����������������ӡ�        AB���ű�û������֮�֣����ű���ƽ�ȵġ� �����ӣ�        ����A��B���������ӣ�ʹ�������ӵĻ���AB���ű�����һ�ű���������">
+  <meta name="description" content="表连接内连接：假设A和B表进行连接，使用内连接的话，凡是A表和B表能够匹配上的记录查询出来，这就是内连接。AB两张表没有主副之分，两张表是平等的。 外连接：假设A和B表进行连接，使用外连接的话，AB两张表中有一张表是主表，一张表是副表，主要查询主表中的数据，捎带着查询副表，当副表中的数据没有和主表中的数据匹配上，副表自动模拟出NULL与之匹配。 外连接的分类？左外连接（左连接）：表示左边的这张表是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL中的表连接">
-<meta property="og:url" content="http://yoursite.com/2020/04/20/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/04/25/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/index.html">
 <meta property="og:site_name" content="王璐瑶的Hexo博客">
-<meta property="og:description" content="�����ӣ�        ����A��B���������ӣ�ʹ�������ӵĻ�������A����B���ܹ�ƥ���ϵļ�¼��ѯ����������������ӡ�        AB���ű�û������֮�֣����ű���ƽ�ȵġ� �����ӣ�        ����A��B���������ӣ�ʹ�������ӵĻ���AB���ű�����һ�ű���������">
+<meta property="og:description" content="表连接内连接：假设A和B表进行连接，使用内连接的话，凡是A表和B表能够匹配上的记录查询出来，这就是内连接。AB两张表没有主副之分，两张表是平等的。 外连接：假设A和B表进行连接，使用外连接的话，AB两张表中有一张表是主表，一张表是副表，主要查询主表中的数据，捎带着查询副表，当副表中的数据没有和主表中的数据匹配上，副表自动模拟出NULL与之匹配。 外连接的分类？左外连接（左连接）：表示左边的这张表是">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-20T14:28:24.687Z">
-<meta property="article:modified_time" content="2020-04-25T03:38:49.842Z">
+<meta property="article:published_time" content="2020-04-25T04:10:17.344Z">
+<meta property="article:modified_time" content="2020-04-25T04:10:34.352Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -154,17 +154,17 @@
   
 
         
-        <a href="/2020/04/20/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/" class="archive-article-date">
-  	<time datetime="2020-04-20T14:28:24.687Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+        <a href="/2020/04/25/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/" class="archive-article-date">
+  	<time datetime="2020-04-25T04:10:17.344Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>�����ӣ�<br>        ����A��B���������ӣ�ʹ�������ӵĻ�������A����B���ܹ�ƥ���ϵļ�¼��ѯ����������������ӡ�<br>        AB���ű�û������֮�֣����ű���ƽ�ȵġ�</p>
-<p>�����ӣ�<br>        ����A��B���������ӣ�ʹ�������ӵĻ���AB���ű�����һ�ű���������һ�ű��Ǹ�������Ҫ��ѯ�����е����ݣ��Ӵ��Ų�ѯ�������������е�����û�к������е�����ƥ���ϣ������Զ�ģ���NULL��֮ƥ�䡣</p>
-<p>�����ӵķ��ࣿ<br>        �������ӣ������ӣ�����ʾ��ߵ����ű���������<br>        �������ӣ������ӣ�����ʾ�ұߵ����ű���������</p>
+        <h4 id="表连接"><a href="#表连接" class="headerlink" title="表连接"></a>表连接</h4><h5 id="内连接："><a href="#内连接：" class="headerlink" title="内连接："></a>内连接：</h5><p>假设A和B表进行连接，使用内连接的话，凡是A表和B表能够匹配上的记录查询出来，这就是内连接。<br>AB两张表没有主副之分，两张表是平等的。</p>
+<h5 id="外连接："><a href="#外连接：" class="headerlink" title="外连接："></a>外连接：</h5><p>假设A和B表进行连接，使用外连接的话，AB两张表中有一张表是主表，一张表是副表，主要查询主表中的数据，捎带着查询副表，当副表中的数据没有和主表中的数据匹配上，副表自动模拟出NULL与之匹配。</p>
+<h5 id="外连接的分类？"><a href="#外连接的分类？" class="headerlink" title="外连接的分类？"></a>外连接的分类？</h5><p>左外连接（左连接）：表示左边的这张表是主表。<br>右外连接（右连接）：表示右边的这张表是主表。</p>
 
       
 
@@ -244,7 +244,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/20/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/25/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -258,18 +258,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          线程池
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/19/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">索引失效的条件</div>
+    <a href="/2020/04/25/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">迭代器的作用</div>
       <i class="icon-circle-right"></i>
     </a>
   

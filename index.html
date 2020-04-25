@@ -142,6 +142,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-迭代器的作用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/25/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/">迭代器的作用</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/25/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-04-25T04:02:08.640Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="迭代器的作用"><a href="#迭代器的作用" class="headerlink" title="迭代器的作用"></a>迭代器的作用</h4><p>由于Java中数据容器众多，而对数据容器的操作在很多时候都具有极大的共性，于是Java采用了迭代器为各种容器提供公共的操作接口。</p>
+<p>作用：</p>
+<p>解耦效果！</p>
+<p>使用迭代器iterator可以使对容器的遍历操作完全与其底层相隔离，可以到达极好的解耦效果。</p>
+<p>方法：</p>
+<p>hasNext()：如果仍有元素可以迭代，返回true。</p>
+<p>next()：返回迭代的下一个元素。</p>
+<p>remove()：从迭代器指向的collection中移除迭代器返回的最后一个元素（可选操作）。</p>
+<p>注意：</p>
+<p>遍历集合时删除特定元素一定要用Iterator的remove()，不能用集合自带的remove()，否则会抛出Java.util.ConcurrentModificationException异常。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/25/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-线程池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -228,7 +300,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>�����ӣ�<br>        ����A��B���������ӣ�ʹ�������ӵĻ�������A����B���ܹ�ƥ���ϵļ�¼��ѯ����������������ӡ�<br>        AB���ű�û������֮�֣����ű���ƽ�ȵġ�</p>
-<p>�����ӣ�<br>        ����A��B���������ӣ�ʹ�������ӵĻ���AB���ű�����һ�ű���������һ�ű��Ǹ�������Ҫ��ѯ������<br>        �����ݣ��Ӵ��Ų�ѯ�������������е�����û�к������е�����ƥ���ϣ������Զ�ģ���NULL��֮ƥ�䡣</p>
+<p>�����ӣ�<br>        ����A��B���������ӣ�ʹ�������ӵĻ���AB���ű�����һ�ű���������һ�ű��Ǹ�������Ҫ��ѯ�����е����ݣ��Ӵ��Ų�ѯ�������������е�����û�к������е�����ƥ���ϣ������Զ�ģ���NULL��֮ƥ�䡣</p>
 <p>�����ӵķ��ࣿ<br>        �������ӣ������ӣ�����ʾ��ߵ����ű���������<br>        �������ӣ������ӣ�����ʾ�ұߵ����ű���������</p>
 
       
@@ -712,74 +784,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/10/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL数据库的事务隔离" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/">MySQL数据库的事务隔离</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/" class="archive-article-date">
-  	<time datetime="2020-04-08T13:33:02.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>MySQL数据库事务隔离：</p>
-<ul>
-<li>READ-UNCOMMITTED：未提交读，最低隔离级别、事务未提交前，就可被其他事务读取（会出现幻读、脏读、不可重复读）。</li>
-<li>READ-COMMITTED：提交读，一个事务提交后才能被其他事务读取到（会造成幻读、不可重复读）。</li>
-<li>REPEATABLE-READ：可重复读，默认级别，保证多次读取同一个数据时，其值都和事务开始时候的内容是一致，禁止读取到别的事务未提交的数据（会造成幻读）。</li>
-<li>SERIALIZABLE：序列化，代价最高最可靠的隔离级别，事务需要排队执行，该隔离级别能防止脏读、不可重复读、幻读。
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/08/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/">展开全文 >></a>
         </p>
       
 

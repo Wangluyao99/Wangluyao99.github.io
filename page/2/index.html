@@ -142,6 +142,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-为什么HashMap中初始容量必须为2 的幂？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/11/%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F%E5%BF%85%E9%A1%BB%E4%B8%BA2%20%E7%9A%84%E5%B9%82%EF%BC%9F/">为什么HashMap中初始容量必须为2 的幂？</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/11/%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F%E5%BF%85%E9%A1%BB%E4%B8%BA2%20%E7%9A%84%E5%B9%82%EF%BC%9F/" class="archive-article-date">
+  	<time datetime="2020-04-11T12:54:20.550Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="为什么HashMap中初始容量必须为2-的幂？"><a href="#为什么HashMap中初始容量必须为2-的幂？" class="headerlink" title="为什么HashMap中初始容量必须为2 的幂？"></a>为什么HashMap中初始容量必须为2 的幂？</h4><p>——<strong>减少哈希冲突！！！</strong></p>
+<p><strong>容量必须为2 的幂是为了增加取值的可能性。</strong></p>
+<p>​        2 的n次幂转化为二进制为1后面n个0，在计算下标的时候是hash&amp;(length - 1)，也就是&amp;(n-1)个1:初始容量为4-&gt;100，length-1 -&gt; 11。所有的二进制为都为1有什么好处？</p>
+<ul>
+<li>0/1 &amp; 1 都为它本身</li>
+<li>0/1 &amp; 0 都为 0</li>
+</ul>
+<p>​        可以看出&amp;1保证了取值的平均。如果某一位为0 ，比如最后一位，那么它&amp;出来下标就一定是个偶数，减少了HashMap 数组一半的取值，大大增加了冲突的可能。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/11/%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E4%B8%AD%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F%E5%BF%85%E9%A1%BB%E4%B8%BA2%20%E7%9A%84%E5%B9%82%EF%BC%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL中myisam与innodb的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -717,72 +787,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/30/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java中Comparable和Comparator的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/">Java中Comparable和Comparator的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-03-29T12:40:21.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java 中为我们提供了两种比较机制：Comparable 和 Comparator，二者都是用来实现对象的比较、排序。</p>
-<p>下面分别对Comparable 和 Comparator做具体介绍并总结。        </p>
-<hr>
-<h2 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h2><p>Comparable可以认为是一个内比较器，实现了Comparable接口的类有一个特点，就是这些类是可以和自己比较的，至于具体和另一个实现了Comparable接口的类如何比较，则依赖compareTo方法的实现。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
         </p>
       
 

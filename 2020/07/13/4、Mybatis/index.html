@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>王璐瑶的Hexo博客</title>
+  <title>4、Mybatis | 王璐瑶的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep Working">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王璐瑶的Hexo博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Mybatis中的参数1、从Java代码中把实际的值传入到mapper文件中 一个简单类型的参数：#{任意字符} 多个简单类型的参数，使用@Param(“自定义名称”) 使用一个Java对象，对象的属性值作为mapper的参数，#{Java对象的属性名称} 使用参数的位置，语法：#{arg0}，#{arg1}.  mybatis3.4之前版本使用#{0},#{1} 使用map作为参数，#{map的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4、Mybatis">
+<meta property="og:url" content="http://yoursite.com/2020/07/13/4%E3%80%81Mybatis/index.html">
 <meta property="og:site_name" content="王璐瑶的Hexo博客">
-<meta property="og:description" content="Keep Working">
+<meta property="og:description" content="Mybatis中的参数1、从Java代码中把实际的值传入到mapper文件中 一个简单类型的参数：#{任意字符} 多个简单类型的参数，使用@Param(“自定义名称”) 使用一个Java对象，对象的属性值作为mapper的参数，#{Java对象的属性名称} 使用参数的位置，语法：#{arg0}，#{arg1}.  mybatis3.4之前版本使用#{0},#{1} 使用map作为参数，#{map的">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-13T14:06:05.519Z">
+<meta property="article:modified_time" content="2020-07-13T14:06:05.908Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -140,16 +142,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-4、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-4、Mybatis" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/13/4%E3%80%81Mybatis/">4、Mybatis</a>
+    <h1 class="article-title" itemprop="name">
+      4、Mybatis
     </h1>
   
 
@@ -177,6 +177,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -184,16 +205,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/13/4%E3%80%81Mybatis/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/13/4%E3%80%81Mybatis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/12/3%E3%80%81Mybatis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3、Mybatis</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -213,612 +293,14 @@
 
 
 
-
-  
-    <article id="post-3、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/12/3%E3%80%81Mybatis/">3、Mybatis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/12/3%E3%80%81Mybatis/" class="archive-article-date">
-  	<time datetime="2020-07-12T14:02:52.574Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis的动态代理"><a href="#Mybatis的动态代理" class="headerlink" title="Mybatis的动态代理"></a>Mybatis的动态代理</h3><p>1、动态代理？</p>
-<p>mybatis帮助我们创建Dao接口的实现类，在实现类中调用SqlSession的方法，执行Sql语句。</p>
-<p>2、使用动态代理方式？</p>
-<p>（1）获取SqlSession对象，SqlSessionFactory.openSession()。</p>
-<p>（2）使用getMapper方法获取某个接口的对象，SqlSession.getMapper(接口.class)。</p>
-<p>（3）使用Dao接口的方法，调用方法就执行mapper文件中的Sql语句。</p>
-<p>3、使用动态代理的要求？</p>
-<p>（1）dao接口和mapper文件放在同一个目录。</p>
-<p>（2）dao接口和mapper文件名一致</p>
-<p>（3）mapper文件中的namespace的值是dao接口的权限定名称。</p>
-<p>（4）mapper文件中的select，insert，update，delete等的id是接口中方法名称。</p>
-<p>（5）dao接口中不要使用重载方法，不要使用同名不同参数的方法。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/12/3%E3%80%81Mybatis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/2%E3%80%81Mybatis/">2、Mybatis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/2%E3%80%81Mybatis/" class="archive-article-date">
-  	<time datetime="2020-07-09T10:50:14.100Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis中的文件问题"><a href="#Mybatis中的文件问题" class="headerlink" title="Mybatis中的文件问题"></a>Mybatis中的文件问题</h3><p><img src="/images/6.png" alt=""></p>
-<p>（当StudentDao.xml和mybatis.xml没有编译进classes文件时，无法运行成功。）</p>
-<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/2%E3%80%81Mybatis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-1、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/1%E3%80%81Mybatis/">1、Mybatis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/1%E3%80%81Mybatis/" class="archive-article-date">
-  	<time datetime="2020-07-09T06:21:18.874Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h3><h4 id="1、三层架构"><a href="#1、三层架构" class="headerlink" title="1、三层架构"></a>1、三层架构</h4><p>界面层（视图层）：完成和用户的交互，接收请求显示请求的处理结果。</p>
-<p>业务逻辑层：计算数据，处理业务逻辑。</p>
-<p>数据访问层（持久层）：数据库操作。</p>
-<h4 id="2、框架"><a href="#2、框架" class="headerlink" title="2、框架"></a>2、框架</h4><p>界面层：SpringMVC</p>
-<p>业务逻辑层：Spring</p>
-<p>数据访问层：Mybatis</p>
-<h4 id="3、Mybatis"><a href="#3、Mybatis" class="headerlink" title="3、Mybatis"></a>3、Mybatis</h4><p>作用：增强的jdbc，访问数据库，执行增删改查。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/1%E3%80%81Mybatis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL中的表连接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/">MySQL中的表连接</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/25/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/" class="archive-article-date">
-  	<time datetime="2020-04-25T04:10:17.344Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="表连接"><a href="#表连接" class="headerlink" title="表连接"></a>表连接</h4><h5 id="内连接："><a href="#内连接：" class="headerlink" title="内连接："></a>内连接：</h5><p>假设A和B表进行连接，使用内连接的话，凡是A表和B表能够匹配上的记录查询出来，这就是内连接。<br>AB两张表没有主副之分，两张表是平等的。</p>
-<h5 id="外连接："><a href="#外连接：" class="headerlink" title="外连接："></a>外连接：</h5><p>假设A和B表进行连接，使用外连接的话，AB两张表中有一张表是主表，一张表是副表，主要查询主表中的数据，捎带着查询副表，当副表中的数据没有和主表中的数据匹配上，副表自动模拟出NULL与之匹配。</p>
-<h5 id="外连接的分类？"><a href="#外连接的分类？" class="headerlink" title="外连接的分类？"></a>外连接的分类？</h5><p>左外连接（左连接）：表示左边的这张表是主表。<br>右外连接（右连接）：表示右边的这张表是主表。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/25/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-迭代器的作用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/">迭代器的作用</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/25/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-04-25T04:02:08.640Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="迭代器的作用"><a href="#迭代器的作用" class="headerlink" title="迭代器的作用"></a>迭代器的作用</h4><p>由于Java中数据容器众多，而对数据容器的操作在很多时候都具有极大的共性，于是Java采用了迭代器为各种容器提供公共的操作接口。</p>
-<p>作用：</p>
-<p>解耦效果！</p>
-<p>使用迭代器iterator可以使对容器的遍历操作完全与其底层相隔离，可以到达极好的解耦效果。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/25/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-线程池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="archive-article-date">
-  	<time datetime="2020-04-24T13:45:09.884Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>线程池</strong></p>
-<p>一、创建线程的方式：</p>
-<p>1、继承thread类<br>2、 实现Runnable接口<br>3、 实现Callable接口<br>4、通过线程池去创建</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-索引失效的条件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/">索引失效的条件</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/19/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2020-04-19T13:32:44.367Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="索引失效的条件"><a href="#索引失效的条件" class="headerlink" title="索引失效的条件"></a>索引失效的条件</h2><ul>
-<li>不在索引列上做任何操作，会导致索引失效而转向全表扫描</li>
-<li>存储引擎不能使用索引范围条件右边的列</li>
-<li>尽量使用覆盖索引，减少select *</li>
-<li>mysql在使用不等于（！=或者&lt;&gt;）的时候无法使用索引会导致全表扫描</li>
-<li>is null,is not null也无法使用索引</li>
-<li>like以通配符开头（’%abc…’）mysql索引失效会变成全表扫描的操作。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/19/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-分库分表之后，id 主键如何处理？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E4%B9%8B%E5%90%8E%EF%BC%8Cid%20%E4%B8%BB%E9%94%AE%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%EF%BC%9F/">分库分表之后，id 主键如何处理？</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/19/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E4%B9%8B%E5%90%8E%EF%BC%8Cid%20%E4%B8%BB%E9%94%AE%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2020-04-19T13:19:00.415Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="分库分表之后，id-主键如何处理？"><a href="#分库分表之后，id-主键如何处理？" class="headerlink" title="分库分表之后，id 主键如何处理？"></a><strong>分库分表之后，id 主键如何处理？</strong></h3><h4 id="数据库自增-id"><a href="#数据库自增-id" class="headerlink" title="数据库自增 id"></a>数据库自增 id</h4><p>​        系统里每次得到一个 id，都是往一个库的一个表里插入一条没什么业务含义的数据，然后获取一个数据库自增的一个 id。拿到这个 id 之后再往对应的分库分表里去写入。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/19/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E4%B9%8B%E5%90%8E%EF%BC%8Cid%20%E4%B8%BB%E9%94%AE%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-https变成ssh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/14/https%E5%8F%98%E6%88%90ssh/">https变成ssh</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/14/https%E5%8F%98%E6%88%90ssh/" class="archive-article-date">
-  	<time datetime="2020-04-14T12:31:33.795Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​        在GitHub账户新建一个仓库，将提交方式设置了https方式，但本地修改项目进行提交时需要输入账户名密码，显然很麻烦。另一种SSH的提交方式则不需要每次输入账户名密码。当然我们选择SSH，但是之前一个没注意默认用了https,那如何将https变为SSH呢？</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/14/https%E5%8F%98%E6%88%90ssh/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -841,8 +323,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

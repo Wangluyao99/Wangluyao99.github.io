@@ -142,19 +142,84 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2、SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/19/SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">SpringBoot的知识</a>
+      <a class="article-title" href="/2020/08/19/2%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">2、SpringBoot的知识</a>
     </h1>
   
 
         
-        <a href="/2020/08/19/SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <a href="/2020/08/19/2%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-08-19T13:20:42.718Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="SpringBoot的知识"><a href="#SpringBoot的知识" class="headerlink" title="SpringBoot的知识"></a>SpringBoot的知识</h4><h5 id="1、响应视图时，后端采用："><a href="#1、响应视图时，后端采用：" class="headerlink" title="1、响应视图时，后端采用："></a>1、响应视图时，后端采用：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapper</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ModelAndView mv=<span class="keyword">new</span> ModelAndView();</span><br><span class="line">	mv.addObject(<span class="string">"key"</span>,<span class="string">"value"</span>);</span><br><span class="line">	mv.setViewName(<span class="string">"index"</span>);</span><br><span class="line">	<span class="keyword">return</span> mv;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapper</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">(Model  model)</span></span>&#123;</span><br><span class="line">	model.addAtrribute(<span class="string">"key"</span>,<span class="string">"value"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"index"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/19/2%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-1、SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/19/1%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">1、SpringBoot的知识</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/19/1%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
   	<time datetime="2020-08-19T13:11:22.387Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
 </a>
         
@@ -178,7 +243,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/19/SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/08/19/1%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">展开全文 >></a>
         </p>
       
 
@@ -716,71 +781,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/12/3%E3%80%81Mybatis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/2%E3%80%81Mybatis/">2、Mybatis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/2%E3%80%81Mybatis/" class="archive-article-date">
-  	<time datetime="2020-07-09T10:50:14.100Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis中的文件问题"><a href="#Mybatis中的文件问题" class="headerlink" title="Mybatis中的文件问题"></a>Mybatis中的文件问题</h3><p><img src="/images/6.png" alt=""></p>
-<p>（当StudentDao.xml和mybatis.xml没有编译进classes文件时，无法运行成功。）</p>
-<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/2%E3%80%81Mybatis/">展开全文 >></a>
         </p>
       
 

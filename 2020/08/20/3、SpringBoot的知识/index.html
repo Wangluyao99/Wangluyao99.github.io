@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 王璐瑶的Hexo博客</title>
+  <title>3、SpringBoot的知识 | 王璐瑶的Hexo博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep Working">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王璐瑶的Hexo博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/4/index.html">
+  <meta name="description" content="3、SpringBoot的知识1、 mybatis逆向工程：（针对单表操作）（1）在根目录新建GeneratorMapper.xml文件，导入指定代码。包括以下部分：    指定连接数据库的驱动；    配置数据库连接信息；    三个生成器：javaModelGenerator，sqlMapGenerator，javaClientGenerator；        （其中属性：targetPac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3、SpringBoot的知识">
+<meta property="og:url" content="http://yoursite.com/2020/08/20/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="王璐瑶的Hexo博客">
-<meta property="og:description" content="Keep Working">
+<meta property="og:description" content="3、SpringBoot的知识1、 mybatis逆向工程：（针对单表操作）（1）在根目录新建GeneratorMapper.xml文件，导入指定代码。包括以下部分：    指定连接数据库的驱动；    配置数据库连接信息；    三个生成器：javaModelGenerator，sqlMapGenerator，javaClientGenerator；        （其中属性：targetPac">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-20T12:23:33.440Z">
+<meta property="article:modified_time" content="2020-08-20T12:23:33.846Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -140,106 +142,158 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-3、SpringBoot的知识" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      3、SpringBoot的知识
+    </h1>
+  
+
+        
+        <a href="/2020/08/20/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-08-20T12:23:33.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="3、SpringBoot的知识"><a href="#3、SpringBoot的知识" class="headerlink" title="3、SpringBoot的知识"></a>3、SpringBoot的知识</h4><h5 id="1、-mybatis逆向工程：（针对单表操作）"><a href="#1、-mybatis逆向工程：（针对单表操作）" class="headerlink" title="1、 mybatis逆向工程：（针对单表操作）"></a>1、 mybatis逆向工程：（针对单表操作）</h5><p>（1）在根目录新建GeneratorMapper.xml文件，导入指定代码。包括以下部分：<br>    指定连接数据库的驱动；<br>    配置数据库连接信息；<br>    三个生成器：javaModelGenerator，sqlMapGenerator，javaClientGenerator；<br>        （其中属性：targetPackage=” com . abc.springboot . model”   //指定实体类的包名<br>        targetProject=”src/main/java” //指定的实体类放在哪个工程下面）<br>    每个表有一个table标签，tableName是数据库的表名。<br>（2）在pom文件加入mybatis代码自动生成插件。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mybatis 代码自动生成插件--&gt;</span><br><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt; groupId&gt;org . mybatis . generator&lt;/ groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-generator - maven-plugin&lt;/ artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.3.6&lt;/version&gt; </span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;!--配置文件的位置--&gt;</span><br><span class="line">		&lt;configurationFile&gt;GeneratorMapper . xml&lt;/configurationFilex&gt;</span><br><span class="line">		&lt;verbose&gt;true&lt;/verbose&gt;</span><br><span class="line">		&lt;overwr ite&gt;true&lt;/ overwrite&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（3）在右侧栏maven–&gt;plugins–&gt;mybatis-generator–&gt;双击mybatis-generator:generate，自动生成实体类和mapper文件<br>（数据库字段需要用下划线分割，实体对象属性会按照驼峰命名规范。）<br>（4）设置连接数据库的配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string"></span></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string"></span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string"></span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string"></span></span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/30/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-30T12:25:39.990Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/30/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/">MySQL支持的索引类型</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/20/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-03-29T12:40:21.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/19/2%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2、SpringBoot的知识</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/">Java中Comparable和Comparator的区别</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/" class="archive-article-date">
-  	<time datetime="2020-03-28T07:13:42.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/">==、equals和HashCode的区别与联系</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
   
 
 
@@ -263,8 +317,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

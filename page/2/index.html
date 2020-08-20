@@ -142,6 +142,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-3、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/12/3%E3%80%81Mybatis/">3、Mybatis</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/12/3%E3%80%81Mybatis/" class="archive-article-date">
+  	<time datetime="2020-07-12T14:02:52.574Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Mybatis的动态代理"><a href="#Mybatis的动态代理" class="headerlink" title="Mybatis的动态代理"></a>Mybatis的动态代理</h3><p>1、动态代理？</p>
+<p>mybatis帮助我们创建Dao接口的实现类，在实现类中调用SqlSession的方法，执行Sql语句。</p>
+<p>2、使用动态代理方式？</p>
+<p>（1）获取SqlSession对象，SqlSessionFactory.openSession()。</p>
+<p>（2）使用getMapper方法获取某个接口的对象，SqlSession.getMapper(接口.class)。</p>
+<p>（3）使用Dao接口的方法，调用方法就执行mapper文件中的Sql语句。</p>
+<p>3、使用动态代理的要求？</p>
+<p>（1）dao接口和mapper文件放在同一个目录。</p>
+<p>（2）dao接口和mapper文件名一致</p>
+<p>（3）mapper文件中的namespace的值是dao接口的权限定名称。</p>
+<p>（4）mapper文件中的select，insert，update，delete等的id是接口中方法名称。</p>
+<p>（5）dao接口中不要使用重载方法，不要使用同名不同参数的方法。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/12/3%E3%80%81Mybatis/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -706,69 +780,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/12/%E9%94%81%E4%B8%8EConcurrentHashMap%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-乐观锁与悲观锁！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/12/%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81%EF%BC%81/">乐观锁与悲观锁！</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/12/%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81%EF%BC%81/" class="archive-article-date">
-  	<time datetime="2020-04-12T06:29:46.160Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>乐观锁与悲观锁！<br>1.乐观锁<br>    每次获取数据的时候，都不会担心数据被修改，所以每次获取数据的时候都不会进行加锁，但是在更新数据的时候需要判断该数据是否被别人修改过。如果数据被其他线程修改，则不进行数据更新，如果数据没有被其他线程修改，则进行数据更新。<br>    由于数据没有进行加锁，期间该数据可以被其他线程进行读写操作。一般使用version方式。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/12/%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81%EF%BC%81/">展开全文 >></a>
         </p>
       
 

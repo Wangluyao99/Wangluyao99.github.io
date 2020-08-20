@@ -142,6 +142,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-3、SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/20/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">3、SpringBoot的知识</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/20/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-08-20T12:23:33.440Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="3、SpringBoot的知识"><a href="#3、SpringBoot的知识" class="headerlink" title="3、SpringBoot的知识"></a>3、SpringBoot的知识</h4><h5 id="1、-mybatis逆向工程：（针对单表操作）"><a href="#1、-mybatis逆向工程：（针对单表操作）" class="headerlink" title="1、 mybatis逆向工程：（针对单表操作）"></a>1、 mybatis逆向工程：（针对单表操作）</h5><p>（1）在根目录新建GeneratorMapper.xml文件，导入指定代码。包括以下部分：<br>    指定连接数据库的驱动；<br>    配置数据库连接信息；<br>    三个生成器：javaModelGenerator，sqlMapGenerator，javaClientGenerator；<br>        （其中属性：targetPackage=” com . abc.springboot . model”   //指定实体类的包名<br>        targetProject=”src/main/java” //指定的实体类放在哪个工程下面）<br>    每个表有一个table标签，tableName是数据库的表名。<br>（2）在pom文件加入mybatis代码自动生成插件。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mybatis 代码自动生成插件--&gt;</span><br><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt; groupId&gt;org . mybatis . generator&lt;/ groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-generator - maven-plugin&lt;/ artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.3.6&lt;/version&gt; </span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;!--配置文件的位置--&gt;</span><br><span class="line">		&lt;configurationFile&gt;GeneratorMapper . xml&lt;/configurationFilex&gt;</span><br><span class="line">		&lt;verbose&gt;true&lt;/verbose&gt;</span><br><span class="line">		&lt;overwr ite&gt;true&lt;/ overwrite&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（3）在右侧栏maven–&gt;plugins–&gt;mybatis-generator–&gt;双击mybatis-generator:generate，自动生成实体类和mapper文件<br>（数据库字段需要用下划线分割，实体对象属性会按照驼峰命名规范。）<br>（4）设置连接数据库的配置：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string"></span></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string"></span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string"></span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string"></span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/20/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2、SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -707,80 +773,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/13/4%E3%80%81Mybatis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-3、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/12/3%E3%80%81Mybatis/">3、Mybatis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/12/3%E3%80%81Mybatis/" class="archive-article-date">
-  	<time datetime="2020-07-12T14:02:52.574Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis的动态代理"><a href="#Mybatis的动态代理" class="headerlink" title="Mybatis的动态代理"></a>Mybatis的动态代理</h3><p>1、动态代理？</p>
-<p>mybatis帮助我们创建Dao接口的实现类，在实现类中调用SqlSession的方法，执行Sql语句。</p>
-<p>2、使用动态代理方式？</p>
-<p>（1）获取SqlSession对象，SqlSessionFactory.openSession()。</p>
-<p>（2）使用getMapper方法获取某个接口的对象，SqlSession.getMapper(接口.class)。</p>
-<p>（3）使用Dao接口的方法，调用方法就执行mapper文件中的Sql语句。</p>
-<p>3、使用动态代理的要求？</p>
-<p>（1）dao接口和mapper文件放在同一个目录。</p>
-<p>（2）dao接口和mapper文件名一致</p>
-<p>（3）mapper文件中的namespace的值是dao接口的权限定名称。</p>
-<p>（4）mapper文件中的select，insert，update，delete等的id是接口中方法名称。</p>
-<p>（5）dao接口中不要使用重载方法，不要使用同名不同参数的方法。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/12/3%E3%80%81Mybatis/">展开全文 >></a>
         </p>
       
 

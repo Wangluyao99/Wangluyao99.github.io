@@ -16,7 +16,7 @@
 <meta property="og:description" content="3、SpringBoot的知识1、 mybatis逆向工程：（针对单表操作）（1）在根目录新建GeneratorMapper.xml文件，导入指定代码。包括以下部分：    指定连接数据库的驱动；    配置数据库连接信息；    三个生成器：javaModelGenerator，sqlMapGenerator，javaClientGenerator；        （其中属性：targetPac">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-20T12:23:33.440Z">
-<meta property="article:modified_time" content="2020-08-20T12:23:33.846Z">
+<meta property="article:modified_time" content="2020-08-20T13:44:59.831Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -162,7 +162,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="3、SpringBoot的知识"><a href="#3、SpringBoot的知识" class="headerlink" title="3、SpringBoot的知识"></a>3、SpringBoot的知识</h4><h5 id="1、-mybatis逆向工程：（针对单表操作）"><a href="#1、-mybatis逆向工程：（针对单表操作）" class="headerlink" title="1、 mybatis逆向工程：（针对单表操作）"></a>1、 mybatis逆向工程：（针对单表操作）</h5><p>（1）在根目录新建GeneratorMapper.xml文件，导入指定代码。包括以下部分：<br>    指定连接数据库的驱动；<br>    配置数据库连接信息；<br>    三个生成器：javaModelGenerator，sqlMapGenerator，javaClientGenerator；<br>        （其中属性：targetPackage=” com . abc.springboot . model”   //指定实体类的包名<br>        targetProject=”src/main/java” //指定的实体类放在哪个工程下面）<br>    每个表有一个table标签，tableName是数据库的表名。<br>（2）在pom文件加入mybatis代码自动生成插件。</p>
+        <h4 id="3、SpringBoot的知识"><a href="#3、SpringBoot的知识" class="headerlink" title="3、SpringBoot的知识"></a>3、SpringBoot的知识</h4><h5 id="1、-mybatis逆向工程：（针对单表操作）"><a href="#1、-mybatis逆向工程：（针对单表操作）" class="headerlink" title="1、 mybatis逆向工程：（针对单表操作）"></a>1、 mybatis逆向工程：（针对单表操作）</h5><p>（1）在根目录新建GeneratorMapper.xml文件，导入指定代码。包括以下部分：<br>    指定连接数据库的驱动；<br>    配置数据库连接信息；<br>    三个生成器：javaModelGenerator，sqlMapGenerator，javaClientGenerator；<br>        （其中属性：targetPackage=” com . abc.springboot . model”   //指定实体类的包名。 targetProject=”src/main/java” //指定的实体类放在哪个工程下面）<br>    每个表有一个table标签，tableName是数据库的表名。</p>
+<a id="more"></a>
+
+<p>（2）在pom文件加入mybatis代码自动生成插件。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mybatis 代码自动生成插件--&gt;</span><br><span class="line">&lt;plugin&gt;</span><br><span class="line">	&lt; groupId&gt;org . mybatis . generator&lt;/ groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-generator - maven-plugin&lt;/ artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.3.6&lt;/version&gt; </span><br><span class="line">	&lt;configuration&gt;</span><br><span class="line">		&lt;!--配置文件的位置--&gt;</span><br><span class="line">		&lt;configurationFile&gt;GeneratorMapper . xml&lt;/configurationFilex&gt;</span><br><span class="line">		&lt;verbose&gt;true&lt;/verbose&gt;</span><br><span class="line">		&lt;overwr ite&gt;true&lt;/ overwrite&gt;</span><br><span class="line">	&lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
 
 <p>（3）在右侧栏maven–&gt;plugins–&gt;mybatis-generator–&gt;双击mybatis-generator:generate，自动生成实体类和mapper文件<br>（数据库字段需要用下划线分割，实体对象属性会按照驼峰命名规范。）<br>（4）设置连接数据库的配置：</p>
@@ -258,6 +261,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/09/20/Spring%E4%B8%8E%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6%E5%8C%BA%E5%88%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Spring与其他框架区别
+        
+      </div>
+    </a>
   
   
     <a href="/2020/08/19/2%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">

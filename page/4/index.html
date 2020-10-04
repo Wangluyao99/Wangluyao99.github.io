@@ -142,30 +142,27 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Java中的各种集合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-3、SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/03/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/">Java中的各种集合</a>
+      <a class="article-title" href="/2020/10/01/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">3、SpringBoot的知识</a>
     </h1>
   
 
         
-        <a href="/2020/04/03/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-04-03T13:37:04.040Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-03</time>
+        <a href="/2020/10/01/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:47.907Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-HashMap和HashTable的区别？"><a href="#1-HashMap和HashTable的区别？" class="headerlink" title="1.HashMap和HashTable的区别？"></a>1.HashMap和HashTable的区别？</h3><p><strong>HashMap 不是线程安全的</strong></p>
-<p>HashMap 是 map 接口的实现类，是将键映射到值的对象，其中键和值都是对象，并且不能包含重复键，但可以包含重复值。HashMap 允许 null key 和 null value，而 HashTable 不允许。</p>
-<p><strong>HashTable 是线程安全的</strong></p>
-<p>HashMap 是 HashTable 的轻量级实现，他们都完成了Map 接口，主要区别在于 HashMap 允许 null key 和 null value,由于非线程安全，效率上可能高于 Hashtable。</p>
+        <h4 id="3、SpringBoot的知识"><a href="#3、SpringBoot的知识" class="headerlink" title="3、SpringBoot的知识"></a>3、SpringBoot的知识</h4><h5 id="1、-mybatis逆向工程：（针对单表操作）"><a href="#1、-mybatis逆向工程：（针对单表操作）" class="headerlink" title="1、 mybatis逆向工程：（针对单表操作）"></a>1、 mybatis逆向工程：（针对单表操作）</h5><p>（1）在根目录新建GeneratorMapper.xml文件，导入指定代码。包括以下部分：<br>    指定连接数据库的驱动；<br>    配置数据库连接信息；<br>    三个生成器：javaModelGenerator，sqlMapGenerator，javaClientGenerator；<br>        （其中属性：targetPackage=” com . abc.springboot . model”   //指定实体类的包名。 targetProject=”src/main/java” //指定的实体类放在哪个工程下面）<br>    每个表有一个table标签，tableName是数据库的表名。</p>
         
       
 
@@ -178,7 +175,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/03/Java%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E9%9B%86%E5%90%88/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/10/01/3%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">展开全文 >></a>
         </p>
       
 
@@ -208,29 +205,39 @@
 
 
   
-    <article id="post-tcp笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-3、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/02/tcp%E7%AC%94%E8%AE%B0/">tcp笔记</a>
+      <a class="article-title" href="/2020/10/01/3%E3%80%81Mybatis/">3、Mybatis</a>
     </h1>
   
 
         
-        <a href="/2020/04/02/tcp%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-04-02T13:07:06.744Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-02</time>
+        <a href="/2020/10/01/3%E3%80%81Mybatis/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:47.892Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>tcp笔记：&lt;来源百度&gt;</p>
-<p>【问题1】为什么连接的时候是三次握手，关闭的时候却是四次握手？<br>答：因为当Server端收到Client端的SYN连接请求报文后，可以直接发送SYN+ACK报文。其中ACK报文是用来应答的，SYN报文是用来同步的。但是关闭连接时，当Server端收到FIN报文时，很可能并不会立即关闭SOCKET，所以只能先回复一个ACK报文，告诉Client端，”你发的FIN报文我收到了”。只有等到我Server端所有的报文都发送完了，我才能发送FIN报文，因此不能一起发送。故需要四步握手。</p>
-        
+        <h3 id="Mybatis的动态代理"><a href="#Mybatis的动态代理" class="headerlink" title="Mybatis的动态代理"></a>Mybatis的动态代理</h3><p>1、动态代理？</p>
+<p>mybatis帮助我们创建Dao接口的实现类，在实现类中调用SqlSession的方法，执行Sql语句。</p>
+<p>2、使用动态代理方式？</p>
+<p>（1）获取SqlSession对象，SqlSessionFactory.openSession()。</p>
+<p>（2）使用getMapper方法获取某个接口的对象，SqlSession.getMapper(接口.class)。</p>
+<p>（3）使用Dao接口的方法，调用方法就执行mapper文件中的Sql语句。</p>
+<p>3、使用动态代理的要求？</p>
+<p>（1）dao接口和mapper文件放在同一个目录。</p>
+<p>（2）dao接口和mapper文件名一致</p>
+<p>（3）mapper文件中的namespace的值是dao接口的权限定名称。</p>
+<p>（4）mapper文件中的select，insert，update，delete等的id是接口中方法名称。</p>
+<p>（5）dao接口中不要使用重载方法，不要使用同名不同参数的方法。</p>
+
       
 
       
@@ -242,7 +249,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/02/tcp%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/10/01/3%E3%80%81Mybatis/">展开全文 >></a>
         </p>
       
 
@@ -272,31 +279,30 @@
 
 
   
-    <article id="post-MySQL支持的索引类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2、SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/">MySQL支持的索引类型</a>
+      <a class="article-title" href="/2020/10/01/2%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">2、SpringBoot的知识</a>
     </h1>
   
 
         
-        <a href="/2020/03/30/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-30T12:25:39.990Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
+        <a href="/2020/10/01/2%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:47.876Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>MySQL支持的索引类型</strong><br>从数据结构角度来看，MySQL支持的索引类型有B树索引、Hash索引等。</p>
-<p><strong>B树索引</strong></p>
-<p>B树索引对于&lt;、&lt;=、 =、 &gt;=、 &gt;、 &lt;&gt;、!=、 between查询，进行精确比较操作和范围比较操作都有比较高的效率。</p>
-<p>B树索引也是InnoDB存储引擎默认的索引结构。</p>
-        
+        <h4 id="SpringBoot的知识"><a href="#SpringBoot的知识" class="headerlink" title="SpringBoot的知识"></a>SpringBoot的知识</h4><h5 id="1、响应视图时，后端采用："><a href="#1、响应视图时，后端采用：" class="headerlink" title="1、响应视图时，后端采用："></a>1、响应视图时，后端采用：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapper</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ModelAndView mv=<span class="keyword">new</span> ModelAndView();</span><br><span class="line">	mv.addObject(<span class="string">"key"</span>,<span class="string">"value"</span>);</span><br><span class="line">	mv.setViewName(<span class="string">"index"</span>);</span><br><span class="line">	<span class="keyword">return</span> mv;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapper</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">(Model  model)</span></span>&#123;</span><br><span class="line">	model.addAtrribute(<span class="string">"key"</span>,<span class="string">"value"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"index"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -308,7 +314,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/30/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/10/01/2%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">展开全文 >></a>
         </p>
       
 
@@ -338,30 +344,29 @@
 
 
   
-    <article id="post-Java中Comparable和Comparator的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/">Java中Comparable和Comparator的区别</a>
+      <a class="article-title" href="/2020/10/01/2%E3%80%81Mybatis/">2、Mybatis</a>
     </h1>
   
 
         
-        <a href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-03-29T12:40:21.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-29</time>
+        <a href="/2020/10/01/2%E3%80%81Mybatis/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:47.861Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java 中为我们提供了两种比较机制：Comparable 和 Comparator，二者都是用来实现对象的比较、排序。</p>
-<p>下面分别对Comparable 和 Comparator做具体介绍并总结。        </p>
-<hr>
-<h2 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h2><p>Comparable可以认为是一个内比较器，实现了Comparable接口的类有一个特点，就是这些类是可以和自己比较的，至于具体和另一个实现了Comparable接口的类如何比较，则依赖compareTo方法的实现。</p>
+        <h3 id="Mybatis中的文件问题"><a href="#Mybatis中的文件问题" class="headerlink" title="Mybatis中的文件问题"></a>Mybatis中的文件问题</h3><p><img src="/images/6.png" alt=""></p>
+<p>（当StudentDao.xml和mybatis.xml没有编译进classes文件时，无法运行成功。）</p>
+<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4>
         
       
 
@@ -374,7 +379,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/29/Java%E4%B8%ADComparable%E5%92%8CComparator%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/10/01/2%E3%80%81Mybatis/">展开全文 >></a>
         </p>
       
 
@@ -404,30 +409,30 @@
 
 
   
-    <article id="post-==、equals和HashCode的区别与联系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-1、SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/">==、equals和HashCode的区别与联系</a>
+      <a class="article-title" href="/2020/10/01/1%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">1、SpringBoot的知识</a>
     </h1>
   
 
         
-        <a href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/" class="archive-article-date">
-  	<time datetime="2020-03-28T07:13:42.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
+        <a href="/2020/10/01/1%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:47.845Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在java中：</p>
-<p>==是运算符，用于比较两个变量是否相等。</p>
-<p>equals，是Objec类的方法，用于比较两个对象是否相等，默认Object类的equals方法是比较两个对象的地址，跟==的结果一样。Object的equals方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="SpringBoot的知识"><a href="#SpringBoot的知识" class="headerlink" title="SpringBoot的知识"></a>SpringBoot的知识</h4><h5 id="1、springboot配置文件获取自定义参数："><a href="#1、springboot配置文件获取自定义参数：" class="headerlink" title="1、springboot配置文件获取自定义参数："></a>1、springboot配置文件获取自定义参数：</h5><p>（1）、获取单个参数值，使用：@Value</p>
+<p>在properties配置文件中定义key=value，例如school.Name=suihuayizhong</p>
+<p>在需要属性值的的地方使用注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;school.Name&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String SchoolName;</span><br></pre></td></tr></table></figure>
         
       
 
@@ -440,7 +445,76 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/28/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/10/01/1%E3%80%81SpringBoot%E7%9A%84%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-1、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/01/1%E3%80%81Mybatis/">1、Mybatis</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/01/1%E3%80%81Mybatis/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:47.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h3><h4 id="1、三层架构"><a href="#1、三层架构" class="headerlink" title="1、三层架构"></a>1、三层架构</h4><p>界面层（视图层）：完成和用户的交互，接收请求显示请求的处理结果。</p>
+<p>业务逻辑层：计算数据，处理业务逻辑。</p>
+<p>数据访问层（持久层）：数据库操作。</p>
+<h4 id="2、框架"><a href="#2、框架" class="headerlink" title="2、框架"></a>2、框架</h4><p>界面层：SpringMVC</p>
+<p>业务逻辑层：Spring</p>
+<p>数据访问层：Mybatis</p>
+<h4 id="3、Mybatis"><a href="#3、Mybatis" class="headerlink" title="3、Mybatis"></a>3、Mybatis</h4><p>作用：增强的jdbc，访问数据库，执行增删改查。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/01/1%E3%80%81Mybatis/">展开全文 >></a>
         </p>
       
 

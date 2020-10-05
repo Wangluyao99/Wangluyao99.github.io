@@ -142,6 +142,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-乐观锁与悲观锁！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/01/%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81%EF%BC%81/">乐观锁与悲观锁！</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/01/%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81%EF%BC%81/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:48.283Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>乐观锁与悲观锁！<br>1.乐观锁<br>    每次获取数据的时候，都不会担心数据被修改，所以每次获取数据的时候都不会进行加锁，但是在更新数据的时候需要判断该数据是否被别人修改过。如果数据被其他线程修改，则不进行数据更新，如果数据没有被其他线程修改，则进行数据更新。<br>    由于数据没有进行加锁，期间该数据可以被其他线程进行读写操作。一般使用version方式。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/01/%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81%EF%BC%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-为什么HashMap中初始容量必须为2 的幂？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -705,79 +768,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/01/MySQL%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BF%9E%E6%8E%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL中myisam与innodb的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/01/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/">MySQL中myisam与innodb的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/01/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-10-01T06:05:48.095Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1、MySQL中myisam与innodb的区别"><a href="#1、MySQL中myisam与innodb的区别" class="headerlink" title="1、MySQL中myisam与innodb的区别"></a>1、MySQL中myisam与innodb的区别</h3><p><strong>MyISAM：</strong></p>
-<ul>
-<li><p>不支持事务，但是每次查询都是原子的；</p>
-</li>
-<li><p>支持表级锁，即每次操作对整个表加锁；</p>
-</li>
-<li><p>存储表的总行数；</p>
-</li>
-<li><p>一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；</p>
-</li>
-<li><p>采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯一性。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/01/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
         </p>
       
 

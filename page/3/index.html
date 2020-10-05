@@ -142,6 +142,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL中myisam与innodb的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/01/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/">MySQL中myisam与innodb的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/01/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:48.095Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、MySQL中myisam与innodb的区别"><a href="#1、MySQL中myisam与innodb的区别" class="headerlink" title="1、MySQL中myisam与innodb的区别"></a>1、MySQL中myisam与innodb的区别</h3><p><strong>MyISAM：</strong></p>
+<ul>
+<li><p>不支持事务，但是每次查询都是原子的；</p>
+</li>
+<li><p>支持表级锁，即每次操作对整个表加锁；</p>
+</li>
+<li><p>存储表的总行数；</p>
+</li>
+<li><p>一个MYISAM表有三个文件：索引文件、表结构文件、数据文件；</p>
+</li>
+<li><p>采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯一性。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/01/MySQL%E4%B8%ADmyisam%E4%B8%8Einnodb%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL 知识总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -720,79 +793,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/01/==%E3%80%81equals%E5%92%8CHashCode%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-4、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/01/4%E3%80%81Mybatis/">4、Mybatis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/01/4%E3%80%81Mybatis/" class="archive-article-date">
-  	<time datetime="2020-10-01T06:05:47.923Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis中的参数"><a href="#Mybatis中的参数" class="headerlink" title="Mybatis中的参数"></a>Mybatis中的参数</h3><p>1、从Java代码中把实际的值传入到mapper文件中</p>
-<p>一个简单类型的参数：#{任意字符}</p>
-<p>多个简单类型的参数，使用@Param(“自定义名称”)</p>
-<p>使用一个Java对象，对象的属性值作为mapper的参数，#{Java对象的属性名称}</p>
-<p>使用参数的位置，语法：#{arg0}，#{arg1}.  mybatis3.4之前版本使用#{0},#{1}</p>
-<p>使用map作为参数，#{map的key}</p>
-<p>（后两个了解）</p>
-<p>2、#和$的区别？</p>
-<p>#使用 ？在Sql语句中做占位符，使用PreparedStatement执行sql，效率高。避免Sql注入，更安全。</p>
-<p>$不使用占位符，是字符串连接方式，使用Statement对象执行sql，效率低。有sql注入风险，缺乏安全性。</p>
-<p>$可以替换表名或者列名。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/01/4%E3%80%81Mybatis/">展开全文 >></a>
         </p>
       
 

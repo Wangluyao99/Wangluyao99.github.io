@@ -142,6 +142,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-4、Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/01/4%E3%80%81Mybatis/">4、Mybatis</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/01/4%E3%80%81Mybatis/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:47.923Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Mybatis中的参数"><a href="#Mybatis中的参数" class="headerlink" title="Mybatis中的参数"></a>Mybatis中的参数</h3><p>1、从Java代码中把实际的值传入到mapper文件中</p>
+<p>一个简单类型的参数：#{任意字符}</p>
+<p>多个简单类型的参数，使用@Param(“自定义名称”)</p>
+<p>使用一个Java对象，对象的属性值作为mapper的参数，#{Java对象的属性名称}</p>
+<p>使用参数的位置，语法：#{arg0}，#{arg1}.  mybatis3.4之前版本使用#{0},#{1}</p>
+<p>使用map作为参数，#{map的key}</p>
+<p>（后两个了解）</p>
+<p>2、#和$的区别？</p>
+<p>#使用 ？在Sql语句中做占位符，使用PreparedStatement执行sql，效率高。避免Sql注入，更安全。</p>
+<p>$不使用占位符，是字符串连接方式，使用Statement对象执行sql，效率低。有sql注入风险，缺乏安全性。</p>
+<p>$可以替换表名或者列名。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/01/4%E3%80%81Mybatis/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-3、SpringBoot的知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

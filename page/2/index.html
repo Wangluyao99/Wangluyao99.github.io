@@ -142,6 +142,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-在看题中积累的知识点！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/01/%E5%9C%A8%E7%9C%8B%E9%A2%98%E4%B8%AD%E7%A7%AF%E7%B4%AF%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81/">在看题中积累的知识点！</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/01/%E5%9C%A8%E7%9C%8B%E9%A2%98%E4%B8%AD%E7%A7%AF%E7%B4%AF%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81/" class="archive-article-date">
+  	<time datetime="2020-10-01T06:05:48.314Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="synchronized-和volatile-关键字的区别？"><a href="#synchronized-和volatile-关键字的区别？" class="headerlink" title="synchronized 和volatile 关键字的区别？"></a>synchronized 和volatile 关键字的区别？</h5><p>synchronized 和volatile的作用：<br>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。<br>2）禁止进行指令重排序。<br>volatile 本质是在告诉jvm 当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取；synchronized 则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/01/%E5%9C%A8%E7%9C%8B%E9%A2%98%E4%B8%AD%E7%A7%AF%E7%B4%AF%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-分库分表之后，id 主键如何处理？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -700,72 +763,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/01/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL支持的索引类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/01/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/">MySQL支持的索引类型</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/01/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-10-01T06:05:48.142Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>MySQL支持的索引类型</strong><br>从数据结构角度来看，MySQL支持的索引类型有B树索引、Hash索引等。</p>
-<p><strong>B树索引</strong></p>
-<p>B树索引对于&lt;、&lt;=、 =、 &gt;=、 &gt;、 &lt;&gt;、!=、 between查询，进行精确比较操作和范围比较操作都有比较高的效率。</p>
-<p>B树索引也是InnoDB存储引擎默认的索引结构。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/01/MySQL%E6%94%AF%E6%8C%81%E7%9A%84%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
         </p>
       
 

@@ -142,6 +142,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Mybatis补充知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/09/Mybatis%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86/">Mybatis补充知识</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/09/Mybatis%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-10-09T02:47:57.755Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Mybatis补充知识"><a href="#Mybatis补充知识" class="headerlink" title="Mybatis补充知识"></a>Mybatis补充知识</h4><h5 id="1、Mybatis是如何将sql执行结果封装为目标对象并返回的？都有哪些映射形式？"><a href="#1、Mybatis是如何将sql执行结果封装为目标对象并返回的？都有哪些映射形式？" class="headerlink" title="1、Mybatis是如何将sql执行结果封装为目标对象并返回的？都有哪些映射形式？"></a>1、Mybatis是如何将sql执行结果封装为目标对象并返回的？都有哪些映射形式？</h5><p>第一种是使用标签，逐一定义数据库列名和对象属性名之间的映射关系。</p>
+<p>第二种是使用sql列的别名功能，将列的别名书写为对象属性名。</p>
+<p>有了列名与属性名的映射关系后，Mybatis通过反射创建对象，同时使用反射给对象的属性逐一赋值并<br>返回，那些找不到映射关系的属性，是无法完成赋值的。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/09/Mybatis%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL表连接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -726,78 +791,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/01/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/01/%E5%9F%BA%E7%A1%80/">基础</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/01/%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2020-10-01T06:05:48.330Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>final修饰的类，类的属性可以改吗</strong>？<br>分2种情况:</p>
-<ol>
-<li>基础数据类型，final修饰肯定不能变</li>
-<li>引用数据类型，final修饰是引用地址不能变，但是内容是可变的</li>
-</ol>
-<p><strong>i++是线程安全的吗</strong>？<br>分2种情况:</p>
-<ol>
-<li>局部变量肯定是线程安全的（原因：方法内局部变量是线程私有的）</li>
-<li>成员变量多个线程共享时，就不是线程安全的（原因：成员变量是线程共享的）</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/01/%E5%9F%BA%E7%A1%80/">展开全文 >></a>
         </p>
       
 

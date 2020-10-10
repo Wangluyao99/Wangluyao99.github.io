@@ -142,6 +142,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jvm调优" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/10/jvm%E8%B0%83%E4%BC%98/">jvm调优</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/10/jvm%E8%B0%83%E4%BC%98/" class="archive-article-date">
+  	<time datetime="2020-10-10T09:58:20.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、调优命令有哪些？</p>
+<p>Sun JDK监控和故障处理命令有jps jstat jmap jhat jstack jinfo jps，JVM Process Status Tool,显示指定系统内所有的HotSpot虚拟机进程。 </p>
+<p>jstat，JVM statistics Monitoring是用于监视虚拟机运行时状态信息的命令，它可以显示出虚拟机 进程中的类装载、内存、垃圾收集、JIT编译等运行数据。 </p>
+<p>jmap，JVM Memory Map命令用于生成heap dump文件 。</p>
+<p>jhat，JVM Heap Analysis Tool命令是与jmap搭配使用，用来分析jmap生成的dump，jhat内置了一个微型的HTTP/HTML服务器，生成dump的分析结果后，可以在浏览器中查看 。</p>
+<p>jstack，用于生成java虚拟机当前时刻的线程快照。</p>
+<p>jinfo，JVM Confifiguration info 这个命令作用是实时查看和调整虚拟机运行参数。 </p>
+<p>2、调优工具 </p>
+<p>常用调优工具分为两类,jdk自带监控工具：jconsole和jvisualvm，第三方有：MAT(Memory Analyzer Tool)、GChisto。 </p>
+<p>jconsole，Java Monitoring and Management Console是从java5开始，在JDK中自带的java监控 和管理控制台，用于对JVM中内存，线程和类等的监控 。</p>
+<p>jvisualvm，jdk自带全能工具，可以分析内存快照、线程快照；监控内存变化、GC变化等。 </p>
+<p>MAT，Memory Analyzer Tool，一个基于Eclipse的内存分析工具，是一个快速、功能丰富的Java heap分析工具，它可以帮助我们查找内存泄漏和减少内存消耗 。</p>
+<p>GChisto，一款专业分析gc日志的工具.</p>
+<p>3、你知道哪些JVM性能调优</p>
+<p>设定堆内存大小 :</p>
+<p>-Xmx：堆内存最大限制。 </p>
+<p>设定新生代大小: 新生代不宜太小，否则会有大量对象涌入老年代 </p>
+<p>-XX:NewSize：新生代大小 </p>
+<p>-XX:NewRatio 新生代和老生代占比 </p>
+<p>-XX:SurvivorRatio：Eden空间和Suvivor空间的占比 </p>
+<p>设定垃圾回收器: </p>
+<p>年轻代用 -XX:+UseParNewGC </p>
+<p>老年代用-XX:+UseConcMarkSweepGC </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/10/jvm%E8%B0%83%E4%BC%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mybatis补充知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -750,79 +835,9 @@
 
 
   
-    <article id="post-索引失效的条件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/01/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/">索引失效的条件</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/01/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2020-10-01T06:05:48.345Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="索引失效的条件"><a href="#索引失效的条件" class="headerlink" title="索引失效的条件"></a>索引失效的条件</h2><ul>
-<li>不在索引列上做任何操作，会导致索引失效而转向全表扫描</li>
-<li>存储引擎不能使用索引范围条件右边的列</li>
-<li>尽量使用覆盖索引，减少select *</li>
-<li>mysql在使用不等于（！=或者&lt;&gt;）的时候无法使用索引会导致全表扫描</li>
-<li>is null,is not null也无法使用索引</li>
-<li>like以通配符开头（’%abc…’）mysql索引失效会变成全表扫描的操作。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/01/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E6%9D%A1%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

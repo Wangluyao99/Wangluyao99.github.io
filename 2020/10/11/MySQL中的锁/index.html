@@ -16,7 +16,7 @@
 <meta property="og:description" content="MySQL中的锁了解过很多锁相关的知识，但是当面试官问我“MySQL中的锁”的时候，打开了我尘封多年的记忆…（忘记了！） 简介：行级锁：行级锁是一种排他锁，防止其他事务修改此行。可以在SQL语句后面加FOR  UPDATE。使用 COMMIT 或 ROLLBACK 语句释放锁。 表级锁：对当前操作的整张表加锁，它实现简单，资源消耗较少。表级锁定分为表共享读锁（共享锁）与表独占写锁 （排他锁）。SQ">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-11T13:10:53.470Z">
-<meta property="article:modified_time" content="2020-10-11T13:48:34.288Z">
+<meta property="article:modified_time" content="2020-10-11T13:52:18.019Z">
 <meta property="article:author" content="王璐瑶">
 <meta name="twitter:card" content="summary">
   
@@ -176,7 +176,7 @@
 <p>（以上知识点来自自己的记忆还有百度搜索，重要的东西还是要记录下来呀！）</p>
 <p>！！！看到了吗？我上面还提到了共享锁和排他锁，java中的锁还真是蛮多的…剪不断理还乱。</p>
 <p>排他锁：又称为写锁，加锁后可以读数据也可以修改数据。 如果事务T对数据A加上排他锁后，则其他事务不能再对A加任任何类型的封锁。</p>
-<p>共享锁：又称为读锁，加锁后可以查看但无法修改删除数据。如果事务T对数据A加上共享锁后，则其他事务只能<br>对A再加共享锁，不能加排他锁。 </p>
+<p>共享锁：又称为读锁，加锁后可以查看但无法修改删除数据。如果事务T对数据A加上共享锁后，则其他事务只能对A再加共享锁，不能加排他锁。 </p>
 
       
 

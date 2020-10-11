@@ -168,24 +168,8 @@
 <p>jmap，JVM Memory Map命令用于生成heap dump文件 。</p>
 <p>jhat，JVM Heap Analysis Tool命令是与jmap搭配使用，用来分析jmap生成的dump，jhat内置了一个微型的HTTP/HTML服务器，生成dump的分析结果后，可以在浏览器中查看 。</p>
 <p>jstack，用于生成java虚拟机当前时刻的线程快照。</p>
-<p>jinfo，JVM Confifiguration info 这个命令作用是实时查看和调整虚拟机运行参数。 </p>
-<p>2、调优工具 </p>
-<p>常用调优工具分为两类,jdk自带监控工具：jconsole和jvisualvm，第三方有：MAT(Memory Analyzer Tool)、GChisto。 </p>
-<p>jconsole，Java Monitoring and Management Console是从java5开始，在JDK中自带的java监控 和管理控制台，用于对JVM中内存，线程和类等的监控 。</p>
-<p>jvisualvm，jdk自带全能工具，可以分析内存快照、线程快照；监控内存变化、GC变化等。 </p>
-<p>MAT，Memory Analyzer Tool，一个基于Eclipse的内存分析工具，是一个快速、功能丰富的Java heap分析工具，它可以帮助我们查找内存泄漏和减少内存消耗 。</p>
-<p>GChisto，一款专业分析gc日志的工具.</p>
-<p>3、你知道哪些JVM性能调优</p>
-<p>设定堆内存大小 :</p>
-<p>-Xmx：堆内存最大限制。 </p>
-<p>设定新生代大小: 新生代不宜太小，否则会有大量对象涌入老年代 </p>
-<p>-XX:NewSize：新生代大小 </p>
-<p>-XX:NewRatio 新生代和老生代占比 </p>
-<p>-XX:SurvivorRatio：Eden空间和Suvivor空间的占比 </p>
-<p>设定垃圾回收器: </p>
-<p>年轻代用 -XX:+UseParNewGC </p>
-<p>老年代用-XX:+UseConcMarkSweepGC </p>
-
+<p>jinfo，JVM Confifiguration info 这个命令作用是实时查看和调整虚拟机运行参数。</p>
+        
       
 
       

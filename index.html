@@ -142,6 +142,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL书知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/20/MySQL%E4%B9%A6%E7%9F%A5%E8%AF%86%E7%82%B9/">MySQL书知识点</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/20/MySQL%E4%B9%A6%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2020-10-20T14:54:08.135Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MySQL书中知识</p>
+<p>（有空的时候在看《高性能MySQL》看到哪些自己不太了解的知识点就记录一下，更新中…）</p>
+<p>1、死锁：<br>InnoDB处理死锁的方法是：将持有最少行级排他锁的事物进行回滚。<br>死锁产生的双重原因：有些是因为真正的数据冲突，这种情况很难避免，另一种是存储引擎的实现方式导致。<br>2、事物日志：<br>事物日志可以帮助提高事物的效率，使用事物日志，存储引擎在修改表的数据时只需要修改其内存拷贝，再把这个修改行为记录到持久在硬盘上的事物日志上，而不用每次都将修改的数据本身持久到硬盘。<br>事物日志采用的是追加方式，因此写日志的操作是磁盘上一小块区域内的顺序I/O，而不像随机I/O需要在磁盘多个地方移动磁头，所以采用事务日志的方式相对来说要快得多。<br>事物日志持久以后，内存中被修改的数据可以慢慢地被刷回到磁盘，目前大多数存储引擎都是这样实现的，称之为预写式日志，修改数据需要写两次磁盘。<br>3、InnoDB存储引擎：<br>MySQL默认隔离级别是可重复读，并且通过间隙锁策略防止换行出现。间隙锁似的InnoDB不仅仅锁定查询涉及的行，还会对索引中的间隙进行锁定，以防止幻行插入。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/20/MySQL%E4%B9%A6%E7%9F%A5%E8%AF%86%E7%82%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL中的锁" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -725,72 +790,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/01/%E9%94%81%E4%B8%8EConcurrentHashMap%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-迭代器的作用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/01/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/">迭代器的作用</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/01/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-10-01T06:05:48.376Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="迭代器的作用"><a href="#迭代器的作用" class="headerlink" title="迭代器的作用"></a>迭代器的作用</h4><p>由于Java中数据容器众多，而对数据容器的操作在很多时候都具有极大的共性，于是Java采用了迭代器为各种容器提供公共的操作接口。</p>
-<p>作用：</p>
-<p>解耦效果！</p>
-<p>使用迭代器iterator可以使对容器的遍历操作完全与其底层相隔离，可以到达极好的解耦效果。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/01/%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8/">展开全文 >></a>
         </p>
       
 

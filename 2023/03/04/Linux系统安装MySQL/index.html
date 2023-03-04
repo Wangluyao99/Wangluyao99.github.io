@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Linux系统安装MySQL1、下载安装包：mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz (官网地址：https:&#x2F;&#x2F;dev.mysql.com&#x2F;downloads&#x2F;mysql&#x2F; ；选择Linux-Generic和下面’glibc 64-bit’) 2、解压： 1tar -xzvf  mysql-5.7.35-linux-glibc2.12-x86_64.t">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85MySQL/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux系统安装MySQL1、下载安装包：mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz (官网地址：https:&#x2F;&#x2F;dev.mysql.com&#x2F;downloads&#x2F;mysql&#x2F; ；选择Linux-Generic和下面’glibc 64-bit’) 2、解压： 1tar -xzvf  mysql-5.7.35-linux-glibc2.12-x86_64.t">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-04T15:42:03.584Z">
+<meta property="article:modified_time" content="2023-03-04T15:44:52.993Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,175 +154,151 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Linux系统安装MySQL" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Linux系统安装MySQL"><a href="#Linux系统安装MySQL" class="headerlink" title="Linux系统安装MySQL"></a>Linux系统安装MySQL</h4><p>1、下载安装包：mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz</p>
+<p>(官网地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a> ；选择Linux-Generic和下面’glibc 64-bit’)</p>
+<p>2、解压：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf  mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>3、配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加Mysql用户组</span></span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql</span><br><span class="line">chown -R mysql.mysql /home/mysql</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">初始化Mysql</span></span><br><span class="line">/home/mysql/mysql-5.7.32/bin/mysqld --user=mysql --basedir=/home/mysql/mysql-5.7.32 --datadir=/home/mysql/data --initialize</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置环境变量</span></span><br><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line">export MYSQL_HOME=/home/mysql/mysql-5.7.32</span><br><span class="line">export PATH=$MYSQL_HOME/bin:$PATH</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">保存环境变量</span></span><br><span class="line">source /etc/profile</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编辑Mysql配置文件</span></span><br><span class="line">vim /etc/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/home/mysql/data</span><br><span class="line">basedir=/home/mysql/mysql-5.7.32</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line">user=mysql</span><br><span class="line">port=3306</span><br><span class="line">character-set-server=utf8</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">取消密码验证</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">skip-grant-tables</span></span><br><span class="line">log-error=/home/mysql/mysql-error.log</span><br><span class="line">[client]</span><br><span class="line">port=3306</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Mysql服务</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改Mysql服务密码</span></span><br><span class="line">use  mysql</span><br><span class="line">UPDATE user SET authentication_string=PASSWORD(&quot;rootroot&quot;) WHERE user=&#x27;root&#x27;;</span><br><span class="line">update user set user.Host=&#x27;%&#x27; where user.User=&#x27;root&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<p>刚开始遇到的一些报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 报错</span></span><br><span class="line">mysql: error <span class="keyword">while</span> loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory</span><br><span class="line">解决：yum install libncurses*</span><br><span class="line"></span><br><span class="line"><span class="comment"># 报错</span></span><br><span class="line">systemctl start mysqld</span><br><span class="line">Failed to start mysqld.service: Unit mysqld.service not found.</span><br><span class="line">解决：</span><br><span class="line"><span class="built_in">cp</span> /home/mysql/mysql-5.7.32/support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line"></span><br><span class="line"><span class="comment"># 报错</span></span><br><span class="line">Could not create unix socket lock file /var/lib/mysql/mysql.sock.lock.</span><br><span class="line">解决：</span><br><span class="line"><span class="built_in">chown</span> -R mysql:mysql /var/lib/mysql/</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85MySQL/" class="archive-article-date">
-  	<time datetime="2023-03-04T15:42:03.584Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85MySQL/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Java/" class="archive-article-date">
-  	<time datetime="2023-03-04T15:17:05.475Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/03/linux%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2023-03-03T15:58:41.086Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-03</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Java/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/03/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E5%88%B0git%E4%BB%93%E5%BA%93/" class="archive-article-date">
-  	<time datetime="2023-03-03T15:46:51.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-03</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/02/%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%AF%BC%E8%87%B4%E4%BA%8B%E5%8A%A1%E4%B8%8D%E7%94%9F%E6%95%88/" class="archive-article-date">
-  	<time datetime="2023-03-02T15:36:35.494Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-02</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/01/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2023-03-01T13:54:47.685Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/02/27/hello-world/" class="archive-article-date">
-  	<time datetime="2023-02-27T15:18:38.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-27</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/02/27/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -341,8 +321,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

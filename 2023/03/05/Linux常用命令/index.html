@@ -8,11 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Linux常用命令Linux中最重要的三个命令在业界被称为“三剑客”，它们是grep、sed、awk文件管理 创建目录 mkdir  查看目录 ls  切换目录 cd  显示当前目录 pwd  查看文件 cat  下载文件 wget  在文本文件中查找某个字符串 grep  统计文本中行数、字数、字符数 wc  部分显示 more&#x2F;less  查找文件 find &#x2F; -name &#39;auto">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2023/03/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux常用命令Linux中最重要的三个命令在业界被称为“三剑客”，它们是grep、sed、awk文件管理 创建目录 mkdir  查看目录 ls  切换目录 cd  显示当前目录 pwd  查看文件 cat  下载文件 wget  在文本文件中查找某个字符串 grep  统计文本中行数、字数、字符数 wc  部分显示 more&#x2F;less  查找文件 find &#x2F; -name &#39;auto">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-05T09:26:28.548Z">
+<meta property="article:modified_time" content="2023-03-05T11:05:16.593Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,72 +154,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Linux系统安装Jmeter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Jmeter"><a href="#Linux系统安装Jmeter" class="headerlink" title="Linux系统安装Jmeter"></a>Linux系统安装Jmeter</h4><h5 id="1、配置jmeter环境"><a href="#1、配置jmeter环境" class="headerlink" title="1、配置jmeter环境"></a>1、配置jmeter环境</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 检查linux系统上是否安装JDK，输入命令</span><br><span class="line">java -version</span><br><span class="line"></span><br><span class="line">// 上传tar包上传至linux服务器后解压</span><br><span class="line">tar -zxvf apache-jmeter-5.2.1.tgz</span><br><span class="line"></span><br><span class="line">// 将jmeter添加至环境变量</span><br><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> JMETER_HOME=/usr/local/jmeter/apache-jmeter-3.1（jmeter安装路径）</span><br><span class="line">exportCLASSPATH=<span class="variable">$JMETER_HOME</span>/lib/ext/ApacheJMeter_core.jar:<span class="variable">$JMETER_HOME</span>/lib/jorphan.jar:<span class="variable">$JMETER_HOME</span>/lib/logkit-2.0.jar:<span class="variable">$CLASSPATH</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JMETER_HOME</span>/bin:<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/bin</span><br><span class="line"></span><br><span class="line">// 使配置文件生效</span><br><span class="line"><span class="built_in">source</span> /etc/profile </span><br><span class="line"></span><br><span class="line">// 赋予权限</span><br><span class="line"><span class="built_in">chmod</span> +x jmeter </span><br><span class="line"></span><br><span class="line">//查看jmeter是否正确安装</span><br><span class="line">./jmeter -v</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、linux上使用jmeter"><a href="#2、linux上使用jmeter" class="headerlink" title="2、linux上使用jmeter"></a>2、linux上使用jmeter</h5><ul>
-<li><p>在GUI模式（即图形化界面模式）下，新建一个测试计划,形成一个jmx文件，保存并上传到linux机器对应目录。</p>
-</li>
-<li><p>执行命令：jmeter –n –t [路径]&#x2F;[名称].jmx -j [路径]&#x2F;[名称].log –l [路径]&#x2F;[名称].jtl -e -o [路径] </p>
-<p>示例：<code>jmeter -n -t /opt/test.jmx -j /opt/test.log -l /opt/test.jtl -e -o /opt/test</code></p>
-</li>
-</ul>
-<p>参数<br>-n：以非GUI形式运行 Jmeter<br>-t： 运行jmx测试计划脚本文件的路径<br>-l： 运行结果保存路径(.jtl)，此文件必须不存在<br>-j： jmeter运行日志<br>-r： 运行分布式压测服务器，指明用jmeter厲性”remote_ host&#x3D;’<br>-R：运行分布式服务器，其后跟看服务器列表<br>-e：在脚本运行结束后生成html报吉，此参教要与-1一起使用。<br>-o：用于存放html报告的目录，此目录必次为空。比参数与一e一起使用。</p>
-<ul>
-<li><p>结果文件通过Xterm传入本地，打开jmeter，</p>
-<p>然后点击：创建测试计划，创建监听–聚合报告，创建查看结果树等；</p>
-<p>点击浏览，把jtl文件加载进来，就可以看到测试的报告结果。</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/05/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Jmeter/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Linux常用命令" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -297,6 +236,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -304,16 +264,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2023/03/05/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Jmeter/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85MySQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -333,468 +361,14 @@
 
 
 
-
   
-    <article id="post-Linux系统安装MySQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装MySQL"><a href="#Linux系统安装MySQL" class="headerlink" title="Linux系统安装MySQL"></a>Linux系统安装MySQL</h4><p>1、下载安装包：mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz</p>
-<p>(官网地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a> ；选择Linux-Generic和下面’glibc 64-bit’)</p>
-<p>2、解压：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf  mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>3、配置：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加Mysql用户组</span></span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql</span><br><span class="line">chown -R mysql.mysql /home/mysql</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">初始化Mysql</span></span><br><span class="line">/home/mysql/mysql-5.7.32/bin/mysqld --user=mysql --basedir=/home/mysql/mysql-5.7.32 --datadir=/home/mysql/data --initialize</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置环境变量</span></span><br><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line">export MYSQL_HOME=/home/mysql/mysql-5.7.32</span><br><span class="line">export PATH=$MYSQL_HOME/bin:$PATH</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">保存环境变量</span></span><br><span class="line">source /etc/profile</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编辑Mysql配置文件</span></span><br><span class="line">vim /etc/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/home/mysql/data</span><br><span class="line">basedir=/home/mysql/mysql-5.7.32</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line">user=mysql</span><br><span class="line">port=3306</span><br><span class="line">character-set-server=utf8</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">取消密码验证</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">skip-grant-tables</span></span><br><span class="line">log-error=/home/mysql/mysql-error.log</span><br><span class="line">[client]</span><br><span class="line">port=3306</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Mysql服务</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改Mysql服务密码</span></span><br><span class="line">use  mysql</span><br><span class="line">UPDATE user SET authentication_string=PASSWORD(&quot;rootroot&quot;) WHERE user=&#x27;root&#x27;;</span><br><span class="line">update user set user.Host=&#x27;%&#x27; where user.User=&#x27;root&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
-
-<p>刚开始遇到的一些报错</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 报错</span></span><br><span class="line">mysql: error <span class="keyword">while</span> loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory</span><br><span class="line">解决：yum install libncurses*</span><br><span class="line"></span><br><span class="line"><span class="comment"># 报错</span></span><br><span class="line">systemctl start mysqld</span><br><span class="line">Failed to start mysqld.service: Unit mysqld.service not found.</span><br><span class="line">解决：</span><br><span class="line"><span class="built_in">cp</span> /home/mysql/mysql-5.7.32/support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line"></span><br><span class="line"><span class="comment"># 报错</span></span><br><span class="line">Could not create unix socket lock file /var/lib/mysql/mysql.sock.lock.</span><br><span class="line">解决：</span><br><span class="line"><span class="built_in">chown</span> -R mysql:mysql /var/lib/mysql/</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85MySQL/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-Linux系统安装Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Java"><a href="#Linux系统安装Java" class="headerlink" title="Linux系统安装Java"></a>Linux系统安装Java</h4><p>系统软件：jdk-8u152-linux-x64.rpm</p>
-<p>安装包上传至&#x2F;home&#x2F;java</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/java</span><br></pre></td></tr></table></figure>
-
-<p>解压安装包：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh jdk-8u152-linux-x64.rpm</span><br></pre></td></tr></table></figure>
-
-<p>查看安装目录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /home/java</span><br></pre></td></tr></table></figure>
-
-<p>配置jdk环境变量：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi  /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>文末加入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/home/java/jdk1.8.0_152</span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-
-<p>完成配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<p>验证：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Java/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Linux笔记"><a href="#Linux笔记" class="headerlink" title="Linux笔记"></a>Linux笔记</h3><h4 id="1、虚拟机网络配置"><a href="#1、虚拟机网络配置" class="headerlink" title="1、虚拟机网络配置"></a>1、虚拟机网络配置</h4><h4 id="NAT模式"><a href="#NAT模式" class="headerlink" title="NAT模式"></a>NAT模式</h4><p>1、进入网络适配器文件夹中：</p>
-<h4 id="cd-x2F-etc-x2F-sysconfig-x2F-network-scripts-x2F"><a href="#cd-x2F-etc-x2F-sysconfig-x2F-network-scripts-x2F" class="headerlink" title="cd  &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;"></a>cd  &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;</h4><p>2、查看文件：</p>
-<h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p>3、编辑ifcfg-eth33文件</p>
-<h4 id="vi-ifcfg-ens33"><a href="#vi-ifcfg-ens33" class="headerlink" title="vi  ifcfg-ens33"></a>vi  ifcfg-ens33</h4><p>进入文件，点击<strong>“ i ”</strong>进入INSERT模式，编辑完成后，点击<strong>“ESC”</strong>  并使用 <strong>:wq</strong> 保存 退出。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO=static //修改为static</span><br><span class="line">ONBOOT=yes  //修改为yes</span><br><span class="line">//添加IP，子网掩码，DNS网关等</span><br><span class="line">IPADDR=192.168.249.130</span><br><span class="line">NETMASK=255.255.225.0</span><br><span class="line">GATEWAY=192.168.249.2</span><br><span class="line">DNS1=172.29.14.200</span><br><span class="line">DNS2=114.114.114.114</span><br></pre></td></tr></table></figure>
-
-<p>4、重启网络：</p>
-<h4 id="service-network-restart"><a href="#service-network-restart" class="headerlink" title="service network restart"></a>service network restart</h4><p>5、测试网络是否正常：</p>
-<h4 id="ping-c-4-www-baidu-com"><a href="#ping-c-4-www-baidu-com" class="headerlink" title="ping  -c  4  www.baidu.com"></a>ping  -c  4  <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></h4><p>-c ：代表指定次数</p>
-<p>注意：可以在VMware workstation 终端使用 ping  -c  4  <a target="_blank" rel="noopener" href="http://www.baidu.com;/">www.baidu.com；</a></p>
-<p>而在MobaXterm需要使用 ping  <a href="http://www.baidu.com，否则报错返回：ping">www.baidu.com，否则报错返回：ping</a>: bad number of packets to transmit.</p>
-<h4 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h4><p>1、简介：</p>
-<p>桥接模式下，VMWare虚拟出来的操作系统就像是局域网中的一台独立的主机，它可以访问网内任何一台机器。你需要手工为虚拟系统配置IP地址、子网掩码，而且还要和宿主机器处于同一网段，这样虚拟系统才能和宿主机器进行通信。</p>
-<p>如果你想利用VMWare在局域网内新建一个虚拟服务器，为局域网用户提供网络服务，就应该选择桥接模式。</p>
-<p>2、桥接模式网络设置：</p>
-<p>（1）在cmd中使用ipconfig &#x2F;all，找到IP地址、子网掩码、默认网关、DNS</p>
-<p>（2）配置ip地址等信息在&#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33文件里做如下配置：</p>
-<p><strong>vi &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO=static </span><br><span class="line">ONBOOT=yes  </span><br><span class="line">IPADDR=172.29.12.36 # 该网卡ip地址就是你要配置的固定IP，如果你要用xshell等工具连接，220这个网段最好和你自己的电脑网段一致，否则有可能用xshell连接失败,36是自己设置的</span><br><span class="line">GATEWAY=172.29.12.254</span><br><span class="line">NETMASK=255.255.255.0  </span><br><span class="line">DNS1=8.8.8.8    # DNS，8.8.8.8为Google提供的免费DNS服务器的IP地址</span><br></pre></td></tr></table></figure>
-
-<p>（3）配置网络工作</p>
-<p><strong>vi &#x2F;etc&#x2F;sysconfig&#x2F;network</strong></p>
-<p>手动加入  <strong>NETWORKING&#x3D;yes</strong>   # 网络是否工作，此处一定不能为no</p>
-<p>（4）配置公共DNS服务(可选)</p>
-<p>在&#x2F;etc&#x2F;resolv.conf文件里增加如下配置：nameserver 8.8.8.8</p>
-<p>（5）关闭防火墙</p>
-<p><strong>systemctl stop firewalld</strong> # 临时关闭防火墙</p>
-<p>systemctl disable firewalld # 禁止开机启动</p>
-<p>（6）重启网络服务</p>
-<p>service network restart</p>
-<p>再次查询IP地址等，就是自己设置的了</p>
-<p>（7）ping 主机IP</p>
-<p>测试通过。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/03/linux%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-本地代码提交到git仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="本地代码提交到git仓库"><a href="#本地代码提交到git仓库" class="headerlink" title="本地代码提交到git仓库"></a>本地代码提交到git仓库</h3><p>1、在gitee创建仓库</p>
-<p>2、本地创建代码，点击VCS，Enable Version Contrl 进行版本控制</p>
-<p>3、点击commit，将文件加入版本控制，点击commit and push </p>
-<p>4、点击Define remote，输入远端仓库地址</p>
-<p>当commit失败有可能是git忽略文件，可以先删除，下拉远端的忽略文件。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/03/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E5%88%B0git%E4%BB%93%E5%BA%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-方法调用导致事务不生效" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法"><a href="#同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法" class="headerlink" title="同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法"></a>同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法</h4><ul>
-<li><p>原因：</p>
-<p>声明式事务基于Spring AOP实现,将具体业务逻辑与事务处理解耦，在 Spring 的 AOP 代理下，只有目标方法由外部调用，目标方法才由 Spring 生成的代理对象来管理，这会造成自调用问题。</p>
-<p>spring的@Transactional事务生效的一个前提是进行方法调用前经过拦截器TransactionInterceptor，也就是说只有通过TransactionInterceptor拦截器的方法才会被加入到spring事务管理中。</p>
-<p>如果是在同一个类中的方法调用，则不会被方法拦截器拦截到，因此事务不会起作用，必须将方法放入另一个类，并且该类通过spring注入。</p>
-</li>
-<li><p>解决方法</p>
-<p>将事务方法放到另一个类中（或者单独开启一层，取名“事务层”）进行调用，即符合了在对象之间调用的条件。</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/02/%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%AF%BC%E8%87%B4%E4%BA%8B%E5%8A%A1%E4%B8%8D%E7%94%9F%E6%95%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-搭建Hexo博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="搭建Hexo博客"><a href="#搭建Hexo博客" class="headerlink" title="搭建Hexo博客"></a>搭建Hexo博客</h4><h5 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h5><ul>
-<li><p>安装Node.js</p>
-</li>
-<li><p>安装Git</p>
-</li>
-<li><p>注册GitHub账号</p>
-</li>
-<li><p>安装cnpm</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=http://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h5 id="注：在D盘创建blog文件夹，所有命令均在blog中进行git-bash操作"><a href="#注：在D盘创建blog文件夹，所有命令均在blog中进行git-bash操作" class="headerlink" title="注：在D盘创建blog文件夹，所有命令均在blog中进行git bash操作"></a>注：在D盘创建blog文件夹，所有命令均在blog中进行git bash操作</h5><h5 id="2、安装Hexo框架"><a href="#2、安装Hexo框架" class="headerlink" title="2、安装Hexo框架"></a>2、安装Hexo框架</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo cnpm install -g hexo-cli</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看hexo版本</span></span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、初始化博客"><a href="#3、初始化博客" class="headerlink" title="3、初始化博客"></a>3、初始化博客</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成博客 初始化博客</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<h5 id="4、安装Git部署插件"><a href="#4、安装Git部署插件" class="headerlink" title="4、安装Git部署插件"></a>4、安装Git部署插件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置_config.yml</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: <span class="string">&#x27;git&#x27;</span></span><br><span class="line">  repo: git@github.com:Guofuyinan/Guofuyinan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<h5 id="5、安装yilia主题"><a href="#5、安装yilia主题" class="headerlink" title="5、安装yilia主题"></a>5、安装yilia主题</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载yilia主题到本地</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改hexo根目录下的 _config.yml 文件</span></span><br><span class="line">theme: yilia</span><br></pre></td></tr></table></figure>
-
-<h5 id="6、启动博客"><a href="#6、启动博客" class="headerlink" title="6、启动博客"></a>6、启动博客</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#启动本地博客服务(http://localhost:4000/	#本地访问地址)</span></span><br><span class="line">hexo s</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成</span></span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<h5 id="7、部署"><a href="#7、部署" class="headerlink" title="7、部署"></a>7、部署</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/01/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/02/27/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2023/02/27/hello-world/" class="archive-article-date">
-  	<time datetime="2023-02-27T15:18:38.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/02/27/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
 
 
@@ -817,8 +391,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

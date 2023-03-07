@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Docker 安装 redis1、下载镜像文件  1docker pull redis  2、创建实例并启动  12345678mkdir -p &#x2F;mydata&#x2F;redis&#x2F;conf touch &#x2F;mydata&#x2F;redis&#x2F;conf&#x2F;redis.conf 目录挂载docker run -p 6379:6379 --name redis -v &#x2F;mydata&#x2F;redis&#x2F;data:&#x2F;data \">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+<meta property="og:url" content="http://example.com/2023/03/07/Docker%20%E5%AE%89%E8%A3%85%20redis/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Docker 安装 redis1、下载镜像文件  1docker pull redis  2、创建实例并启动  12345678mkdir -p &#x2F;mydata&#x2F;redis&#x2F;conf touch &#x2F;mydata&#x2F;redis&#x2F;conf&#x2F;redis.conf 目录挂载docker run -p 6379:6379 --name redis -v &#x2F;mydata&#x2F;redis&#x2F;data:&#x2F;data \">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-07T15:26:03.192Z">
+<meta property="article:modified_time" content="2023-03-07T15:26:03.192Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,162 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Docker 安装 redis" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Docker-安装-redis"><a href="#Docker-安装-redis" class="headerlink" title="Docker 安装 redis"></a>Docker 安装 redis</h4><p>1、下载镜像文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
+
+<p>2、创建实例并启动 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /mydata/redis/conf </span><br><span class="line"></span><br><span class="line"><span class="built_in">touch</span> /mydata/redis/conf/redis.conf </span><br><span class="line"></span><br><span class="line">目录挂载</span><br><span class="line">docker run -p 6379:6379 --name redis -v /mydata/redis/data:/data \ </span><br><span class="line"> -v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \ </span><br><span class="line"> -d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>3、使用 redis 镜像执行 redis-cli 命令连接 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis redis-cli</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="docker容器还没有退出，导致出现容器重名情况。"><a href="#docker容器还没有退出，导致出现容器重名情况。" class="headerlink" title="docker容器还没有退出，导致出现容器重名情况。"></a>docker容器还没有退出，导致出现容器重名情况。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">报错信息：</span><br><span class="line">Error response from daemon: Conflict. The container name <span class="string">&quot;/redis&quot;</span> is already <span class="keyword">in</span> use by container <span class="string">&quot;936aee3bcd59166556bb048a4a72056f1d2695122e1fe5cb67fd9b2a1ba569c6&quot;</span>. You have to remove (or rename) that container to be able to reuse that name.</span><br><span class="line">See <span class="string">&#x27;docker run --help&#x27;</span>.</span><br></pre></td></tr></table></figure>
+
+<p>原因：运行如下命令，查看docker中redis正在运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker ps -a</span><br></pre></td></tr></table></figure>
+
+<p>删除容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">rm</span> 镜像ID </span><br></pre></td></tr></table></figure>
+
+<p>重新运行目录挂载命令即可。(运行命令及结果如下：)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># sudo docker ps -a</span></span><br><span class="line">CONTAINER ID  IMAGE   COMMAND                  CREATED          STATUS    PORTS     NAMES</span><br><span class="line">546fe71cfc15  redis   <span class="string">&quot;docker-entrypoint.s…&quot;</span>   25 minutes ago   Created             redis</span><br><span class="line"></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># sudo docker rm 546fe71cfc15</span></span><br><span class="line">546fe71cfc15</span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/07/Docker%20%E5%AE%89%E8%A3%85%20redis/" class="archive-article-date">
-  	<time datetime="2023-03-07T15:26:03.192Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-07</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/07/Docker%20%E5%AE%89%E8%A3%85%20redis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/06/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Docker/" class="archive-article-date">
-  	<time datetime="2023-03-06T13:45:46.766Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/05/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Jmeter/" class="archive-article-date">
-  	<time datetime="2023-03-05T11:05:33.975Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-05</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2023/03/06/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2023-03-05T09:26:28.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-05</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85MySQL/" class="archive-article-date">
-  	<time datetime="2023-03-04T15:42:03.584Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Java/" class="archive-article-date">
-  	<time datetime="2023-03-04T15:17:05.475Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/03/linux%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2023-03-03T15:58:41.086Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-03</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/03/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E5%88%B0git%E4%BB%93%E5%BA%93/" class="archive-article-date">
-  	<time datetime="2023-03-03T15:46:51.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-03</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/02/%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%AF%BC%E8%87%B4%E4%BA%8B%E5%8A%A1%E4%B8%8D%E7%94%9F%E6%95%88/" class="archive-article-date">
-  	<time datetime="2023-03-02T15:36:35.494Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-02</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/01/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2023-03-01T13:54:47.685Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +333,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

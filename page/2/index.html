@@ -152,6 +152,64 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux系统安装MySQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Linux系统安装MySQL"><a href="#Linux系统安装MySQL" class="headerlink" title="Linux系统安装MySQL"></a>Linux系统安装MySQL</h4><p>1、下载安装包：mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz</p>
+<p>(官网地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a> ；选择Linux-Generic和下面’glibc 64-bit’)</p>
+<p>2、解压：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf  mysql-5.7.35-linux-glibc2.12-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>3、配置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加Mysql用户组</span></span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql</span><br><span class="line">chown -R mysql.mysql /home/mysql</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">初始化Mysql</span></span><br><span class="line">/home/mysql/mysql-5.7.32/bin/mysqld --user=mysql --basedir=/home/mysql/mysql-5.7.32 --datadir=/home/mysql/data --initialize</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置环境变量</span></span><br><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line">export MYSQL_HOME=/home/mysql/mysql-5.7.32</span><br><span class="line">export PATH=$MYSQL_HOME/bin:$PATH</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">保存环境变量</span></span><br><span class="line">source /etc/profile</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编辑Mysql配置文件</span></span><br><span class="line">vim /etc/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/home/mysql/data</span><br><span class="line">basedir=/home/mysql/mysql-5.7.32</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line">user=mysql</span><br><span class="line">port=3306</span><br><span class="line">character-set-server=utf8</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">取消密码验证</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">skip-grant-tables</span></span><br><span class="line">log-error=/home/mysql/mysql-error.log</span><br><span class="line">[client]</span><br><span class="line">port=3306</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Mysql服务</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改Mysql服务密码</span></span><br><span class="line">use  mysql</span><br><span class="line">UPDATE user SET authentication_string=PASSWORD(&quot;rootroot&quot;) WHERE user=&#x27;root&#x27;;</span><br><span class="line">update user set user.Host=&#x27;%&#x27; where user.User=&#x27;root&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<p>刚开始遇到的一些报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 报错</span></span><br><span class="line">mysql: error <span class="keyword">while</span> loading shared libraries: libncurses.so.5: cannot open shared object file: No such file or directory</span><br><span class="line">解决：yum install libncurses*</span><br><span class="line"></span><br><span class="line"><span class="comment"># 报错</span></span><br><span class="line">systemctl start mysqld</span><br><span class="line">Failed to start mysqld.service: Unit mysqld.service not found.</span><br><span class="line">解决：</span><br><span class="line"><span class="built_in">cp</span> /home/mysql/mysql-5.7.32/support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line"></span><br><span class="line"><span class="comment"># 报错</span></span><br><span class="line">Could not create unix socket lock file /var/lib/mysql/mysql.sock.lock.</span><br><span class="line">解决：</span><br><span class="line"><span class="built_in">chown</span> -R mysql:mysql /var/lib/mysql/</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85MySQL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux系统安装Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

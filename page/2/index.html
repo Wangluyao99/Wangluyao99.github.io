@@ -152,6 +152,126 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h4><h5 id="Linux中最重要的三个命令在业界被称为“三剑客”，它们是grep、sed、awk"><a href="#Linux中最重要的三个命令在业界被称为“三剑客”，它们是grep、sed、awk" class="headerlink" title="Linux中最重要的三个命令在业界被称为“三剑客”，它们是grep、sed、awk"></a><code>Linux中最重要的三个命令在业界被称为“三剑客”，它们是grep、sed、awk</code></h5><h5 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h5><ul>
+<li><p>创建目录 <code>mkdir</code></p>
+</li>
+<li><p>查看目录 <code>ls</code></p>
+</li>
+<li><p>切换目录 <code>cd</code></p>
+</li>
+<li><p>显示当前目录 <code>pwd</code></p>
+</li>
+<li><p>查看文件 <code>cat</code></p>
+</li>
+<li><p>下载文件 <code>wget</code></p>
+</li>
+<li><p>在文本文件中查找某个字符串 <code>grep</code></p>
+</li>
+<li><p>统计文本中行数、字数、字符数 <code>wc</code></p>
+</li>
+<li><p>部分显示 <code>more/less</code></p>
+</li>
+<li><p>查找文件 <code>find / -name &#39;auto.cnf&#39;</code></p>
+</li>
+<li><p>创建空文件 <code>touch</code></p>
+</li>
+<li><p>复制文件 <code>cp</code></p>
+</li>
+<li><p>移动或重命名 <code>mv</code></p>
+</li>
+<li><p>删除文件 <code>rm</code></p>
+</li>
+</ul>
+<h5 id="服务方式运行"><a href="#服务方式运行" class="headerlink" title="服务方式运行"></a>服务方式运行</h5><ul>
+<li>设置开机启动 <code>systemctl enable</code></li>
+<li>启动 <code>systemctl start</code></li>
+<li>关闭 <code>systemctl stop</code></li>
+</ul>
+<h5 id="打包、压缩命令"><a href="#打包、压缩命令" class="headerlink" title="打包、压缩命令"></a>打包、压缩命令</h5><ul>
+<li>zip 要压缩的文件（压缩为zi格式）</li>
+<li>unzip 要解压的文件 （解压zip格式的文件）</li>
+<li>gzip 要压缩的文件（压缩成gz类型）</li>
+<li>gunzip 要解压的文件（解压gz格式的文件）</li>
+<li>tar -zcvf 文件名… （将所有文件打包使用gzip压缩）</li>
+<li>tar -zxvf 文件名… (将所有文件解压)</li>
+</ul>
+<p>tar 打包命令</p>
+<p>-c：创建一个新tar文件</p>
+<p>-v：显示运行过程的信息</p>
+<p>-f：指定文件名</p>
+<p>-z：调用gzip压缩命令进行压缩</p>
+<p>-t：查看压缩文件的内容</p>
+<p>-x：解开tar文件</p>
+<h5 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h5><ul>
+<li>cat[参数]&lt;文件名&gt; （显示文件内容,也可以将数个文件合并成一个文件）</li>
+</ul>
+<p>cat a （显示a文件内容）</p>
+<p>cat a | more （逐页显示a文件中的内容）</p>
+<p>cat a &gt;&gt; b （将a的内容附加到b文件之后）</p>
+<p>cat a b &gt; c （将a和b文件合并覆盖c文件）</p>
+<ul>
+<li><p>head -n[行数] 文件名 （显示文件的头几行（默认10行））</p>
+</li>
+<li><p>tail -n[行数] -f[持续显示文件更新] 显示文件的末尾几行（默认10行）)</p>
+</li>
+<li><p>more：用于翻页显示文件内容（只能向下翻页），按q退出</p>
+</li>
+<li><p>less：翻页显示文件内容（带上下翻页）按下上键分页，按q退出</p>
+</li>
+<li><p>find [&lt;路径&gt;] [匹配条件] 查找文件、文件夹</p>
+</li>
+</ul>
+<p>find . -name redis 查找当前目录下名称为redis的文件</p>
+<p>find &#x2F; -name *.conf 查找根目录下后缀为.conf的文件</p>
+<p>find &#x2F; -perm 777 查找所有权限是777的文件</p>
+<p>find &#x2F; -type d 查找根目录下所有为目录类型的文件</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux系统安装MySQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

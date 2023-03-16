@@ -8,11 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="策略模式定义： 策略模式定义了一系列算法，并将每个算法封装起来，使他们可以相互替换，且算法的变化不会影响到使用算法的客户。 （策略模式简单点说就是根据不同参数选择同一个接口的不同实现。） 意图：定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。 主要解决：在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。 何时使用：一个系统有许多许多类，而区分它们的只是他们直接">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2023/03/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="策略模式定义： 策略模式定义了一系列算法，并将每个算法封装起来，使他们可以相互替换，且算法的变化不会影响到使用算法的客户。 （策略模式简单点说就是根据不同参数选择同一个接口的不同实现。） 意图：定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。 主要解决：在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。 何时使用：一个系统有许多许多类，而区分它们的只是他们直接">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-16T15:10:36.763Z">
+<meta property="article:modified_time" content="2023-03-16T15:20:04.484Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,9 +154,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-设计模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -166,11 +168,40 @@
 <p>关键代码：实现同一个接口。</p>
 <p>优点： 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展性良好。</p>
 <h4 id="模板模式"><a href="#模板模式" class="headerlink" title="模板模式"></a>模板模式</h4><p><strong>定义：定义一个操作中算法的骨架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变算法的结构即可重定义该算法的某些特定步骤。</strong></p>
-        
-          <a class="article-more-a" href="/2023/03/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#more">more >></a>
-        
+<span id="more"></span>
+
+<p>抽象父类（AbstractClass）：实现了模板方法，定义了算法的骨架。<br>具体类（ConcreteClass)：实现抽象类中的抽象方法，即不同的对象的具体实现细节。</p>
+<p>通俗点的理解就是 ：完成一件事情，有固定的数个步骤，但是每个步骤根据对象的不同，而实现细节不同；就可以在父类中定义一个完成该事情的总方法，按照完成事件需要的步骤去调用其每个步骤的实现方法。每个步骤的具体实现，由子类完成。</p>
+<p>优点：</p>
+<p>　（1）具体细节步骤实现定义在子类中，子类定义详细处理算法是不会改变算法整体结构。</p>
+<p>　（2）代码复用的基本技术，在数据库设计中尤为重要。</p>
+<p>　（3）存在一种反向的控制结构，通过一个父类调用其子类的操作，通过子类对父类进行扩展增加新的行为，符合“开闭原则”。</p>
+<p>缺点：</p>
+<p>每个不同的实现都需要定义一个子类，会导致类的个数增加，系统更加庞大。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -179,16 +210,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2023/03/14/EasyExcel/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -208,594 +298,14 @@
 
 
 
-
-  
-    <article id="post-EasyExcel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Easy-Excel"><a href="#Easy-Excel" class="headerlink" title="Easy Excel"></a>Easy Excel</h4><p>官方文档：<a target="_blank" rel="noopener" href="https://easyexcel.opensource.alibaba.com/">https://easyexcel.opensource.alibaba.com/</a></p>
-<ul>
-<li>简单导入</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 入参：MultipartFile file</span></span><br><span class="line"><span class="comment">// Excel监听器：</span></span><br><span class="line"><span class="type">ExcelModuleListener</span> <span class="variable">readListener</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExcelModuleListener</span>();</span><br><span class="line">EasyExcel.read(file.getInputStream(), ExcelModule.class, readListener).sheet().doRead();  <span class="comment">//ExcelModule.class解析的excel类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ExcelModuleListener</span> <span class="keyword">implements</span> <span class="title class_">ReadListener</span>&lt;ExcelModule&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invoke</span><span class="params">(ExcelModule excelModule, AnalysisContext analysisContext)</span> &#123;</span><br><span class="line">        <span class="comment">// 数据解析</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">(AnalysisContext analysisContext)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 此处需要修改为true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterAllAnalysed</span><span class="params">(AnalysisContext analysisContext)</span> &#123;</span><br><span class="line">        <span class="comment">// 解析完成的操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>简单导出</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 入参： HttpServletResponse response</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置响应头</span></span><br><span class="line">response.addHeader(HttpHeaders.CONTENT_DISPOSITION, <span class="string">&quot;attachment;filename=&quot;</span> + URLEncoder.encode(ExcelConstant.RECORD_FILE_NAME, StandardCharsets.UTF_8));</span><br><span class="line">response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE); <span class="comment">//APPLICATION_OCTET_STREAM_VALUE = &quot;application/octet-stream&quot;;</span></span><br><span class="line"><span class="comment">// 查询得到导出数据:  List&lt;CallRecordExcelVO&gt; callRecords;</span></span><br><span class="line"><span class="comment">// 写入excel</span></span><br><span class="line">EasyExcel.write(response.getOutputStream(), CallRecordExcelVO.class)</span><br><span class="line">              .sheet(ExcelConstant.RECORD_SHEET_NAME)</span><br><span class="line">              .doWrite(callRecords);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>根据参数只导出指定列</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">excludeOrIncludeWrite</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> TestFileUtil.getPath() + <span class="string">&quot;excludeOrIncludeWrite&quot;</span> + System.currentTimeMillis() + <span class="string">&quot;.xlsx&quot;</span>;</span><br><span class="line">    <span class="comment">// 这里需要注意 在使用ExcelProperty注解的使用，如果想不空列则需要加入order字段，而不是index,order会忽略空列，然后继续往后，而index，不会忽略空列，在第几列就是第几列。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据用户传入字段 假设我们要忽略 date</span></span><br><span class="line">    Set&lt;String&gt; excludeColumnFiledNames = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;String&gt;();</span><br><span class="line">    excludeColumnFiledNames.add(<span class="string">&quot;date&quot;</span>);</span><br><span class="line">    <span class="comment">// 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭</span></span><br><span class="line">    EasyExcel.write(fileName, DemoData.class).excludeColumnFiledNames(excludeColumnFiledNames).sheet(<span class="string">&quot;模板&quot;</span>).doWrite(data());</span><br><span class="line"></span><br><span class="line">    fileName = TestFileUtil.getPath() + <span class="string">&quot;excludeOrIncludeWrite&quot;</span> + System.currentTimeMillis() + <span class="string">&quot;.xlsx&quot;</span>;</span><br><span class="line">    <span class="comment">// 根据用户传入字段 假设我们只要导出 date</span></span><br><span class="line">    Set&lt;String&gt; includeColumnFiledNames = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;String&gt;();</span><br><span class="line">    includeColumnFiledNames.add(<span class="string">&quot;date&quot;</span>);</span><br><span class="line">    <span class="comment">// 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭</span></span><br><span class="line">    EasyExcel.write(fileName, DemoData.class).includeColumnFiledNames(includeColumnFiledNames).sheet(<span class="string">&quot;模板&quot;</span>).doWrite(data());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/14/EasyExcel/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-单例模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="单例模式的写法"><a href="#单例模式的写法" class="headerlink" title="单例模式的写法"></a>单例模式的写法</h4><h5 id="饱汉模式"><a href="#饱汉模式" class="headerlink" title="饱汉模式"></a>饱汉模式</h5><p>饱汉模式的核心就是懒加载。好处是更启动速度快、节省资源，一直到实例被第一次访问，才需要初始化单例；坏处是线程不安全，if语句存在竞态条件。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础的饱汉</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">singleton</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="literal">null</span>) &#123;</span><br><span class="line">      singleton = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 饱汉 - DCL 2.0</span></span><br><span class="line"><span class="comment">// 懒加载+线程安全，防止指令重排序(不会“部分初始化&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton1</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Singleton1</span> <span class="variable">singleton</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="number">1</span>;   <span class="comment">// 触发部分初始化问题</span></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">Singleton1</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton1 <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (Singleton1.class) &#123;</span><br><span class="line">        <span class="comment">// must be a complete instance</span></span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="literal">null</span>) &#123;</span><br><span class="line">          singleton = <span class="keyword">new</span> <span class="title class_">Singleton1</span>();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h5><p>与饱汉相对，他就在最早的时机，即类加载时初始化单例，以后访问时直接返回即可。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton</span> <span class="variable">singleton</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>单线程环境下，饿汉与饱汉在性能上没什么差别；但多线程环境下，由于饱汉需要加锁，饿汉的性能反而更优。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/13/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1、Math-max"><a href="#1、Math-max" class="headerlink" title="1、Math.max()"></a>1、Math.max()</h4><p>Math.max()方法比较的是两个同类型数据的大小，取大值返回。</p>
-<h4 id="2、PathMatcher"><a href="#2、PathMatcher" class="headerlink" title="2、PathMatcher"></a>2、PathMatcher</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 路径匹配器</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">shouldSkipWhiteUrls</span><span class="params">(String currentUrl)</span> &#123;</span><br><span class="line">    <span class="comment">//路径匹配器(简介SpringMvc拦截器的匹配器)</span></span><br><span class="line">    <span class="comment">//比如/oauth/** 可以匹配/oauth/token    /oauth/check_token等</span></span><br><span class="line">    <span class="type">PathMatcher</span> <span class="variable">pathMatcher</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AntPathMatcher</span>();</span><br><span class="line">    <span class="keyword">for</span> (String skipPath : notAuthUrlProperties.getWhiteUrls()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pathMatcher.match(skipPath, currentUrl)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/11/tips/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统安装Elasticsearch" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Elasticsearch"><a href="#Linux系统安装Elasticsearch" class="headerlink" title="Linux系统安装Elasticsearch"></a>Linux系统安装Elasticsearch</h4><p>1、下载压缩包，解压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf elasticsearch-7.13.0-linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>2、运行elasticsearch</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>报错：Caused by: java.lang.RuntimeException: can not run elasticsearch as root</p>
-<p>原因：elasticsearch无法使用root启动。</p>
-<p>3、创建用户es</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useradd es</span><br><span class="line"><span class="comment">#切换用户</span></span><br><span class="line">su es</span><br><span class="line"><span class="comment">#启动es</span></span><br><span class="line">./elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>报错：Caused by: java.nio.file.AccessDeniedException: &#x2F;home&#x2F;elasticsearch-7.13.0&#x2F;config&#x2F;elasticsearch.yml</p>
-<p>原因：es用户没有elasticsearch目录权限</p>
-        
-          <a class="article-more-a" href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统部署项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统部署项目"><a href="#Linux系统部署项目" class="headerlink" title="Linux系统部署项目"></a>Linux系统部署项目</h4><p>1、开启mysql，redis</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">mysql</span></span><br><span class="line">cd /home/mysql/mysql-5.7.35</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Mysql服务</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">password：LOVE521314!</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">redis</span></span><br><span class="line">cd /home/redis</span><br><span class="line">redis-server /home/redis/redis.conf</span><br></pre></td></tr></table></figure>
-
-<p>2、启动服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">如果想让项目在后台一直运行,通过如下命令启动JAR:</span></span><br><span class="line"></span><br><span class="line">nohup java -jar xxx.jar  &gt; consoleMsg.log 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">上面的2 和 1 的意思如下:</span></span><br><span class="line">0    标准输入（一般是键盘）</span><br><span class="line">1    标准输出（一般是显示屏，是用户终端控制台）</span><br><span class="line">2    标准错误（错误信息输出）</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注意:consoleMsg.<span class="built_in">log</span>文件要先创建,执行命令:</span></span><br><span class="line"></span><br><span class="line">touch consoleMsg.log</span><br></pre></td></tr></table></figure>
-
-<p>3、查看项目运行日志</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、tailf consoleMsg.log | grep --line-buffered findUserList     </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">实时跟踪日志，这里是只要findUserList 这个方法被运行，就会将它的日志打印出来，用于跟踪特定的日志运行。</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">--line-buffered 是一行的缓冲区，只要这一行的缓冲区满了就会打印出来，所以可以用于实时监控日志。</span></span><br><span class="line"></span><br><span class="line">2、 tailf -n 500 consoleMsg.log  #打印最后500行日志，并且持续跟踪日志。</span><br><span class="line"></span><br><span class="line">　　tail -n 2000 consoleMsg.log | more 　　#分页查看最后2000行日志。</span><br></pre></td></tr></table></figure>
-
-<h5 id="使用服务的方式启动"><a href="#使用服务的方式启动" class="headerlink" title="使用服务的方式启动"></a>使用服务的方式启动</h5><p>1、环境准备</p>
-<p>jdk环境</p>
-<p>部署的jar包</p>
-<p>（必须是可执行的jar包，需要在pom文件的maven中配置：）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">   &lt;executable&gt;<span class="literal">true</span>&lt;/executable&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、上传jar包</p>
-<p>创建home&#x2F;ec2-user&#x2F;server目录，将jar包上传</p>
-<p>3、给文件赋权</p>
-<p>*<em>chmod a+x  <em>.jar</em></em>   例：chmod a+x authorize-server.jar</p>
-<p>（a+x 是给所有人加上可执行权限，包括所有者，所属组，和其他人）</p>
-<p>4、创建启动服务文件</p>
-<p>执行： <strong>cd &#x2F;etc&#x2F;systemd&#x2F;system</strong></p>
-<p>执行：<strong>vi authorize.service</strong>   (authorize是自定义)</p>
-<p>编辑：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Description=oauth2认证服务</span><br><span class="line">After=syslog.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/home/ec2-user/server/authorize-server.jar //上传的jar包</span><br><span class="line">SuccessExitStatus=143</span><br><span class="line">LimitCORE=infinity</span><br><span class="line">LimitNOFILE=50000</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>赋权：<strong>chmod a+x authorize.service</strong></p>
-<p>5、启动服务</p>
-<h5 id="systemctl-start-authorize"><a href="#systemctl-start-authorize" class="headerlink" title="systemctl start authorize"></a>systemctl start authorize</h5><p>6、systemctl list-units 查看authorize.service是否存在</p>
-<h5 id="systemctl-list-units"><a href="#systemctl-list-units" class="headerlink" title="systemctl list-units"></a>systemctl list-units</h5><p>找到authorize.service</p>
-<p>7、验证服务启动</p>
-<p>执行命令：<strong>curl localhost:80&#x2F;test&#x2F;get</strong></p>
-<p>返回结果 OK</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/09/Linux%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统安装Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Nginx"><a href="#Linux系统安装Nginx" class="headerlink" title="Linux系统安装Nginx"></a>Linux系统安装Nginx</h4><p>1、搭建nginx所需要的环境，直接执行命令就可以</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel</span><br></pre></td></tr></table></figure>
-
-<p>2、获取安装包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/</span><br><span class="line">wget http://nginx.org/download/nginx-1.19.4.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>3、解压</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf nginx-1.19.4.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>4、安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//进入</span><br><span class="line">cd nginx-1.19.4/</span><br><span class="line"> </span><br><span class="line">//然后直接执行下面这段命令</span><br><span class="line">./configure --prefix=/usr/local/nginx</span><br><span class="line"> </span><br><span class="line">//执行完之后</span><br><span class="line">make install</span><br><span class="line"> </span><br><span class="line">执行完之后，我们找到我们配置的路径下</span><br><span class="line">cd  /usr/local/nginx</span><br></pre></td></tr></table></figure>
-
-<p>5、启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd sbin/</span><br><span class="line"> </span><br><span class="line">./nginx        (./nginx -s reload)</span><br></pre></td></tr></table></figure>
-
-<p>6、修改配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd  /usr/local/nginx/conf</span><br><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>7、修改server</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       8888;</span><br><span class="line">        server_name  192.168.249.130;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            autoindex on;</span><br><span class="line">            root   /vue/dist/; #前端项目安装路径</span><br><span class="line">            index  index.html;</span><br><span class="line">            try_files $uri $uri/ /index.html; #目录不存在则执行index.html</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /api &#123;</span><br><span class="line">            proxy_pass http://192.168.249.130:8088; #后端请求地址</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>8、保存配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nginx -t #检查文件是否正确</span><br><span class="line"></span><br><span class="line">./nginx -s reload #重新加载文件启动nginx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line">[root@localhost conf]# vim nginx.conf</span><br><span class="line">[root@localhost conf]# nginx -t</span><br><span class="line">nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</span><br><span class="line">[root@localhost conf]# nginx -s reload</span><br></pre></td></tr></table></figure>
-
-<p>9、查看日志</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# cd /</span><br><span class="line">[root@localhost /]# cd /root/</span><br><span class="line">[root@localhost ~]# cd server/</span><br><span class="line">[root@localhost server]# cat dailylog.log</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/08/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Docker 安装 redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Docker-安装-redis"><a href="#Docker-安装-redis" class="headerlink" title="Docker 安装 redis"></a>Docker 安装 redis</h4><p>1、下载镜像文件 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
-
-<p>2、创建实例并启动 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /mydata/redis/conf </span><br><span class="line"></span><br><span class="line"><span class="built_in">touch</span> /mydata/redis/conf/redis.conf </span><br><span class="line"></span><br><span class="line">目录挂载</span><br><span class="line">docker run -p 6379:6379 --name redis -v /mydata/redis/data:/data \ </span><br><span class="line"> -v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \ </span><br><span class="line"> -d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
-
-<p>3、使用 redis 镜像执行 redis-cli 命令连接 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis redis-cli</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="docker容器还没有退出，导致出现容器重名情况。"><a href="#docker容器还没有退出，导致出现容器重名情况。" class="headerlink" title="docker容器还没有退出，导致出现容器重名情况。"></a>docker容器还没有退出，导致出现容器重名情况。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">报错信息：</span><br><span class="line">Error response from daemon: Conflict. The container name <span class="string">&quot;/redis&quot;</span> is already <span class="keyword">in</span> use by container <span class="string">&quot;936aee3bcd59166556bb048a4a72056f1d2695122e1fe5cb67fd9b2a1ba569c6&quot;</span>. You have to remove (or rename) that container to be able to reuse that name.</span><br><span class="line">See <span class="string">&#x27;docker run --help&#x27;</span>.</span><br></pre></td></tr></table></figure>
-
-<p>原因：运行如下命令，查看docker中redis正在运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker ps -a</span><br></pre></td></tr></table></figure>
-
-<p>删除容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">rm</span> 镜像ID </span><br></pre></td></tr></table></figure>
-
-<p>重新运行目录挂载命令即可。(运行命令及结果如下：)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># sudo docker ps -a</span></span><br><span class="line">CONTAINER ID  IMAGE   COMMAND                  CREATED          STATUS    PORTS     NAMES</span><br><span class="line">546fe71cfc15  redis   <span class="string">&quot;docker-entrypoint.s…&quot;</span>   25 minutes ago   Created             redis</span><br><span class="line"></span><br><span class="line">[root@localhost <span class="built_in">local</span>]<span class="comment"># sudo docker rm 546fe71cfc15</span></span><br><span class="line">546fe71cfc15</span><br></pre></td></tr></table></figure>
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/07/Docker%20%E5%AE%89%E8%A3%85%20redis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统安装Docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Docker"><a href="#Linux系统安装Docker" class="headerlink" title="Linux系统安装Docker"></a>Linux系统安装Docker</h4><h5 id="1、修改-linux-的-yum-源"><a href="#1、修改-linux-的-yum-源" class="headerlink" title="1、修改 linux 的 yum 源"></a>1、修改 linux 的 yum 源</h5><p>1）、备份原 yum 源</p>
-<h5 id="mv-x2F-etc-x2F-yum-repos-d-x2F-CentOS-Base-repo-x2F-etc-x2F-yum-repos-d-x2F-CentOS-Base-repo-backup"><a href="#mv-x2F-etc-x2F-yum-repos-d-x2F-CentOS-Base-repo-x2F-etc-x2F-yum-repos-d-x2F-CentOS-Base-repo-backup" class="headerlink" title="mv &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo.backup"></a>mv &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo.backup</h5><p>2）、使用新 yum 源</p>
-<h5 id="curl-o-x2F-etc-x2F-yum-repos-d-x2F-CentOS-Base-repo-http-mirrors-163-com-help-CentOS7-Base-163-repo"><a href="#curl-o-x2F-etc-x2F-yum-repos-d-x2F-CentOS-Base-repo-http-mirrors-163-com-help-CentOS7-Base-163-repo" class="headerlink" title="curl -o &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo"></a>curl -o &#x2F;etc&#x2F;yum.repos.d&#x2F;CentOS-Base.repo <a target="_blank" rel="noopener" href="http://mirrors.163.com/.help/CentOS7-Base-163.repo">http://mirrors.163.com/.help/CentOS7-Base-163.repo</a></h5><p>3）、生成缓存 </p>
-<h5 id="yum-makecache"><a href="#yum-makecache" class="headerlink" title="yum makecache"></a>yum makecache</h5><h5 id="2、安装-docker"><a href="#2、安装-docker" class="headerlink" title="2、安装 docker"></a>2、安装 docker</h5><p>Docker 安装文档：<a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/centos/">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
-<p>1、卸载系统之前的 docker </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \ </span><br><span class="line">	docker-client \ </span><br><span class="line">	docker-client-latest \ </span><br><span class="line">	docker-common \ </span><br><span class="line">	docker-latest \ </span><br><span class="line">	docker-latest-logrotate \ </span><br><span class="line">	docker-logrotate \ </span><br><span class="line">	docker-engine</span><br></pre></td></tr></table></figure>
-
-<p>2、安装 Docker-CE </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">安装必须的依赖 </span><br><span class="line">sudo yum install -y yum-utils \ </span><br><span class="line"> device-mapper-persistent-data \ </span><br><span class="line"> lvm2 </span><br><span class="line"></span><br><span class="line">设置 docker repo 的 yum 位置 </span><br><span class="line">sudo yum-config-manager \ </span><br><span class="line"> --add-repo \ </span><br><span class="line"> https://download.docker.com/linux/centos/docker-ce.repo </span><br><span class="line"></span><br><span class="line">安装 docker，以及 docker-cli </span><br><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
-
-<p>3、启动 docker </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker </span><br></pre></td></tr></table></figure>
-
-<p>4、设置 docker 开机自启 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
-
-<p>5、测试 docker 常用命令，注意切换到 root 用户下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-
-<p>6、配置 docker 镜像加速</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">阿里云，容器镜像服务 </span><br><span class="line">针对 Docker 客户端版本大于 1.10.0 的用户 </span><br><span class="line">您可以通过修改 daemon 配置文件/etc/docker/daemon.json 来使用加速器 </span><br><span class="line">(以下是三个命令，三次执行)</span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/docker </span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span> </span><br><span class="line">&#123; <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://82m9ar63.mirror.aliyuncs.com&quot;</span>] &#125; </span><br><span class="line">EOF </span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/06/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统安装Jmeter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Jmeter"><a href="#Linux系统安装Jmeter" class="headerlink" title="Linux系统安装Jmeter"></a>Linux系统安装Jmeter</h4><h5 id="1、配置jmeter环境"><a href="#1、配置jmeter环境" class="headerlink" title="1、配置jmeter环境"></a>1、配置jmeter环境</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 检查linux系统上是否安装JDK，输入命令</span><br><span class="line">java -version</span><br><span class="line"></span><br><span class="line">// 上传tar包上传至linux服务器后解压</span><br><span class="line">tar -zxvf apache-jmeter-5.2.1.tgz</span><br><span class="line"></span><br><span class="line">// 将jmeter添加至环境变量</span><br><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> JMETER_HOME=/usr/local/jmeter/apache-jmeter-3.1（jmeter安装路径）</span><br><span class="line">exportCLASSPATH=<span class="variable">$JMETER_HOME</span>/lib/ext/ApacheJMeter_core.jar:<span class="variable">$JMETER_HOME</span>/lib/jorphan.jar:<span class="variable">$JMETER_HOME</span>/lib/logkit-2.0.jar:<span class="variable">$CLASSPATH</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JMETER_HOME</span>/bin:<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/bin</span><br><span class="line"></span><br><span class="line">// 使配置文件生效</span><br><span class="line"><span class="built_in">source</span> /etc/profile </span><br><span class="line"></span><br><span class="line">// 赋予权限</span><br><span class="line"><span class="built_in">chmod</span> +x jmeter </span><br><span class="line"></span><br><span class="line">//查看jmeter是否正确安装</span><br><span class="line">./jmeter -v</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、linux上使用jmeter"><a href="#2、linux上使用jmeter" class="headerlink" title="2、linux上使用jmeter"></a>2、linux上使用jmeter</h5><ul>
-<li><p>在GUI模式（即图形化界面模式）下，新建一个测试计划,形成一个jmx文件，保存并上传到linux机器对应目录。</p>
-</li>
-<li><p>执行命令：jmeter –n –t [路径]&#x2F;[名称].jmx -j [路径]&#x2F;[名称].log –l [路径]&#x2F;[名称].jtl -e -o [路径] </p>
-<p>示例：<code>jmeter -n -t /opt/test.jmx -j /opt/test.log -l /opt/test.jtl -e -o /opt/test</code></p>
-</li>
-</ul>
-<p>参数<br>-n：以非GUI形式运行 Jmeter<br>-t： 运行jmx测试计划脚本文件的路径<br>-l： 运行结果保存路径(.jtl)，此文件必须不存在<br>-j： jmeter运行日志<br>-r： 运行分布式压测服务器，指明用jmeter厲性”remote_ host&#x3D;’<br>-R：运行分布式服务器，其后跟看服务器列表<br>-e：在脚本运行结束后生成html报吉，此参教要与-1一起使用。<br>-o：用于存放html报告的目录，此目录必次为空。比参数与一e一起使用。</p>
-<ul>
-<li><p>结果文件通过Xterm传入本地，打开jmeter，</p>
-<p>然后点击：创建测试计划，创建监听–聚合报告，创建查看结果树等；</p>
-<p>点击浏览，把jtl文件加载进来，就可以看到测试的报告结果。</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/05/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Jmeter/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -818,8 +328,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

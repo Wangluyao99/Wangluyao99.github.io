@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="DelayQueue一、DelayQueue是什么　　DelayQueue是一个无界的BlockingQueue，用于放置实现了Delayed接口的对象，其中的对象只能在其到期时才能从队列中取走。这种队列是有序的，即队头对象的延迟到期时间最长。注意：不能将null元素放置到这种队列中。 二、DelayQueue能做什么　1. 淘宝订单业务:下单之后如果三十分钟之内没有付款就自动取消订单。　2. 饿">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+<meta property="og:url" content="http://example.com/2023/03/20/DelayQueue/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DelayQueue一、DelayQueue是什么　　DelayQueue是一个无界的BlockingQueue，用于放置实现了Delayed接口的对象，其中的对象只能在其到期时才能从队列中取走。这种队列是有序的，即队头对象的延迟到期时间最长。注意：不能将null元素放置到这种队列中。 二、DelayQueue能做什么　1. 淘宝订单业务:下单之后如果三十分钟之内没有付款就自动取消订单。　2. 饿">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-20T14:05:01.836Z">
+<meta property="article:modified_time" content="2023-03-20T14:03:58.513Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DelayQueue" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DelayQueue"><a href="#DelayQueue" class="headerlink" title="DelayQueue"></a>DelayQueue</h2><h3 id="一、DelayQueue是什么"><a href="#一、DelayQueue是什么" class="headerlink" title="一、DelayQueue是什么"></a>一、DelayQueue是什么</h3><p>　　DelayQueue是一个无界的BlockingQueue，用于放置实现了Delayed接口的对象，其中的对象只能在其到期时才能从队列中取走。这种队列是有序的，即队头对象的延迟到期时间最长。注意：不能将null元素放置到这种队列中。</p>
+<h3 id="二、DelayQueue能做什么"><a href="#二、DelayQueue能做什么" class="headerlink" title="二、DelayQueue能做什么"></a>二、DelayQueue能做什么</h3><p>　1. 淘宝订单业务:下单之后如果三十分钟之内没有付款就自动取消订单。<br>　2. 饿了吗订餐通知:下单成功后60s之后给用户发送短信通知。</p>
+<p>　3.关闭空闲连接。服务器中，有很多客户端的连接，空闲一段时间之后需要关闭之。</p>
+<p>　4.缓存。缓存中的对象，超过了空闲时间，需要从缓存中移出。</p>
+<p>　5.任务超时处理。在网络协议滑动窗口请求应答式交互时，处理超时未响应的请求等。</p>
+<span id="more"></span>
+
+<h3 id="三、实例展示"><a href="#三、实例展示" class="headerlink" title="三、实例展示"></a>三、实例展示</h3><p>定义元素类，作为队列的元素。</p>
+<p><strong>DelayQueue只能添加(offer&#x2F;put&#x2F;add)实现了Delayed接口的对象</strong>，意思是说我们不能想往DelayQueue里添加什么就添加什么，不能添加int、也不能添加String进去，必须添加我们自己的实现了Delayed接口的类的对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.springboot.exercise.delayqueue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.DelayQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Delayed;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 王</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/6/30</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyDelayedTask</span> <span class="keyword">implements</span> <span class="title class_">Delayed</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 延时队列</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> DelayQueue&lt;MyDelayedTask&gt; delayQueue  = <span class="keyword">new</span> <span class="title class_">DelayQueue</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">long</span> time;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyDelayedTask</span><span class="params">(String name, <span class="type">long</span> time)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.time = time;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyDelayedTask</span><span class="params">()</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">long</span> <span class="title function_">getDelay</span><span class="params">(TimeUnit unit)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> unit.convert((start + time) - System.currentTimeMillis(), TimeUnit.MILLISECONDS);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Delayed o)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="built_in">this</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (o <span class="keyword">instanceof</span> MyDelayedTask)&#123;</span><br><span class="line">            <span class="type">MyDelayedTask</span> <span class="variable">task</span> <span class="operator">=</span> (MyDelayedTask)o;</span><br><span class="line">            <span class="keyword">return</span> (<span class="type">int</span>) (<span class="built_in">this</span>.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;MyDelayedTask&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, time=&quot;</span> + time +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">                delayQueue.offer(<span class="keyword">new</span> <span class="title class_">MyDelayedTask</span>(<span class="string">&quot;task1&quot;</span>,<span class="number">10000</span>));</span><br><span class="line">                delayQueue.offer(<span class="keyword">new</span> <span class="title class_">MyDelayedTask</span>(<span class="string">&quot;task2&quot;</span>,<span class="number">3900</span>));</span><br><span class="line">                delayQueue.offer(<span class="keyword">new</span> <span class="title class_">MyDelayedTask</span>(<span class="string">&quot;task3&quot;</span>,<span class="number">1900</span>));</span><br><span class="line">                delayQueue.offer(<span class="keyword">new</span> <span class="title class_">MyDelayedTask</span>(<span class="string">&quot;task4&quot;</span>,<span class="number">5900</span>));</span><br><span class="line">                delayQueue.offer(<span class="keyword">new</span> <span class="title class_">MyDelayedTask</span>(<span class="string">&quot;task5&quot;</span>,<span class="number">6900</span>));</span><br><span class="line">                delayQueue.offer(<span class="keyword">new</span> <span class="title class_">MyDelayedTask</span>(<span class="string">&quot;task6&quot;</span>,<span class="number">7900</span>));</span><br><span class="line">                delayQueue.offer(<span class="keyword">new</span> <span class="title class_">MyDelayedTask</span>(<span class="string">&quot;task7&quot;</span>,<span class="number">4900</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="type">Delayed</span> <span class="variable">take</span> <span class="operator">=</span> delayQueue.take();</span><br><span class="line">            System.out.println(take);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//    MyDelayedTask&#123;name=&#x27;task3&#x27;, time=1900&#125;</span></span><br><span class="line"><span class="comment">//    MyDelayedTask&#123;name=&#x27;task2&#x27;, time=3900&#125;</span></span><br><span class="line"><span class="comment">//    MyDelayedTask&#123;name=&#x27;task7&#x27;, time=4900&#125;</span></span><br><span class="line"><span class="comment">//    MyDelayedTask&#123;name=&#x27;task4&#x27;, time=5900&#125;</span></span><br><span class="line"><span class="comment">//    MyDelayedTask&#123;name=&#x27;task5&#x27;, time=6900&#125;</span></span><br><span class="line"><span class="comment">//    MyDelayedTask&#123;name=&#x27;task6&#x27;, time=7900&#125;</span></span><br><span class="line"><span class="comment">//    MyDelayedTask&#123;name=&#x27;task1&#x27;, time=10000&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Task</span> <span class="keyword">implements</span> <span class="title class_">Delayed</span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="comment">//比较延时，队列里元素的排序依据</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Delayed o)</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="comment">//获取剩余时间</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">long</span> <span class="title function_">getDelay</span><span class="params">(TimeUnit unit)</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>；</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中，compareTo 方法 getDelay 方法 就是Delayed接口的方法，我们必须实现，而且按照JAVASE文档，compareTo 方法必须提供与 getDelay 方法一致的排序，也就是说compareTo方法里可以按照getDelay方法的返回值大小排序，即在compareTo方法里比较getDelay方法返回值大小。</p>
+<p>元素进入队列后，先进行排序，然后，只有getDelay也就是剩余时间为0的时候，该元素才有资格被消费者从队列中取出来，所以构造函数一般都有一个时间传入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                logger.info(<span class="string">&quot;延时队列处理&quot;</span>);</span><br><span class="line">                <span class="comment">/* 延时队列会将加入队列中的元素按照过期时间的先后顺序排序，先过期的在队首，该take方法会判断队首元素是否过期，如果没过期，会阻塞等待，直到队首元素过期，才会取出来，往下执行逻辑 */</span></span><br><span class="line">                <span class="type">DisConnectOrder</span> <span class="variable">order</span> <span class="operator">=</span> delayQueue.take();</span><br><span class="line"></span><br><span class="line">                <span class="comment">//处理到期的APP下线服务</span></span><br><span class="line">                offlineMssionDeal(order);</span><br><span class="line"></span><br><span class="line">                <span class="comment">/* 这里的类名.this是为了区分那个类的this，一般在内部类中，需要调用外部类的this的时候使用，不加类名，直接this代表当前类，内部类中代表内部类，外部类中调用代表外部类，这里不再内部类中，也可以显示的指明是哪个类的this*/</span></span><br><span class="line">                 <span class="keyword">if</span> (OfflineDelayService.<span class="built_in">this</span>.listener != <span class="literal">null</span>) &#123;</span><br><span class="line">                     OfflineDelayService.<span class="built_in">this</span>.listener.onDelayedArrived(order);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">             e.printStackTrace();</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="原理分析："><a href="#原理分析：" class="headerlink" title="原理分析："></a>原理分析：</h3><h4 id="内部结构"><a href="#内部结构" class="headerlink" title="内部结构"></a>内部结构</h4><ul>
+<li>可重入锁</li>
+<li>用于根据delay时间排序的优先级队列</li>
+<li>用于优化阻塞通知的线程元素leader</li>
+<li>用于实现阻塞和通知的Condition对象</li>
+</ul>
+<h4 id="delayed和PriorityQueue"><a href="#delayed和PriorityQueue" class="headerlink" title="delayed和PriorityQueue"></a>delayed和PriorityQueue</h4><p>　在理解delayQueue原理之前我们需要先了解两个东西,delayed和PriorityQueue.</p>
+<ul>
+<li>delayed是一个具有过期时间的元素</li>
+<li>PriorityQueue是一个根据队列里元素某些属性排列先后的顺序队列</li>
+</ul>
+<p>　　delayQueue其实就是在每次往优先级队列中添加元素，然后以元素的delay&#x2F;过期值作为排序的因素，以此来达到先过期的元素会拍在队首,每次从队列里取出来都是最先要过期的元素</p>
+<h4 id="offer方法"><a href="#offer方法" class="headerlink" title="offer方法"></a>offer方法</h4><ol>
+<li>执行加锁操作</li>
+<li>把元素添加到优先级队列中</li>
+<li>查看元素是否为队首</li>
+<li>如果是队首的话，设置leader为空，唤醒所有等待的队列</li>
+<li>释放锁</li>
+</ol>
+<h4 id="take方法"><a href="#take方法" class="headerlink" title="take方法"></a>take方法</h4><ol>
+<li>执行加锁操作</li>
+<li>取出优先级队列元素q的队首</li>
+<li>如果元素q的队首&#x2F;队列为空,阻塞请求</li>
+<li>如果元素q的队首(first)不为空,获得这个元素的delay时间值</li>
+<li>如果first的延迟delay时间值为0的话,说明该元素已经到了可以使用的时间,调用poll方法弹出该元素,跳出方法</li>
+<li>如果first的延迟delay时间值不为0的话,释放元素first的引用,避免内存泄露</li>
+<li>判断leader元素是否为空,不为空的话阻塞当前线程</li>
+<li>如果leader元素为空的话,把当前线程赋值给leader元素,然后阻塞delay的时间,即等待队首到达可以出队的时间,在finally块中释放leader元素的引用</li>
+<li>循环执行从1~8的步骤</li>
+<li>如果leader为空并且优先级队列不为空的情况下(判断还有没有其他后续节点),调用signal通知其他的线程</li>
+<li>执行解锁操作</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/20/DelayQueue/" class="archive-article-date">
-  	<time datetime="2023-03-20T14:05:01.836Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-20</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/20/DelayQueue/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/17/RabbitMQ%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-03-17T14:48:48.616Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-03-16T15:10:36.763Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-16</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2023/03/17/RabbitMQ%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/14/EasyExcel/" class="archive-article-date">
-  	<time datetime="2023-03-14T11:31:45.143Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/13/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-03-13T14:57:46.392Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-13</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/11/tips/" class="archive-article-date">
-  	<time datetime="2023-03-11T14:43:34.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-11</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/" class="archive-article-date">
-  	<time datetime="2023-03-10T14:58:08.400Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-10</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/09/Linux%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2023-03-09T15:19:23.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-09</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/08/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Nginx/" class="archive-article-date">
-  	<time datetime="2023-03-08T13:09:11.698Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/07/Docker%20%E5%AE%89%E8%A3%85%20redis/" class="archive-article-date">
-  	<time datetime="2023-03-07T15:26:03.192Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-07</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +361,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -8,11 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="SpringCloud Gateway 1、SpringCloud Gateway 简介​		该项目是基于 Spring 5.0，Spring Boot 2.0 和 Project Reactor 等技术开发的网关，它旨在为微服务架构提供一种简单有效的统一的 API 路由管理方式。 ​		为了提升网关的性能，SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2023/03/21/SpringCloud-Gateway/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SpringCloud Gateway 1、SpringCloud Gateway 简介​		该项目是基于 Spring 5.0，Spring Boot 2.0 和 Project Reactor 等技术开发的网关，它旨在为微服务架构提供一种简单有效的统一的 API 路由管理方式。 ​		为了提升网关的性能，SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-21T14:40:23.611Z">
+<meta property="article:modified_time" content="2023-03-21T14:40:08.135Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,9 +154,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-SpringCloud-Gateway" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-SpringCloud-Gateway" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -161,239 +163,187 @@
 <h3 id="1、SpringCloud-Gateway-简介"><a href="#1、SpringCloud-Gateway-简介" class="headerlink" title="1、SpringCloud Gateway 简介"></a>1、SpringCloud Gateway 简介</h3><p>​		该项目是基于 Spring 5.0，Spring Boot 2.0 和 Project Reactor 等技术开发的网关，它旨在为微服务架构提供一种简单有效的统一的 API 路由管理方式。</p>
 <p>​		为了提升网关的性能，SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty。</p>
 <p><strong>SpringCloud Gateway 底层使用了高性能的通信框架Netty</strong>。</p>
-        
-          <a class="article-more-a" href="/2023/03/21/SpringCloud-Gateway/#more">more >></a>
-        
-      
+<span id="more"></span>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+<h3 id="2、SpringCloud-Gateway-特征"><a href="#2、SpringCloud-Gateway-特征" class="headerlink" title="2、SpringCloud Gateway 特征"></a>2、SpringCloud Gateway 特征</h3><p><strong>SpringCloud官方，对SpringCloud Gateway 特征介绍如下：</strong></p>
+<p>（1）基于 Spring Framework 5，Project Reactor 和 Spring Boot 2.0</p>
+<p>（2）集成 Hystrix 断路器</p>
+<p>（3）集成 Spring Cloud DiscoveryClient</p>
+<p>（4）Predicates 和 Filters 作用于特定路由，易于编写的 Predicates 和 Filters</p>
+<p>（5）具备一些网关的高级功能：动态路由、限流、路径重写</p>
+<p><strong>简单说明一下上文中的三个术语：</strong></p>
+<p><strong>（1）Filter（过滤器）</strong>：</p>
+<p>可以拦截和修改请求，并且对上游的响应，进行二次处理。过滤器为org.springframework.cloud.gateway.filter.GatewayFilter类的实例。</p>
+<p><strong>（2）Route（路由）</strong>：</p>
+<p>网关配置的基本组成模块，一个<strong>Route模块</strong>由一个 ID，一个目标 URI，一组断言和一组过滤器定义。如果断言为真，则路由匹配，目标URI会被访问。</p>
+<p><strong>（3）Predicate（断言）</strong>：</p>
+<p>这是一个 Java 8 的 Predicate，可以匹配来自 HTTP 请求的任何内容，例如 headers 或参数。<strong>断言的</strong>输入类型是一个 ServerWebExchange。</p>
+<h3 id="3、SpringCloud-Gateway的处理流程"><a href="#3、SpringCloud-Gateway的处理流程" class="headerlink" title="3、SpringCloud Gateway的处理流程"></a>3、SpringCloud Gateway的处理流程</h3><p>​		客户端向 Spring Cloud Gateway 发出请求。然后在 Gateway Handler Mapping 中找到与请求相匹配的路由，将其发送到 Gateway Web Handler。Handler 再通过指定的过滤器链来将请求发送到我们实际的服务执行业务逻辑，然后返回。</p>
+<h3 id="4、路由配置方式"><a href="#4、路由配置方式" class="headerlink" title="4、路由配置方式"></a>4、路由配置方式</h3><h4 id="4-1-、基础URI路由配置方式"><a href="#4-1-、基础URI路由配置方式" class="headerlink" title="4.1 、基础URI路由配置方式"></a>4.1 、基础URI路由配置方式</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">api-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">url-proxy-1</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">https://blog.csdn.net</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/csdn</span></span><br><span class="line">            <span class="comment">#注意！！！！ （- id） 和 （-Path）中间有空格，否则报错</span></span><br></pre></td></tr></table></figure>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/21/SpringCloud-Gateway/">展开全文 >></a>
-        </p>
-      
+<p><strong>各字段含义如下：</strong></p>
+<p>id：我们自定义的路由 ID，保持唯一</p>
+<p>uri：目标服务地址</p>
+<p>predicates：路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。</p>
+<p>上面这段配置的意思是，配置了一个 id 为 url-proxy-1的URI代理规则，路由的规则为：</p>
+<p>当访问地址<a target="_blank" rel="noopener" href="http://localhost:8080/csdn/1.jsp%E6%97%B6%EF%BC%8C%E4%BC%9A%E8%B7%AF%E7%94%B1%E5%88%B0%E4%B8%8A%E6%B8%B8%E5%9C%B0%E5%9D%80https://blog.csdn.net/1.jsp%E3%80%82">http://localhost:8080/csdn/1.jsp时，会路由到上游地址https://blog.csdn.net/1.jsp。</a></p>
+<h4 id="4-2、基于代码的路由配置方式"><a href="#4-2、基于代码的路由配置方式" class="headerlink" title="4.2、基于代码的路由配置方式"></a>4.2、基于代码的路由配置方式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GatewayApplication</span> &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(GatewayApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RouteLocator <span class="title function_">customRouteLocator</span><span class="params">(RouteLocatorBuilder builder)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> builder.routes()</span><br><span class="line">                .route(<span class="string">&quot;path_route&quot;</span>, r -&gt; r.path(<span class="string">&quot;/csdn&quot;</span>)</span><br><span class="line">                        .uri(<span class="string">&quot;https://blog.csdn.net&quot;</span>))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DelayQueue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="DelayQueue"><a href="#DelayQueue" class="headerlink" title="DelayQueue"></a>DelayQueue</h2><h3 id="一、DelayQueue是什么"><a href="#一、DelayQueue是什么" class="headerlink" title="一、DelayQueue是什么"></a>一、DelayQueue是什么</h3><p>　　DelayQueue是一个无界的BlockingQueue，用于放置实现了Delayed接口的对象，其中的对象只能在其到期时才能从队列中取走。这种队列是有序的，即队头对象的延迟到期时间最长。注意：不能将null元素放置到这种队列中。</p>
-<h3 id="二、DelayQueue能做什么"><a href="#二、DelayQueue能做什么" class="headerlink" title="二、DelayQueue能做什么"></a>二、DelayQueue能做什么</h3><p>　1. 淘宝订单业务:下单之后如果三十分钟之内没有付款就自动取消订单。<br>　2. 饿了吗订餐通知:下单成功后60s之后给用户发送短信通知。</p>
-<p>　3.关闭空闲连接。服务器中，有很多客户端的连接，空闲一段时间之后需要关闭之。</p>
-<p>　4.缓存。缓存中的对象，超过了空闲时间，需要从缓存中移出。</p>
-<p>　5.任务超时处理。在网络协议滑动窗口请求应答式交互时，处理超时未响应的请求等。</p>
-        
-          <a class="article-more-a" href="/2023/03/20/DelayQueue/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/20/DelayQueue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-RabbitMQ相关问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="RabbitMQ消息丢失"><a href="#RabbitMQ消息丢失" class="headerlink" title="RabbitMQ消息丢失"></a>RabbitMQ消息丢失</h4><p>一条消息的传送流程：生产者–&gt;MQ–&gt;消费者，这三个节点都可能丢失数据。</p>
-<p><strong>Producer端：</strong>发送消息过程中出现网络问题：producer以为发送成功，但RabbitMQ server没有收到；<br>解决方案：发送方确认机制。</p>
-<p><strong>RabbitMQ server 端：</strong>接收到消息后由于服务器宕机或重启等原因（消息默认存在内存中）导致消息丢失；<br>解决方案：开启Broker持久化。</p>
-<p><strong>Consumer端：</strong>Consumer端接收到消息后自动返回ack，但后边处理消息出错，没有完成消息的处理；<br>解决方案：重试几次之后，若还是失败，则进行通知与补偿：1、发邮件提醒没消费成功的数据。2、存到数据库中，便于后期排查。</p>
-        
-          <a class="article-more-a" href="/2023/03/17/RabbitMQ%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/17/RabbitMQ%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h4><p><strong>定义： 策略模式定义了一系列算法，并将每个算法封装起来，使他们可以相互替换，且算法的变化不会影响到使用算法的客户。</strong></p>
-<p>（策略模式简单点说就是根据不同参数选择同一个接口的不同实现。）</p>
-<p>意图：定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。</p>
-<p>主要解决：在有多种算法相似的情况下，使用 if…else 所带来的复杂和难以维护。</p>
-<p>何时使用：一个系统有许多许多类，而区分它们的只是他们直接的行为。</p>
-<p>如何解决：将这些算法封装成一个一个的类，任意地替换。</p>
-<p>关键代码：实现同一个接口。</p>
-<p>优点： 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展性良好。</p>
-<h4 id="模板模式"><a href="#模板模式" class="headerlink" title="模板模式"></a>模板模式</h4><p><strong>定义：定义一个操作中算法的骨架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变算法的结构即可重定义该算法的某些特定步骤。</strong></p>
-        
-          <a class="article-more-a" href="/2023/03/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-EasyExcel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Easy-Excel"><a href="#Easy-Excel" class="headerlink" title="Easy Excel"></a>Easy Excel</h4><p>官方文档：<a target="_blank" rel="noopener" href="https://easyexcel.opensource.alibaba.com/">https://easyexcel.opensource.alibaba.com/</a></p>
-<ul>
-<li>简单导入</li>
+<p>在yaml配置文件中注销掉相关路由的配置，重启服务，访问链接：<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a> csdn 同1 效果相同。</p>
+<h4 id="4-3-和注册中心相结合的路由配置方式"><a href="#4-3-和注册中心相结合的路由配置方式" class="headerlink" title="4.3 和注册中心相结合的路由配置方式"></a>4.3 和注册中心相结合的路由配置方式</h4><p>略</p>
+<h3 id="5、路由匹配规则"><a href="#5、路由匹配规则" class="headerlink" title="5、路由匹配规则"></a>5、路由匹配规则</h3><h4 id="5-1-Predicate-断言条件-转发规则-介绍"><a href="#5-1-Predicate-断言条件-转发规则-介绍" class="headerlink" title="5.1 Predicate 断言条件(转发规则)介绍"></a>5.1 Predicate 断言条件(转发规则)介绍</h4><h5 id="1、GateWay-内置几种-Predicate-的使用"><a href="#1、GateWay-内置几种-Predicate-的使用" class="headerlink" title="1、GateWay 内置几种 Predicate 的使用"></a>1、GateWay 内置几种 Predicate 的使用</h5><ul>
+<li>转发规则（predicates），假设 转发uri都设定为<a target="_blank" rel="noopener" href="http://localhost:9023/">http://localhost:9023</a></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 入参：MultipartFile file</span></span><br><span class="line"><span class="comment">// Excel监听器：</span></span><br><span class="line"><span class="type">ExcelModuleListener</span> <span class="variable">readListener</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExcelModuleListener</span>();</span><br><span class="line">EasyExcel.read(file.getInputStream(), ExcelModule.class, readListener).sheet().doRead();  <span class="comment">//ExcelModule.class解析的excel类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ExcelModuleListener</span> <span class="keyword">implements</span> <span class="title class_">ReadListener</span>&lt;ExcelModule&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invoke</span><span class="params">(ExcelModule excelModule, AnalysisContext analysisContext)</span> &#123;</span><br><span class="line">        <span class="comment">// 数据解析</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">(AnalysisContext analysisContext)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 此处需要修改为true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterAllAnalysed</span><span class="params">(AnalysisContext analysisContext)</span> &#123;</span><br><span class="line">        <span class="comment">// 解析完成的操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="left">规则</th>
+<th align="left">实例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Path</td>
+<td align="left">- Path&#x3D;&#x2F;gate&#x2F;** ,&#x2F;rule&#x2F;**</td>
+<td align="left">当请求的路径为gate、rule开头的时，转发到<a href="http://localhost:9023服务器上">http://localhost:9023服务器上</a></td>
+</tr>
+<tr>
+<td align="left">Before</td>
+<td align="left">- Before&#x3D;2017-01-20T17:42:47.789-07:00[America&#x2F;Denver]</td>
+<td align="left">在某个时间之前的请求才会被转发到 <a href="http://localhost:9023服务器上">http://localhost:9023服务器上</a></td>
+</tr>
+<tr>
+<td align="left">After</td>
+<td align="left">- After&#x3D;2017-01-20T17:42:47.789-07:00[America&#x2F;Denver]</td>
+<td align="left">在某个时间之后的请求才会被转发</td>
+</tr>
+<tr>
+<td align="left">Between</td>
+<td align="left">- Between&#x3D;2017-01-20T17:42:47.789-07:00[America&#x2F;Denver],2017-01-21T17:42:47.789-07:00[America&#x2F;Denver]</td>
+<td align="left">在某个时间段之间的才会被转发</td>
+</tr>
+<tr>
+<td align="left">Cookie</td>
+<td align="left">- Cookie&#x3D;chocolate, ch.p</td>
+<td align="left">名为chocolate的表单或者满足正则ch.p的表单才会被匹配到进行请求转发</td>
+</tr>
+<tr>
+<td align="left">Header</td>
+<td align="left">- Header&#x3D;X-Request-Id, \d+</td>
+<td align="left">携带参数X-Request-Id或者满足\d+的请求头才会匹配</td>
+</tr>
+<tr>
+<td align="left">Host</td>
+<td align="left">- Host&#x3D;<a target="_blank" rel="noopener" href="http://www.hd123.com/">www.hd123.com</a></td>
+<td align="left">当主机名为<a target="_blank" rel="noopener" href="http://www.hd123.com的时候直接转发到http//localhost:9023%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A">www.hd123.com的时候直接转发到http://localhost:9023服务器上</a></td>
+</tr>
+<tr>
+<td align="left">Method</td>
+<td align="left">- Method&#x3D;GET</td>
+<td align="left">只有GET方法才会匹配转发请求，还可以限定POST、PUT等请求方式</td>
+</tr>
+</tbody></table>
+<h5 id="2、通过请求参数匹配"><a href="#2、通过请求参数匹配" class="headerlink" title="2、通过请求参数匹配"></a>2、通过请求参数匹配</h5><p>Query Route Predicate 支持传入两个参数，一个是属性名一个为属性值，属性值可以是正则表达式。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">  	 <span class="attr">name:</span> <span class="string">api-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="string">-id:</span> <span class="string">gateway-service</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">https://www.baidu.com</span></span><br><span class="line">          <span class="attr">order:</span> <span class="number">0</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="string">-Query=smile</span> <span class="comment">#只要请求中包含 smile 属性的参数即可匹配路由。</span></span><br><span class="line">            <span class="comment">#Query 的值以键值对的方式进行配置  </span></span><br><span class="line">            <span class="string">-Query=keep,</span> <span class="string">pu.</span> <span class="comment">#当请求中包含keep属性并且参数值是以pu开头的长度为三位的字符串才会进行匹配和路由。</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>简单导出</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 入参： HttpServletResponse response</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置响应头</span></span><br><span class="line">response.addHeader(HttpHeaders.CONTENT_DISPOSITION, <span class="string">&quot;attachment;filename=&quot;</span> + URLEncoder.encode(ExcelConstant.RECORD_FILE_NAME, StandardCharsets.UTF_8));</span><br><span class="line">response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE); <span class="comment">//APPLICATION_OCTET_STREAM_VALUE = &quot;application/octet-stream&quot;;</span></span><br><span class="line"><span class="comment">// 查询得到导出数据:  List&lt;CallRecordExcelVO&gt; callRecords;</span></span><br><span class="line"><span class="comment">// 写入excel</span></span><br><span class="line">EasyExcel.write(response.getOutputStream(), CallRecordExcelVO.class)</span><br><span class="line">              .sheet(ExcelConstant.RECORD_SHEET_NAME)</span><br><span class="line">              .doWrite(callRecords);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong></p>
+<p><strong>各种 Predicates 同时存在于同一个路由时，请求必须同时满足所有的条件才被这个路由匹配。</strong></p>
+<p><strong>一个请求满足多个路由的断言条件时，请求只会被首个成功匹配的路由转发</strong></p>
+<h3 id="5-2-过滤器规则（Filter）"><a href="#5-2-过滤器规则（Filter）" class="headerlink" title="5.2 过滤器规则（Filter）"></a>5.2 过滤器规则（Filter）</h3><table>
+<thead>
+<tr>
+<th align="left">过滤规则</th>
+<th align="left">实例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">PrefixPath</td>
+<td align="left">- PrefixPath&#x3D;&#x2F;app</td>
+<td align="left">在请求路径前加上app</td>
+</tr>
+<tr>
+<td align="left">RewritePath</td>
+<td align="left">- RewritePath&#x3D;&#x2F;test, &#x2F;app&#x2F;test</td>
+<td align="left">访问localhost:9022&#x2F;test,请求会转发到localhost:8001&#x2F;app&#x2F;test</td>
+</tr>
+<tr>
+<td align="left">SetPath</td>
+<td align="left">SetPath&#x3D;&#x2F;app&#x2F;{path}</td>
+<td align="left">通过模板设置路径，转发的规则时会在路径前增加app，{path}表示原请求路径</td>
+</tr>
+<tr>
+<td align="left">RedirectTo</td>
+<td align="left"></td>
+<td align="left">重定向</td>
+</tr>
+<tr>
+<td align="left">RemoveRequestHeader</td>
+<td align="left"></td>
+<td align="left">去掉某个请求头信息</td>
+</tr>
+</tbody></table>
+<p><strong>注：当配置多个filter时，优先定义的会被调用，剩余的filter将不会生效</strong></p>
+<h4 id="1、PrefixPath-：对所有的请求路径添加前缀"><a href="#1、PrefixPath-：对所有的请求路径添加前缀" class="headerlink" title="1、PrefixPath ：对所有的请求路径添加前缀"></a>1、PrefixPath ：对所有的请求路径添加前缀</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">prefixpath_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">filters:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">PrefixPath=/mypath</span> </span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>根据参数只导出指定列</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">excludeOrIncludeWrite</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> TestFileUtil.getPath() + <span class="string">&quot;excludeOrIncludeWrite&quot;</span> + System.currentTimeMillis() + <span class="string">&quot;.xlsx&quot;</span>;</span><br><span class="line">    <span class="comment">// 这里需要注意 在使用ExcelProperty注解的使用，如果想不空列则需要加入order字段，而不是index,order会忽略空列，然后继续往后，而index，不会忽略空列，在第几列就是第几列。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据用户传入字段 假设我们要忽略 date</span></span><br><span class="line">    Set&lt;String&gt; excludeColumnFiledNames = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;String&gt;();</span><br><span class="line">    excludeColumnFiledNames.add(<span class="string">&quot;date&quot;</span>);</span><br><span class="line">    <span class="comment">// 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭</span></span><br><span class="line">    EasyExcel.write(fileName, DemoData.class).excludeColumnFiledNames(excludeColumnFiledNames).sheet(<span class="string">&quot;模板&quot;</span>).doWrite(data());</span><br><span class="line"></span><br><span class="line">    fileName = TestFileUtil.getPath() + <span class="string">&quot;excludeOrIncludeWrite&quot;</span> + System.currentTimeMillis() + <span class="string">&quot;.xlsx&quot;</span>;</span><br><span class="line">    <span class="comment">// 根据用户传入字段 假设我们只要导出 date</span></span><br><span class="line">    Set&lt;String&gt; includeColumnFiledNames = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;String&gt;();</span><br><span class="line">    includeColumnFiledNames.add(<span class="string">&quot;date&quot;</span>);</span><br><span class="line">    <span class="comment">// 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭</span></span><br><span class="line">    EasyExcel.write(fileName, DemoData.class).includeColumnFiledNames(includeColumnFiledNames).sheet(<span class="string">&quot;模板&quot;</span>).doWrite(data());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>访问&#x2F;hello的请求被发送到<a target="_blank" rel="noopener" href="https://example.org/mypath/hello">https://example.org/mypath/hello</a></p>
+<h4 id="2、RedirectTo：重定向，配置包含重定向的返回码和地址"><a href="#2、RedirectTo：重定向，配置包含重定向的返回码和地址" class="headerlink" title="2、RedirectTo：重定向，配置包含重定向的返回码和地址"></a>2、RedirectTo：重定向，配置包含重定向的返回码和地址</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">prefixpath_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">filters:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">RedirectTo=302,</span> <span class="string">https://acme.org</span> </span><br></pre></td></tr></table></figure>
+
+<h4 id="3、RemoveRequestHeader：去掉某个请求头信息"><a href="#3、RemoveRequestHeader：去掉某个请求头信息" class="headerlink" title="3、RemoveRequestHeader：去掉某个请求头信息"></a>3、RemoveRequestHeader：去掉某个请求头信息</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">removerequestheader_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">https://example.org</span></span><br><span class="line">        <span class="attr">filters:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">RemoveRequestHeader=X-Request-Foo</span> <span class="comment">#去掉请求头信息 X-Request-Foo</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4、RewritePath：改写路径"><a href="#4、RewritePath：改写路径" class="headerlink" title="4、RewritePath：改写路径"></a>4、RewritePath：改写路径</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">rewrite_filter</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">http://localhost:8081</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Path=/test/**</span></span><br><span class="line">        <span class="attr">filters:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">RewritePath=/where(?&lt;segment&gt;/?.*),</span> <span class="string">/test(?&lt;segment&gt;/?.*)</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;where&#x2F;… 改成 test&#x2F;…</p>
+<p><strong>使用代码改写路径</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">RouteLocatorBuilder.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> routeLocatorBuilder.routes();</span><br><span class="line">    builder</span><br><span class="line">        .route(<span class="string">&quot;path_rote_at_guigu&quot;</span>, r -&gt; r.path(<span class="string">&quot;/guonei&quot;</span>)</span><br><span class="line">        .uri(<span class="string">&quot;http://news.baidu.com/guonei&quot;</span>))</span><br><span class="line">        .route(<span class="string">&quot;csdn_route&quot;</span>, r -&gt; r.path(<span class="string">&quot;/csdn&quot;</span>)</span><br><span class="line">        .uri(<span class="string">&quot;https://blog.csdn.net&quot;</span>))</span><br><span class="line">        .route(<span class="string">&quot;blog3_rewrite_filter&quot;</span>, r -&gt; r.path(<span class="string">&quot;/blog3/**&quot;</span>)</span><br><span class="line">        .filters(f -&gt; f.rewritePath(<span class="string">&quot;/blog3/(?&lt;segment&gt;.*)&quot;</span>, <span class="string">&quot;/$\\&#123;segment&#125;&quot;</span>))</span><br><span class="line">        .uri(<span class="string">&quot;https://blog.csdn.net&quot;</span>))</span><br><span class="line">        .route(<span class="string">&quot;rewritepath_route&quot;</span>, r -&gt; r.path(<span class="string">&quot;/baidu/**&quot;</span>)</span><br><span class="line">        .filters(f -&gt; f.rewritePath(<span class="string">&quot;/baidu/(?&lt;segment&gt;.*)&quot;</span>, <span class="string">&quot;/$\\&#123;segment&#125;&quot;</span>))</span><br><span class="line">        .uri(<span class="string">&quot;http://www.baidu.com&quot;</span>))</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
+
+<h4 id="5、RequestSize：请求大小。"><a href="#5、RequestSize：请求大小。" class="headerlink" title="5、RequestSize：请求大小。"></a>5、RequestSize：请求大小。</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">request_size_route</span></span><br><span class="line">        <span class="attr">uri:</span> <span class="string">http://localhost:8080/upload</span></span><br><span class="line">        <span class="attr">predicates:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">Path=/upload</span></span><br><span class="line">        <span class="attr">filters:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">RequestSize</span></span><br><span class="line">          <span class="attr">args:</span></span><br><span class="line">            <span class="attr">maxSize:</span> <span class="number">5000000</span> <span class="comment">#超过5M的请求会返回413错误。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6、Default-filters：对所有请求添加过滤器。"><a href="#6、Default-filters：对所有请求添加过滤器。" class="headerlink" title="6、Default-filters：对所有请求添加过滤器。"></a>6、Default-filters：对所有请求添加过滤器。</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">default-filters:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">AddResponseHeader=X-Response-Default-Red,</span> <span class="string">Default-Blue</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PrefixPath=/httpbin</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-3-通过代码进行配置"><a href="#5-3-通过代码进行配置" class="headerlink" title="5.3 通过代码进行配置"></a>5.3 通过代码进行配置</h3><p>通过代码进行配置，将路由规则设置为一个Bean即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">	<span class="keyword">public</span> RouteLocator <span class="title function_">customRouteLocator</span><span class="params">(RouteLocatorBuilder builder)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> builder.routes()</span><br><span class="line">			.route(<span class="string">&quot;path_route&quot;</span>, r -&gt; r.path(<span class="string">&quot;/get&quot;</span>)</span><br><span class="line">				.uri(<span class="string">&quot;http://httpbin.org&quot;</span>))</span><br><span class="line">			.route(<span class="string">&quot;host_route&quot;</span>, r -&gt; r.host(<span class="string">&quot;*.myhost.org&quot;</span>)</span><br><span class="line">				.uri(<span class="string">&quot;http://httpbin.org&quot;</span>))</span><br><span class="line">			.route(<span class="string">&quot;rewrite_route&quot;</span>, r -&gt; r.host(<span class="string">&quot;*.rewrite.org&quot;</span>)</span><br><span class="line">				.filters(f -&gt; f.rewritePath(<span class="string">&quot;/foo/(?&lt;segment&gt;.*)&quot;</span>, <span class="string">&quot;/$&#123;segment&#125;&quot;</span>))</span><br><span class="line">				.uri(<span class="string">&quot;http://httpbin.org&quot;</span>))</span><br><span class="line">			.route(<span class="string">&quot;hystrix_route&quot;</span>, r -&gt; r.host(<span class="string">&quot;*.hystrix.org&quot;</span>)</span><br><span class="line">				.filters(f -&gt; f.hystrix(c -&gt; c.setName(<span class="string">&quot;slowcmd&quot;</span>)))</span><br><span class="line">				.uri(<span class="string">&quot;http://httpbin.org&quot;</span>))</span><br><span class="line">			.route(<span class="string">&quot;hystrix_fallback_route&quot;</span>, r -&gt; r.host(<span class="string">&quot;*.hystrixfallback.org&quot;</span>)</span><br><span class="line">				.filters(f -&gt; f.hystrix(c -&gt; c.setName(<span class="string">&quot;slowcmd&quot;</span>).setFallbackUri(<span class="string">&quot;forward:/hystrixfallback&quot;</span>)))</span><br><span class="line">				.uri(<span class="string">&quot;http://httpbin.org&quot;</span>))</span><br><span class="line">			.route(<span class="string">&quot;limit_route&quot;</span>, r -&gt; r</span><br><span class="line">				.host(<span class="string">&quot;*.limited.org&quot;</span>).and().path(<span class="string">&quot;/anything/**&quot;</span>)</span><br><span class="line">				.filters(f -&gt; f.requestRateLimiter(c -&gt; c.setRateLimiter(redisRateLimiter())))</span><br><span class="line">				.uri(<span class="string">&quot;http://httpbin.org&quot;</span>))</span><br><span class="line">			.build();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6、实现熔断降级"><a href="#6、实现熔断降级" class="headerlink" title="6、实现熔断降级"></a>6、实现熔断降级</h3><h4 id="6-1-为什么要实现熔断降级？"><a href="#6-1-为什么要实现熔断降级？" class="headerlink" title="6.1 为什么要实现熔断降级？"></a>6.1 为什么要实现熔断降级？</h4><p>​		在分布式系统中，网关作为流量的入口，因此会有大量的请求进入网关，向其他服务发起调用，其他服务不可避免的会出现调用失败（超时、异常），失败时不能让请求堆积在网关上，需要快速失败并返回给客户端，想要实现这个要求，就必须在网关上做熔断、降级操作。</p>
+<h4 id="6-2-为什么在网关上请求失败需要快速返回给客户端？"><a href="#6-2-为什么在网关上请求失败需要快速返回给客户端？" class="headerlink" title="6.2 为什么在网关上请求失败需要快速返回给客户端？"></a>6.2 为什么在网关上请求失败需要快速返回给客户端？</h4><p>​		因为当一个客户端请求发生故障的时候，这个请求会一直堆积在网关上，网关上堆积多了就会给网关乃至整个服务都造成巨大的压力，甚至整个服务宕掉。因此要对一些服务和页面进行有策略的降级，以此缓解服务器资源的的压力，以保证核心业务的正常运行，同时也保持了客户和大部分客户的得到正确的相应，所以需要网关上请求失败需要快速返回给客户端。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gateway</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">      <span class="attr">host:</span> <span class="string">localhost</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">      <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">rateLimit_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://localhost:8000</span></span><br><span class="line">          <span class="attr">order:</span> <span class="number">0</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/test/**</span></span><br><span class="line">          <span class="attr">filters:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">StripPrefix=1</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Hystrix</span></span><br><span class="line">              <span class="attr">args:</span></span><br><span class="line">                <span class="attr">name:</span> <span class="string">fallbackCmdA</span></span><br><span class="line">                <span class="attr">fallbackUri:</span> <span class="string">forward:/fallbackA</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">hystrix.command.fallbackCmdA.execution.isolation.thread.timeoutInMilliseconds:</span> <span class="number">5000</span></span><br></pre></td></tr></table></figure>
+
+<p>这里的配置，使用了两个过滤器：</p>
+<p>（1）过滤器StripPrefix，作用是去掉请求路径的最前面n个部分截取掉。</p>
+<p>StripPrefix&#x3D;1就代表截取路径的个数为1，比如前端过来请求&#x2F;test&#x2F;good&#x2F;1&#x2F;view，匹配成功后，路由到后端的请求路径就会变成<a target="_blank" rel="noopener" href="http://localhost:8888/good/1/view%E3%80%82">http://localhost:8888/good/1/view。</a></p>
+<p>（2）过滤器Hystrix，作用是通过Hystrix进行熔断降级</p>
+<p>当上游的请求，进入了Hystrix熔断降级机制时，就会调用fallbackUri配置的降级地址。需要注意的是，还需要单独设置Hystrix的commandKey的超时时间</p>
+<p>fallbackUri配置的降级地址的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.gateway.response.Response;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FallbackController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/fallbackA&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Response <span class="title function_">fallbackA</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Response</span>();</span><br><span class="line">        response.setCode(<span class="string">&quot;100&quot;</span>);</span><br><span class="line">        response.setMessage(<span class="string">&quot;服务暂时不可用&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -402,16 +352,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/14/EasyExcel/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/21/SpringCloud-Gateway/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2023/03/20/DelayQueue/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -431,330 +440,14 @@
 
 
 
-
-  
-    <article id="post-单例模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="单例模式的写法"><a href="#单例模式的写法" class="headerlink" title="单例模式的写法"></a>单例模式的写法</h4><h5 id="饱汉模式"><a href="#饱汉模式" class="headerlink" title="饱汉模式"></a>饱汉模式</h5><p>饱汉模式的核心就是懒加载。好处是更启动速度快、节省资源，一直到实例被第一次访问，才需要初始化单例；坏处是线程不安全，if语句存在竞态条件。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础的饱汉</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Singleton</span> <span class="variable">singleton</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="literal">null</span>) &#123;</span><br><span class="line">      singleton = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 饱汉 - DCL 2.0</span></span><br><span class="line"><span class="comment">// 懒加载+线程安全，防止指令重排序(不会“部分初始化&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton1</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">Singleton1</span> <span class="variable">singleton</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="number">1</span>;   <span class="comment">// 触发部分初始化问题</span></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">Singleton1</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton1 <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (Singleton1.class) &#123;</span><br><span class="line">        <span class="comment">// must be a complete instance</span></span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="literal">null</span>) &#123;</span><br><span class="line">          singleton = <span class="keyword">new</span> <span class="title class_">Singleton1</span>();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h5><p>与饱汉相对，他就在最早的时机，即类加载时初始化单例，以后访问时直接返回即可。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton</span> <span class="variable">singleton</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>单线程环境下，饿汉与饱汉在性能上没什么差别；但多线程环境下，由于饱汉需要加锁，饿汉的性能反而更优。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/13/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1、Math-max"><a href="#1、Math-max" class="headerlink" title="1、Math.max()"></a>1、Math.max()</h4><p>Math.max()方法比较的是两个同类型数据的大小，取大值返回。</p>
-<h4 id="2、PathMatcher"><a href="#2、PathMatcher" class="headerlink" title="2、PathMatcher"></a>2、PathMatcher</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 路径匹配器</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">shouldSkipWhiteUrls</span><span class="params">(String currentUrl)</span> &#123;</span><br><span class="line">    <span class="comment">//路径匹配器(简介SpringMvc拦截器的匹配器)</span></span><br><span class="line">    <span class="comment">//比如/oauth/** 可以匹配/oauth/token    /oauth/check_token等</span></span><br><span class="line">    <span class="type">PathMatcher</span> <span class="variable">pathMatcher</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AntPathMatcher</span>();</span><br><span class="line">    <span class="keyword">for</span> (String skipPath : notAuthUrlProperties.getWhiteUrls()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pathMatcher.match(skipPath, currentUrl)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/11/tips/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统安装Elasticsearch" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Elasticsearch"><a href="#Linux系统安装Elasticsearch" class="headerlink" title="Linux系统安装Elasticsearch"></a>Linux系统安装Elasticsearch</h4><p>1、下载压缩包，解压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf elasticsearch-7.13.0-linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>2、运行elasticsearch</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>报错：Caused by: java.lang.RuntimeException: can not run elasticsearch as root</p>
-<p>原因：elasticsearch无法使用root启动。</p>
-<p>3、创建用户es</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useradd es</span><br><span class="line"><span class="comment">#切换用户</span></span><br><span class="line">su es</span><br><span class="line"><span class="comment">#启动es</span></span><br><span class="line">./elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>报错：Caused by: java.nio.file.AccessDeniedException: &#x2F;home&#x2F;elasticsearch-7.13.0&#x2F;config&#x2F;elasticsearch.yml</p>
-<p>原因：es用户没有elasticsearch目录权限</p>
-        
-          <a class="article-more-a" href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统部署项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统部署项目"><a href="#Linux系统部署项目" class="headerlink" title="Linux系统部署项目"></a>Linux系统部署项目</h4><p>1、开启mysql，redis</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">mysql</span></span><br><span class="line">cd /home/mysql/mysql-5.7.35</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Mysql服务</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">password：LOVE521314!</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">redis</span></span><br><span class="line">cd /home/redis</span><br><span class="line">redis-server /home/redis/redis.conf</span><br></pre></td></tr></table></figure>
-
-<p>2、启动服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">如果想让项目在后台一直运行,通过如下命令启动JAR:</span></span><br><span class="line"></span><br><span class="line">nohup java -jar xxx.jar  &gt; consoleMsg.log 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">上面的2 和 1 的意思如下:</span></span><br><span class="line">0    标准输入（一般是键盘）</span><br><span class="line">1    标准输出（一般是显示屏，是用户终端控制台）</span><br><span class="line">2    标准错误（错误信息输出）</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注意:consoleMsg.<span class="built_in">log</span>文件要先创建,执行命令:</span></span><br><span class="line"></span><br><span class="line">touch consoleMsg.log</span><br></pre></td></tr></table></figure>
-
-<p>3、查看项目运行日志</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、tailf consoleMsg.log | grep --line-buffered findUserList     </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">实时跟踪日志，这里是只要findUserList 这个方法被运行，就会将它的日志打印出来，用于跟踪特定的日志运行。</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">--line-buffered 是一行的缓冲区，只要这一行的缓冲区满了就会打印出来，所以可以用于实时监控日志。</span></span><br><span class="line"></span><br><span class="line">2、 tailf -n 500 consoleMsg.log  #打印最后500行日志，并且持续跟踪日志。</span><br><span class="line"></span><br><span class="line">　　tail -n 2000 consoleMsg.log | more 　　#分页查看最后2000行日志。</span><br></pre></td></tr></table></figure>
-
-<h5 id="使用服务的方式启动"><a href="#使用服务的方式启动" class="headerlink" title="使用服务的方式启动"></a>使用服务的方式启动</h5><p>1、环境准备</p>
-<p>jdk环境</p>
-<p>部署的jar包</p>
-<p>（必须是可执行的jar包，需要在pom文件的maven中配置：）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">   &lt;executable&gt;<span class="literal">true</span>&lt;/executable&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、上传jar包</p>
-<p>创建home&#x2F;ec2-user&#x2F;server目录，将jar包上传</p>
-<p>3、给文件赋权</p>
-<p>*<em>chmod a+x  <em>.jar</em></em>   例：chmod a+x authorize-server.jar</p>
-<p>（a+x 是给所有人加上可执行权限，包括所有者，所属组，和其他人）</p>
-<p>4、创建启动服务文件</p>
-<p>执行： <strong>cd &#x2F;etc&#x2F;systemd&#x2F;system</strong></p>
-<p>执行：<strong>vi authorize.service</strong>   (authorize是自定义)</p>
-<p>编辑：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Description=oauth2认证服务</span><br><span class="line">After=syslog.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/home/ec2-user/server/authorize-server.jar //上传的jar包</span><br><span class="line">SuccessExitStatus=143</span><br><span class="line">LimitCORE=infinity</span><br><span class="line">LimitNOFILE=50000</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>赋权：<strong>chmod a+x authorize.service</strong></p>
-<p>5、启动服务</p>
-<h5 id="systemctl-start-authorize"><a href="#systemctl-start-authorize" class="headerlink" title="systemctl start authorize"></a>systemctl start authorize</h5><p>6、systemctl list-units 查看authorize.service是否存在</p>
-<h5 id="systemctl-list-units"><a href="#systemctl-list-units" class="headerlink" title="systemctl list-units"></a>systemctl list-units</h5><p>找到authorize.service</p>
-<p>7、验证服务启动</p>
-<p>执行命令：<strong>curl localhost:80&#x2F;test&#x2F;get</strong></p>
-<p>返回结果 OK</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/09/Linux%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统安装Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Nginx"><a href="#Linux系统安装Nginx" class="headerlink" title="Linux系统安装Nginx"></a>Linux系统安装Nginx</h4><p>1、搭建nginx所需要的环境，直接执行命令就可以</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel</span><br></pre></td></tr></table></figure>
-
-<p>2、获取安装包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/</span><br><span class="line">wget http://nginx.org/download/nginx-1.19.4.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>3、解压</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf nginx-1.19.4.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>4、安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//进入</span><br><span class="line">cd nginx-1.19.4/</span><br><span class="line"> </span><br><span class="line">//然后直接执行下面这段命令</span><br><span class="line">./configure --prefix=/usr/local/nginx</span><br><span class="line"> </span><br><span class="line">//执行完之后</span><br><span class="line">make install</span><br><span class="line"> </span><br><span class="line">执行完之后，我们找到我们配置的路径下</span><br><span class="line">cd  /usr/local/nginx</span><br></pre></td></tr></table></figure>
-
-<p>5、启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd sbin/</span><br><span class="line"> </span><br><span class="line">./nginx        (./nginx -s reload)</span><br></pre></td></tr></table></figure>
-
-<p>6、修改配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd  /usr/local/nginx/conf</span><br><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
-
-<p>7、修改server</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> server &#123;</span><br><span class="line">        listen       8888;</span><br><span class="line">        server_name  192.168.249.130;</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            autoindex on;</span><br><span class="line">            root   /vue/dist/; #前端项目安装路径</span><br><span class="line">            index  index.html;</span><br><span class="line">            try_files $uri $uri/ /index.html; #目录不存在则执行index.html</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /api &#123;</span><br><span class="line">            proxy_pass http://192.168.249.130:8088; #后端请求地址</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>8、保存配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">nginx -t #检查文件是否正确</span><br><span class="line"></span><br><span class="line">./nginx -s reload #重新加载文件启动nginx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例：</span><br><span class="line">[root@localhost conf]# vim nginx.conf</span><br><span class="line">[root@localhost conf]# nginx -t</span><br><span class="line">nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</span><br><span class="line">[root@localhost conf]# nginx -s reload</span><br></pre></td></tr></table></figure>
-
-<p>9、查看日志</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost conf]# cd /</span><br><span class="line">[root@localhost /]# cd /root/</span><br><span class="line">[root@localhost ~]# cd server/</span><br><span class="line">[root@localhost server]# cat dailylog.log</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/08/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -777,8 +470,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

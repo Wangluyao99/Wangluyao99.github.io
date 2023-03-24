@@ -157,17 +157,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Session、Token、JWT-、OAuth2"><a href="#Session、Token、JWT-、OAuth2" class="headerlink" title="Session、Token、JWT 、OAuth2"></a>Session、Token、JWT 、OAuth2</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><ul>
+        <h3 id="Session、Token、JWT-、OAuth2"><a href="#Session、Token、JWT-、OAuth2" class="headerlink" title="Session、Token、JWT 、OAuth2"></a>Session、Token、JWT 、OAuth2</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
 <li>Session是一种认证机制，基于cookie和sessionId，Session 存储在服务器端，Cookie 存储在客户端。</li>
 <li>Token、JWT是认证授权机制，JWT的token包括header（头部） + payload（负载 ）+ sign（签名）。Token的token包括uid（用户唯一身份标识）+ timestamp（当前时间戳） + sign（签名）</li>
 <li>OAuth2是授权框架，基于授权码code、client_id、client_secret等，授权第三方应用、多平台单点登录。</li>
 </ul>
-<h5 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h5><ul>
-<li><p>JSON Web Token（简称 JWT）是目前最流行的跨域认证解决方案。本质是一种自身包含业务数据的token格式，由数据头、数据体和签名组成编码后获得。</p>
-<p><strong>jwt token是自包含且防篡改的</strong>，不需要拿着jwt token去鉴权中心确认，这就解决了鉴权请求浪费问题，一些内部系统要求不高甚至可以考虑直接在前端传输对称加密的用户JWT，但是传输过程安全还要依靠HTTPS。</p>
-</li>
-</ul>
-
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>基于session的设计是登录成功后，生成对应用户session信息的sessionId，存储sessionId与用户信息的映射并返回浏览器，浏览器将sessionId存储到cookie，下次携带cookie请求，通过sessionId查询用户信息。集群使用session共享，可以将session存到redis中，这样可以避免用户在每个应用服务器上都执行一次登录操作。结构简单，运行高效。</p>
+        
+          <a class="article-more-a" href="/2023/03/24/%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E7%90%86%E8%AE%BA/#more">more >></a>
+        
       
 
       

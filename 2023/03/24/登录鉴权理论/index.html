@@ -15,10 +15,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Session、Token、JWT 、OAuth2简介 Session是一种认证机制，基于cookie和sessionId，Session 存储在服务器端，Cookie 存储在客户端。 Token、JWT是认证授权机制，JWT的token包括header（头部） + payload（负载 ）+ sign（签名）。Token的token包括uid（用户唯一身份标识）+ timestamp（当前时间戳">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/.%5Cimage%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png">
 <meta property="article:published_time" content="2023-03-24T15:46:50.735Z">
-<meta property="article:modified_time" content="2023-03-24T15:58:44.005Z">
+<meta property="article:modified_time" content="2023-03-24T16:31:17.103Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/.%5Cimage%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -159,16 +161,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Session、Token、JWT-、OAuth2"><a href="#Session、Token、JWT-、OAuth2" class="headerlink" title="Session、Token、JWT 、OAuth2"></a>Session、Token、JWT 、OAuth2</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><ul>
+        <h3 id="Session、Token、JWT-、OAuth2"><a href="#Session、Token、JWT-、OAuth2" class="headerlink" title="Session、Token、JWT 、OAuth2"></a>Session、Token、JWT 、OAuth2</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
 <li>Session是一种认证机制，基于cookie和sessionId，Session 存储在服务器端，Cookie 存储在客户端。</li>
 <li>Token、JWT是认证授权机制，JWT的token包括header（头部） + payload（负载 ）+ sign（签名）。Token的token包括uid（用户唯一身份标识）+ timestamp（当前时间戳） + sign（签名）</li>
 <li>OAuth2是授权框架，基于授权码code、client_id、client_secret等，授权第三方应用、多平台单点登录。</li>
 </ul>
-<h5 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h5><ul>
-<li><p>JSON Web Token（简称 JWT）是目前最流行的跨域认证解决方案。本质是一种自身包含业务数据的token格式，由数据头、数据体和签名组成编码后获得。</p>
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>基于session的设计是登录成功后，生成对应用户session信息的sessionId，存储sessionId与用户信息的映射并返回浏览器，浏览器将sessionId存储到cookie，下次携带cookie请求，通过sessionId查询用户信息。集群使用session共享，可以将session存到redis中，这样可以避免用户在每个应用服务器上都执行一次登录操作。结构简单，运行高效。</p>
+<span id="more"></span>
+
+<h4 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h4><p>微服务架构，存在超长的请求链路中反复拉取用户信息现象，一个<strong>编码过的、携带业务信息的、防篡改的自包含机制</strong>就出现了，这就是自包含token。</p>
+<p>客户端认为token和sessionID几乎没区别，服务端则进行的实际是校验工作，校验成功就可以返回结果，而如果是自包含的token，还可以通过解析token获取业务信息（比如角色、头像、性别等）。</p>
+<h4 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h4><p>JSON Web Token（简称 JWT）是目前最流行的跨域认证解决方案。本质是一种自身包含业务数据的token格式，由数据头、数据体和签名组成编码后获得。</p>
 <p><strong>jwt token是自包含且防篡改的</strong>，不需要拿着jwt token去鉴权中心确认，这就解决了鉴权请求浪费问题，一些内部系统要求不高甚至可以考虑直接在前端传输对称加密的用户JWT，但是传输过程安全还要依靠HTTPS。</p>
-</li>
+<h4 id="双Token设计"><a href="#双Token设计" class="headerlink" title="双Token设计"></a>双Token设计</h4><p>由于JWT token并非集中式管理，所以一旦签发，收回比较困难，长期不回收权限也不安全。解决的办法只能是为token的可用时间加个期限，但存活时间太长没有意义，时间太短当token失效用户就要重新登录授权，另外还签发了一个存活时间更长的刷新令牌（refresh token），如果access token过期，就用这个refresh token去换一份新的access token，保证access token常新，同时不影响用户体验。</p>
+<h4 id="OAuth2-0"><a href="#OAuth2-0" class="headerlink" title="OAuth2.0"></a>OAuth2.0</h4><p>OAuth（开放授权）是一个开放标准，允许用户授权第三方网站访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方网站或分享他们数据的所有内容。</p>
+<h5 id="OAuth2-0授权码模式中，有四大角色参与到整个流程："><a href="#OAuth2-0授权码模式中，有四大角色参与到整个流程：" class="headerlink" title="OAuth2.0授权码模式中，有四大角色参与到整个流程："></a>OAuth2.0授权码模式中，有四大角色参与到整个流程：</h5><ul>
+<li><strong>Resource Owner</strong>: 资源拥有者，就是<strong>终端用户</strong>，能不能拿到头像要看用户是否同意</li>
+<li><strong>Resource Server</strong>: 资源服务器，就是用户信任的<strong>平台</strong>，用户用WeChat登录的话，WeChat就是资源服务器</li>
+<li><strong>Client</strong>: 客户端，就是<strong>第三方app</strong>，需要协助用户授权，还要接受平台的资质审核</li>
+<li><strong>Authorization Server</strong>: 授权服务器，就是做授权的服务，和资源服务器可以是一家，也可以拆分</li>
 </ul>
+<h5 id="核心流程："><a href="#核心流程：" class="headerlink" title="核心流程："></a>核心流程：</h5><p><img src="/.%5Cimage%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 第三方发起微信授权登录请求，微信用户允许授权第三方应用后，微信会拉起应用或重定向到第三方网站，并且带上授权临时票据code参数；</span><br><span class="line"></span><br><span class="line">2. 通过code参数加上AppID和AppSecret等，通过API换取access_token；</span><br><span class="line"></span><br><span class="line">3. 通过access_token进行接口调用，获取用户基本数据资源或帮助用户实现基本操作。</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h5><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/573697777">https://zhuanlan.zhihu.com/p/573697777</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7028091738791084039">https://juejin.cn/post/7028091738791084039</a></p>
 
       
 

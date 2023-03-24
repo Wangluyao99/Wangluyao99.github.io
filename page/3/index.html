@@ -152,6 +152,63 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-方法调用导致事务不生效" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法"><a href="#同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法" class="headerlink" title="同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法"></a>同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法</h4><ul>
+<li><p>原因：</p>
+<p>声明式事务基于Spring AOP实现,将具体业务逻辑与事务处理解耦，在 Spring 的 AOP 代理下，只有目标方法由外部调用，目标方法才由 Spring 生成的代理对象来管理，这会造成自调用问题。</p>
+<p>spring的@Transactional事务生效的一个前提是进行方法调用前经过拦截器TransactionInterceptor，也就是说只有通过TransactionInterceptor拦截器的方法才会被加入到spring事务管理中。</p>
+<p>如果是在同一个类中的方法调用，则不会被方法拦截器拦截到，因此事务不会起作用，必须将方法放入另一个类，并且该类通过spring注入。</p>
+</li>
+<li><p>解决方法</p>
+<p>将事务方法放到另一个类中（或者单独开启一层，取名“事务层”）进行调用，即符合了在对象之间调用的条件。</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/02/%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%AF%BC%E8%87%B4%E4%BA%8B%E5%8A%A1%E4%B8%8D%E7%94%9F%E6%95%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-搭建Hexo博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

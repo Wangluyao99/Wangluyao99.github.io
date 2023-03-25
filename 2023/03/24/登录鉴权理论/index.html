@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Session、Token、JWT 、OAuth2简介 Session是一种认证机制，基于cookie和sessionId，Session 存储在服务器端，Cookie 存储在客户端。 Token、JWT是认证授权机制，JWT的token包括header（头部） + payload（负载 ）+ sign（签名）。Token的token包括uid（用户唯一身份标识）+ timestamp（当前时间戳">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/.%5Cimage%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png">
+<meta property="og:image" content="http://example.com/.%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png">
 <meta property="article:published_time" content="2023-03-24T15:46:50.735Z">
-<meta property="article:modified_time" content="2023-03-24T16:31:17.103Z">
+<meta property="article:modified_time" content="2023-03-25T12:50:04.369Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/.%5Cimage%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png">
+<meta name="twitter:image" content="http://example.com/.%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -181,7 +181,7 @@
 <li><strong>Client</strong>: 客户端，就是<strong>第三方app</strong>，需要协助用户授权，还要接受平台的资质审核</li>
 <li><strong>Authorization Server</strong>: 授权服务器，就是做授权的服务，和资源服务器可以是一家，也可以拆分</li>
 </ul>
-<h5 id="核心流程："><a href="#核心流程：" class="headerlink" title="核心流程："></a>核心流程：</h5><p><img src="/.%5Cimage%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png"></p>
+<h5 id="核心流程："><a href="#核心流程：" class="headerlink" title="核心流程："></a>核心流程：</h5><p><img src="/.%5CWeChat%E7%99%BB%E5%BD%95OAuth2.0.png"></p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 第三方发起微信授权登录请求，微信用户允许授权第三方应用后，微信会拉起应用或重定向到第三方网站，并且带上授权临时票据code参数；</span><br><span class="line"></span><br><span class="line">2. 通过code参数加上AppID和AppSecret等，通过API换取access_token；</span><br><span class="line"></span><br><span class="line">3. 通过access_token进行接口调用，获取用户基本数据资源或帮助用户实现基本操作。</span><br></pre></td></tr></table></figure>
 
 

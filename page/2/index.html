@@ -152,6 +152,59 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-RabbitMQ相关问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="RabbitMQ消息丢失"><a href="#RabbitMQ消息丢失" class="headerlink" title="RabbitMQ消息丢失"></a>RabbitMQ消息丢失</h4><p>一条消息的传送流程：生产者–&gt;MQ–&gt;消费者，这三个节点都可能丢失数据。</p>
+<p><strong>Producer端：</strong>发送消息过程中出现网络问题：producer以为发送成功，但RabbitMQ server没有收到；<br>解决方案：发送方确认机制。</p>
+<p><strong>RabbitMQ server 端：</strong>接收到消息后由于服务器宕机或重启等原因（消息默认存在内存中）导致消息丢失；<br>解决方案：开启Broker持久化。</p>
+<p><strong>Consumer端：</strong>Consumer端接收到消息后自动返回ack，但后边处理消息出错，没有完成消息的处理；<br>解决方案：重试几次之后，若还是失败，则进行通知与补偿：1、发邮件提醒没消费成功的数据。2、存到数据库中，便于后期排查。</p>
+        
+          <a class="article-more-a" href="/2023/03/17/RabbitMQ%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/17/RabbitMQ%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -700,69 +753,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/06/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统安装Jmeter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Jmeter"><a href="#Linux系统安装Jmeter" class="headerlink" title="Linux系统安装Jmeter"></a>Linux系统安装Jmeter</h4><h5 id="1、配置jmeter环境"><a href="#1、配置jmeter环境" class="headerlink" title="1、配置jmeter环境"></a>1、配置jmeter环境</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 检查linux系统上是否安装JDK，输入命令</span><br><span class="line">java -version</span><br><span class="line"></span><br><span class="line">// 上传tar包上传至linux服务器后解压</span><br><span class="line">tar -zxvf apache-jmeter-5.2.1.tgz</span><br><span class="line"></span><br><span class="line">// 将jmeter添加至环境变量</span><br><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> JMETER_HOME=/usr/local/jmeter/apache-jmeter-3.1（jmeter安装路径）</span><br><span class="line">exportCLASSPATH=<span class="variable">$JMETER_HOME</span>/lib/ext/ApacheJMeter_core.jar:<span class="variable">$JMETER_HOME</span>/lib/jorphan.jar:<span class="variable">$JMETER_HOME</span>/lib/logkit-2.0.jar:<span class="variable">$CLASSPATH</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JMETER_HOME</span>/bin:<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/bin</span><br><span class="line"></span><br><span class="line">// 使配置文件生效</span><br><span class="line"><span class="built_in">source</span> /etc/profile </span><br><span class="line"></span><br><span class="line">// 赋予权限</span><br><span class="line"><span class="built_in">chmod</span> +x jmeter </span><br><span class="line"></span><br><span class="line">//查看jmeter是否正确安装</span><br><span class="line">./jmeter -v</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、linux上使用jmeter"><a href="#2、linux上使用jmeter" class="headerlink" title="2、linux上使用jmeter"></a>2、linux上使用jmeter</h5><ul>
-<li><p>在GUI模式（即图形化界面模式）下，新建一个测试计划,形成一个jmx文件，保存并上传到linux机器对应目录。</p>
-</li>
-<li><p>执行命令：jmeter –n –t [路径]&#x2F;[名称].jmx -j [路径]&#x2F;[名称].log –l [路径]&#x2F;[名称].jtl -e -o [路径] </p>
-<p>示例：<code>jmeter -n -t /opt/test.jmx -j /opt/test.log -l /opt/test.jtl -e -o /opt/test</code></p>
-</li>
-</ul>
-<p>参数<br>-n：以非GUI形式运行 Jmeter<br>-t： 运行jmx测试计划脚本文件的路径<br>-l： 运行结果保存路径(.jtl)，此文件必须不存在<br>-j： jmeter运行日志<br>-r： 运行分布式压测服务器，指明用jmeter厲性”remote_ host&#x3D;’<br>-R：运行分布式服务器，其后跟看服务器列表<br>-e：在脚本运行结束后生成html报吉，此参教要与-1一起使用。<br>-o：用于存放html报告的目录，此目录必次为空。比参数与一e一起使用。</p>
-<ul>
-<li><p>结果文件通过Xterm传入本地，打开jmeter，</p>
-<p>然后点击：创建测试计划，创建监听–聚合报告，创建查看结果树等；</p>
-<p>点击浏览，把jtl文件加载进来，就可以看到测试的报告结果。</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/05/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Jmeter/">展开全文 >></a>
         </p>
       
 

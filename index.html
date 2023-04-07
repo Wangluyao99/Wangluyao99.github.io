@@ -152,6 +152,57 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringSecurity5新变化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Spring-Security-5-7-0-M2-弃用了-WebSecurityConfigurerAdapter类"><a href="#Spring-Security-5-7-0-M2-弃用了-WebSecurityConfigurerAdapter类" class="headerlink" title="Spring Security 5.7.0-M2 弃用了 WebSecurityConfigurerAdapter类"></a>Spring Security 5.7.0-M2 弃用了 WebSecurityConfigurerAdapter类</h3><p>官网博客链接地址：<a target="_blank" rel="noopener" href="https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter">https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter</a></p>
+<h5 id="替代方案："><a href="#替代方案：" class="headerlink" title="替代方案："></a>替代方案：</h5><p>创建一个<code>SecurityFilterChain</code> bean来配置<code>HttpSecurity</code>的功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configurable</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SecurityFilterChain <span class="title function_">securityFilterChain</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        http    </span><br><span class="line">            	<span class="comment">// authorizeRequests授权请求</span></span><br><span class="line">                .authorizeRequests(authorize -&gt; authorize</span><br><span class="line">                        .antMatchers(<span class="string">&quot;/login.html&quot;</span>, <span class="string">&quot;/favicon.ico&quot;</span>).permitAll()<span class="comment">//不需要经过身份认证的资源</span></span><br><span class="line">                        .anyRequest().authenticated()<span class="comment">//其他任何请求都需要经过身份认证</span></span><br><span class="line">                )</span><br><span class="line">            	<span class="comment">// formLogin开启表单认证</span></span><br><span class="line">            	.formLogin();</span><br><span class="line">        <span class="keyword">return</span> http.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/07/SpringSecurity5%E6%96%B0%E5%8F%98%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-学习SpringSecurity时报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -623,59 +674,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/20/DelayQueue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-RabbitMQ相关问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="RabbitMQ消息丢失"><a href="#RabbitMQ消息丢失" class="headerlink" title="RabbitMQ消息丢失"></a>RabbitMQ消息丢失</h4><p>一条消息的传送流程：生产者–&gt;MQ–&gt;消费者，这三个节点都可能丢失数据。</p>
-<p><strong>Producer端：</strong>发送消息过程中出现网络问题：producer以为发送成功，但RabbitMQ server没有收到；<br>解决方案：发送方确认机制。</p>
-<p><strong>RabbitMQ server 端：</strong>接收到消息后由于服务器宕机或重启等原因（消息默认存在内存中）导致消息丢失；<br>解决方案：开启Broker持久化。</p>
-<p><strong>Consumer端：</strong>Consumer端接收到消息后自动返回ack，但后边处理消息出错，没有完成消息的处理；<br>解决方案：重试几次之后，若还是失败，则进行通知与补偿：1、发邮件提醒没消费成功的数据。2、存到数据库中，便于后期排查。</p>
-        
-          <a class="article-more-a" href="/2023/03/17/RabbitMQ%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/17/RabbitMQ%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 

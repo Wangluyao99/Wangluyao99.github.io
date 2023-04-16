@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SpringSecurity使用入门1、简介SpringSecurity基于Spring框架，提供了一套Web应用安全的完整解决方案，核心功能包括用户认证（Authentication)和用户授权（Authorization）两部分。SpringSecurity的原理其实就是一个过滤器链，内部包含了各种功能的过滤器。  用户认证是指验证某个用户是否为系统中的合法主体，也就是说用户是否能访问该系统。">
+  <meta name="description" content="SpringSecurity使用入门1、简介SpringSecurity基于Spring框架，提供了一套Web应用安全的完整解决方案，核心功能包括用户认证（Authentication)和用户授权（Authorization）两部分。  用户认证是指验证某个用户是否为系统中的合法主体，也就是说用户是否能访问该系统。 用户授权是验证用户是否有权限执行某个操作。  SpringSecurity的原理其">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/2023/04/14/SpringSecurity%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SpringSecurity使用入门1、简介SpringSecurity基于Spring框架，提供了一套Web应用安全的完整解决方案，核心功能包括用户认证（Authentication)和用户授权（Authorization）两部分。SpringSecurity的原理其实就是一个过滤器链，内部包含了各种功能的过滤器。  用户认证是指验证某个用户是否为系统中的合法主体，也就是说用户是否能访问该系统。">
+<meta property="og:description" content="SpringSecurity使用入门1、简介SpringSecurity基于Spring框架，提供了一套Web应用安全的完整解决方案，核心功能包括用户认证（Authentication)和用户授权（Authorization）两部分。  用户认证是指验证某个用户是否为系统中的合法主体，也就是说用户是否能访问该系统。 用户授权是验证用户是否有权限执行某个操作。  SpringSecurity的原理其">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-14T15:27:33.588Z">
-<meta property="article:modified_time" content="2023-04-15T14:07:50.765Z">
+<meta property="article:modified_time" content="2023-04-16T10:31:43.095Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -159,15 +159,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="SpringSecurity使用入门"><a href="#SpringSecurity使用入门" class="headerlink" title="SpringSecurity使用入门"></a>SpringSecurity使用入门</h3><h5 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h5><p>SpringSecurity基于Spring框架，提供了一套Web应用安全的完整解决方案，核心功能包括用户认证（Authentication)和用户授权（Authorization）两部分。<code>SpringSecurity</code>的原理其实就是一个过滤器链，内部包含了各种功能的过滤器。</p>
+        <h3 id="SpringSecurity使用入门"><a href="#SpringSecurity使用入门" class="headerlink" title="SpringSecurity使用入门"></a>SpringSecurity使用入门</h3><h5 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h5><p>SpringSecurity基于Spring框架，提供了一套Web应用安全的完整解决方案，核心功能包括用户认证（Authentication)和用户授权（Authorization）两部分。</p>
 <ul>
 <li>用户认证是指验证某个用户是否为系统中的合法主体，也就是说用户是否能访问该系统。</li>
 <li>用户授权是验证用户是否有权限执行某个操作。</li>
 </ul>
+<p><strong><code>SpringSecurity</code>的原理其实就是一个过滤器链，内部包含了各种功能的过滤器。</strong></p>
+<p>以下是过滤器链中主要的过滤器：</p>
+<ul>
+<li>UsernamePasswordAuthenticationFilter：负责处理我们在登陆页面填写了用户名密码后的登陆请求。</li>
+<li>ExceptionTranslationFilter：处理过滤器链中抛出的任何<code>AccessDeniedException</code>和<code>AuthenticationException</code> 。</li>
+<li>FilterSecurityInterceptor：负责权限校验的过滤器。</li>
+</ul>
 <h5 id="2、导入依赖"><a href="#2、导入依赖" class="headerlink" title="2、导入依赖"></a>2、导入依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="3、创建springboot工程，创建一个hello请求"><a href="#3、创建springboot工程，创建一个hello请求" class="headerlink" title="3、创建springboot工程，创建一个hello请求"></a>3、创建springboot工程，创建一个hello请求</h5><p>请求该接口会自动重定向到<code>/login</code>，弹出SpringSecurity提供的登录页面，用户名user，密码打印在控制台。</p>
-<p>以上便是SpringSecurity的简单的用户认证功能。</p>
 
       
 

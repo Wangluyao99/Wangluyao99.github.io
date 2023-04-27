@@ -16,7 +16,7 @@
 <meta property="og:description" content="RabbitMQ消息丢失一条消息的传送流程：生产者–&gt;MQ–&gt;消费者，这三个节点都可能丢失数据。 Producer端：发送消息过程中出现网络问题：producer以为发送成功，但RabbitMQ server没有收到；解决方案：发送方确认机制。 RabbitMQ server 端：接收到消息后由于服务器宕机或重启等原因（消息默认存在内存中）导致消息丢失；解决方案：开启Broker持久化">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-17T14:48:48.616Z">
-<meta property="article:modified_time" content="2023-03-17T14:55:10.144Z">
+<meta property="article:modified_time" content="2023-04-27T14:34:13.092Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -167,6 +167,7 @@
 
 <h4 id="RabbitMQ消息重复-x2F-重复消费"><a href="#RabbitMQ消息重复-x2F-重复消费" class="headerlink" title="RabbitMQ消息重复&#x2F;重复消费"></a>RabbitMQ消息重复&#x2F;重复消费</h4><p><strong>原因：</strong><br>自动提交模式时：消费者收到消息后，要自动提交，但提交后，网络出故障，RabbitMQ服务器没收到提交消息，那么此消息会被重新放入队列，会再次发给消费者。<br>手动提交模式时：情景1：网络故障问题，同上。情景2：接收到消息并处理结束了，此时消费者挂了，没有手动提交消息。</p>
 <p><strong>解决：</strong><br>消费者保证业务幂等性：利用一张日志表来记录已经处理成功的消息的 ID，如果新到的消息 ID 已经在日志表中，那么就不再处理这条消息。</p>
+<p>分布式条件下，两个消费者都处理一条数据的解决办法：采用分布式锁Redis</p>
 <h4 id="RabbitMQ保证消息的顺序"><a href="#RabbitMQ保证消息的顺序" class="headerlink" title="RabbitMQ保证消息的顺序"></a>RabbitMQ保证消息的顺序</h4><p><strong>顺序错乱的场景 ：</strong>一个queue，多个consumer；consumer多线程消费</p>
 <p><strong>解决：</strong>单个consumer，单线程消费即可。</p>
 <h4 id="RabbitMQ消息堆积"><a href="#RabbitMQ消息堆积" class="headerlink" title="RabbitMQ消息堆积"></a>RabbitMQ消息堆积</h4><p><strong>消息堆积原因：</strong>消息堆积即消息没及时被消费，是生产者生产消息速度快于消费者消费的速度导致的。</p>

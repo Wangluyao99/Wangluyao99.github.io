@@ -152,6 +152,61 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-不停服更新应用方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="不停服更新应用方案"><a href="#不停服更新应用方案" class="headerlink" title="不停服更新应用方案"></a>不停服更新应用方案</h3><p>基本思路是：切流量，先将所有请求切到其他机器，等此机器更新完毕后，再允许请求发送到这个机器。</p>
+<p>解决方案一般有：蓝绿发布、滚动发布、灰度发布</p>
+<h5 id="使用Nacos的权重功能："><a href="#使用Nacos的权重功能：" class="headerlink" title="使用Nacos的权重功能："></a>使用Nacos的权重功能：</h5><p>Nacos可以配置实例的权重，如果权重改为0，则不会调到这个实例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">将user1的权重设置为0</span><br><span class="line">更新user1</span><br><span class="line">user1启动完毕后，恢复user1的权重为1，将user2的权重设置为0</span><br><span class="line">更新user2</span><br><span class="line">恢复user2的权重为1</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>修改完之后，所有网关的请求都会转发到权重不为0的实例上边，但feign请求还是会到达权重为0的实例上边。</p>
+<p>解决方法：<strong>需要修改feign的负载均衡器（ribbon或者loadbalancer），将其改为从Nacos获得实例，根据权重选择实例。</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/05/%E4%B8%8D%E5%81%9C%E6%9C%8D%E6%9B%B4%E6%96%B0%E5%BA%94%E7%94%A8%E6%96%B9%E6%A1%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringSecurity入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -643,62 +698,9 @@
 
 
   
-    <article id="post-SpringCloud-Gateway" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="SpringCloud-Gateway"><a href="#SpringCloud-Gateway" class="headerlink" title="SpringCloud Gateway"></a>SpringCloud Gateway</h2><hr>
-<h3 id="1、SpringCloud-Gateway-简介"><a href="#1、SpringCloud-Gateway-简介" class="headerlink" title="1、SpringCloud Gateway 简介"></a>1、SpringCloud Gateway 简介</h3><p>​		该项目是基于 Spring 5.0，Spring Boot 2.0 和 Project Reactor 等技术开发的网关，它旨在为微服务架构提供一种简单有效的统一的 API 路由管理方式。</p>
-<p>​		为了提升网关的性能，SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty。</p>
-<p><strong>SpringCloud Gateway 底层使用了高性能的通信框架Netty</strong>。</p>
-        
-          <a class="article-more-a" href="/2023/03/21/SpringCloud-Gateway/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/21/SpringCloud-Gateway/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

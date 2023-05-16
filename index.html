@@ -152,6 +152,58 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Openfeign" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Openfeign出现错误No-Feign-Client-for-loadBalancing-defined-Did-you-forget-to-include-spring-cloud-starter-loadbalancer"><a href="#Openfeign出现错误No-Feign-Client-for-loadBalancing-defined-Did-you-forget-to-include-spring-cloud-starter-loadbalancer" class="headerlink" title="Openfeign出现错误No Feign Client for loadBalancing defined. Did you forget to include spring-cloud-starter-loadbalancer?"></a>Openfeign出现错误No Feign Client for loadBalancing defined. Did you forget to include spring-cloud-starter-loadbalancer?</h4><p>原因：这是因为由于SpringCloud Feign在Hoxton.M2 RELEASED版本之后不再使用Ribbon而是使用spring-cloud-loadbalancer，所以不引入spring-cloud-loadbalancer会报错。</p>
+<p>解决：需要在nacos注册发现依赖中把Ribbon 进行客户端负载均衡去掉</p>
+<p>(或仅添加spring-cloud-starter-loadbalancer)</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--不使用Ribbon 进行客户端负载均衡--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-ribbon<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-loadbalancer<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/16/Openfeign/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-不停服更新应用方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -618,57 +670,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/24/%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E7%90%86%E8%AE%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL-log" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="MySQL-redo-log"><a href="#MySQL-redo-log" class="headerlink" title="MySQL redo log"></a>MySQL redo log</h4><p>redo log 叫做重做日志，是用来实现事务的持久性。当事务提交之后会把所有修改信息存到该日志。日志文件由两部分组成，重做日志缓冲区（redo logbuffer）和重做日志文件（redo log），前者在内存，后者在磁盘。</p>
-<p>MySQL为了提升性能，不会把每次的修改实时同步到磁盘，先存到缓冲池里面，使用后台线程做缓冲池和磁盘的同步。宕机可能造成未同步问题，所以引入redo log来记录已经成功提交事务的修改信息，并且会把log持久化到磁盘，系统重启之后读log恢复最新数据。</p>
-<h4 id="MySQL-undo-log"><a href="#MySQL-undo-log" class="headerlink" title="MySQL undo log"></a>MySQL undo log</h4><p>undo log 叫做回滚日志，用来记录数据被修改前的信息。主要记录数据的逻辑变化，为了发送错误时回滚之前的操作，需要将之前的操作记录下来。</p>
-<p>undo log记录事务修改之前版本的数据信息，因此由于系统错误或rollback操作而回滚可以根据undo log信息回滚到没修改之前的状态。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/22/MySQL-log/">展开全文 >></a>
         </p>
       
 

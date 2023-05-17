@@ -152,6 +152,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux系统部署项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Linux系统部署项目"><a href="#Linux系统部署项目" class="headerlink" title="Linux系统部署项目"></a>Linux系统部署项目</h4><p>1、开启mysql，redis</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">mysql</span></span><br><span class="line">cd /home/mysql/mysql-5.7.35</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Mysql服务</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">password：LOVE521314!</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">redis</span></span><br><span class="line">cd /home/redis</span><br><span class="line">redis-server /home/redis/redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>2、启动服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">如果想让项目在后台一直运行,通过如下命令启动JAR:</span></span><br><span class="line"></span><br><span class="line">nohup java -jar xxx.jar  &gt; consoleMsg.log 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">上面的2 和 1 的意思如下:</span></span><br><span class="line">0    标准输入（一般是键盘）</span><br><span class="line">1    标准输出（一般是显示屏，是用户终端控制台）</span><br><span class="line">2    标准错误（错误信息输出）</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注意:consoleMsg.<span class="built_in">log</span>文件要先创建,执行命令:</span></span><br><span class="line"></span><br><span class="line">touch consoleMsg.log</span><br></pre></td></tr></table></figure>
+
+<p>3、查看项目运行日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、tailf consoleMsg.log | grep --line-buffered findUserList     </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">实时跟踪日志，这里是只要findUserList 这个方法被运行，就会将它的日志打印出来，用于跟踪特定的日志运行。</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">--line-buffered 是一行的缓冲区，只要这一行的缓冲区满了就会打印出来，所以可以用于实时监控日志。</span></span><br><span class="line"></span><br><span class="line">2、 tailf -n 500 consoleMsg.log  #打印最后500行日志，并且持续跟踪日志。</span><br><span class="line"></span><br><span class="line">　　tail -n 2000 consoleMsg.log | more 　　#分页查看最后2000行日志。</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用服务的方式启动"><a href="#使用服务的方式启动" class="headerlink" title="使用服务的方式启动"></a>使用服务的方式启动</h5><p>1、环境准备</p>
+<p>jdk环境</p>
+<p>部署的jar包</p>
+<p>（必须是可执行的jar包，需要在pom文件的maven中配置：）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">   &lt;executable&gt;<span class="literal">true</span>&lt;/executable&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、上传jar包</p>
+<p>创建home&#x2F;ec2-user&#x2F;server目录，将jar包上传</p>
+<p>3、给文件赋权</p>
+<p>*<em>chmod a+x  <em>.jar</em></em>   例：chmod a+x authorize-server.jar</p>
+<p>（a+x 是给所有人加上可执行权限，包括所有者，所属组，和其他人）</p>
+<p>4、创建启动服务文件</p>
+<p>执行： <strong>cd &#x2F;etc&#x2F;systemd&#x2F;system</strong></p>
+<p>执行：<strong>vi authorize.service</strong>   (authorize是自定义)</p>
+<p>编辑：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Description=oauth2认证服务</span><br><span class="line">After=syslog.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/home/ec2-user/server/authorize-server.jar //上传的jar包</span><br><span class="line">SuccessExitStatus=143</span><br><span class="line">LimitCORE=infinity</span><br><span class="line">LimitNOFILE=50000</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>赋权：<strong>chmod a+x authorize.service</strong></p>
+<p>5、启动服务</p>
+<h5 id="systemctl-start-authorize"><a href="#systemctl-start-authorize" class="headerlink" title="systemctl start authorize"></a>systemctl start authorize</h5><p>6、systemctl list-units 查看authorize.service是否存在</p>
+<h5 id="systemctl-list-units"><a href="#systemctl-list-units" class="headerlink" title="systemctl list-units"></a>systemctl list-units</h5><p>找到authorize.service</p>
+<p>7、验证服务启动</p>
+<p>执行命令：<strong>curl localhost:80&#x2F;test&#x2F;get</strong></p>
+<p>返回结果 OK</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/09/Linux%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux系统安装Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -777,63 +857,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/03/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E5%88%B0git%E4%BB%93%E5%BA%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-方法调用导致事务不生效" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法"><a href="#同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法" class="headerlink" title="同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法"></a>同一个类中无事务方法调用同一个类的有事务方法事务不生效问题原因及其解决方法</h4><ul>
-<li><p>原因：</p>
-<p>声明式事务基于Spring AOP实现,将具体业务逻辑与事务处理解耦，在 Spring 的 AOP 代理下，只有目标方法由外部调用，目标方法才由 Spring 生成的代理对象来管理，这会造成自调用问题。</p>
-<p>spring的@Transactional事务生效的一个前提是进行方法调用前经过拦截器TransactionInterceptor，也就是说只有通过TransactionInterceptor拦截器的方法才会被加入到spring事务管理中。</p>
-<p>如果是在同一个类中的方法调用，则不会被方法拦截器拦截到，因此事务不会起作用，必须将方法放入另一个类，并且该类通过spring注入。</p>
-</li>
-<li><p>解决方法</p>
-<p>将事务方法放到另一个类中（或者单独开启一层，取名“事务层”）进行调用，即符合了在对象之间调用的条件。</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/02/%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%AF%BC%E8%87%B4%E4%BA%8B%E5%8A%A1%E4%B8%8D%E7%94%9F%E6%95%88/">展开全文 >></a>
         </p>
       
 

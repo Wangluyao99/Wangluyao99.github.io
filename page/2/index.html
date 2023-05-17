@@ -152,6 +152,61 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-登录鉴权理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Session、Token、JWT-、OAuth2"><a href="#Session、Token、JWT-、OAuth2" class="headerlink" title="Session、Token、JWT 、OAuth2"></a>Session、Token、JWT 、OAuth2</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
+<li>Session是一种认证机制，基于cookie和sessionId，Session 存储在服务器端，Cookie 存储在客户端。</li>
+<li>Token、JWT是认证授权机制，JWT的token包括header（头部） + payload（负载 ）+ sign（签名）。Token的token包括uid（用户唯一身份标识）+ timestamp（当前时间戳） + sign（签名）</li>
+<li>OAuth2是授权框架，基于授权码code、client_id、client_secret等，授权第三方应用、多平台单点登录。</li>
+</ul>
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>基于session的设计是登录成功后，生成对应用户session信息的sessionId，存储sessionId与用户信息的映射并返回浏览器，浏览器将sessionId存储到cookie，下次携带cookie请求，通过sessionId查询用户信息。集群使用session共享，可以将session存到redis中，这样可以避免用户在每个应用服务器上都执行一次登录操作。结构简单，运行高效。</p>
+        
+          <a class="article-more-a" href="/2023/03/24/%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E7%90%86%E8%AE%BA/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/24/%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E7%90%86%E8%AE%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL-log" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -619,86 +674,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统部署项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统部署项目"><a href="#Linux系统部署项目" class="headerlink" title="Linux系统部署项目"></a>Linux系统部署项目</h4><p>1、开启mysql，redis</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">mysql</span></span><br><span class="line">cd /home/mysql/mysql-5.7.35</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动Mysql服务</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">登录mysql</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">password：LOVE521314!</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">redis</span></span><br><span class="line">cd /home/redis</span><br><span class="line">redis-server /home/redis/redis.conf</span><br></pre></td></tr></table></figure>
-
-<p>2、启动服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">如果想让项目在后台一直运行,通过如下命令启动JAR:</span></span><br><span class="line"></span><br><span class="line">nohup java -jar xxx.jar  &gt; consoleMsg.log 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">上面的2 和 1 的意思如下:</span></span><br><span class="line">0    标准输入（一般是键盘）</span><br><span class="line">1    标准输出（一般是显示屏，是用户终端控制台）</span><br><span class="line">2    标准错误（错误信息输出）</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注意:consoleMsg.<span class="built_in">log</span>文件要先创建,执行命令:</span></span><br><span class="line"></span><br><span class="line">touch consoleMsg.log</span><br></pre></td></tr></table></figure>
-
-<p>3、查看项目运行日志</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、tailf consoleMsg.log | grep --line-buffered findUserList     </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">实时跟踪日志，这里是只要findUserList 这个方法被运行，就会将它的日志打印出来，用于跟踪特定的日志运行。</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">--line-buffered 是一行的缓冲区，只要这一行的缓冲区满了就会打印出来，所以可以用于实时监控日志。</span></span><br><span class="line"></span><br><span class="line">2、 tailf -n 500 consoleMsg.log  #打印最后500行日志，并且持续跟踪日志。</span><br><span class="line"></span><br><span class="line">　　tail -n 2000 consoleMsg.log | more 　　#分页查看最后2000行日志。</span><br></pre></td></tr></table></figure>
-
-<h5 id="使用服务的方式启动"><a href="#使用服务的方式启动" class="headerlink" title="使用服务的方式启动"></a>使用服务的方式启动</h5><p>1、环境准备</p>
-<p>jdk环境</p>
-<p>部署的jar包</p>
-<p>（必须是可执行的jar包，需要在pom文件的maven中配置：）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">   &lt;executable&gt;<span class="literal">true</span>&lt;/executable&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、上传jar包</p>
-<p>创建home&#x2F;ec2-user&#x2F;server目录，将jar包上传</p>
-<p>3、给文件赋权</p>
-<p>*<em>chmod a+x  <em>.jar</em></em>   例：chmod a+x authorize-server.jar</p>
-<p>（a+x 是给所有人加上可执行权限，包括所有者，所属组，和其他人）</p>
-<p>4、创建启动服务文件</p>
-<p>执行： <strong>cd &#x2F;etc&#x2F;systemd&#x2F;system</strong></p>
-<p>执行：<strong>vi authorize.service</strong>   (authorize是自定义)</p>
-<p>编辑：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Description=oauth2认证服务</span><br><span class="line">After=syslog.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/home/ec2-user/server/authorize-server.jar //上传的jar包</span><br><span class="line">SuccessExitStatus=143</span><br><span class="line">LimitCORE=infinity</span><br><span class="line">LimitNOFILE=50000</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>赋权：<strong>chmod a+x authorize.service</strong></p>
-<p>5、启动服务</p>
-<h5 id="systemctl-start-authorize"><a href="#systemctl-start-authorize" class="headerlink" title="systemctl start authorize"></a>systemctl start authorize</h5><p>6、systemctl list-units 查看authorize.service是否存在</p>
-<h5 id="systemctl-list-units"><a href="#systemctl-list-units" class="headerlink" title="systemctl list-units"></a>systemctl list-units</h5><p>找到authorize.service</p>
-<p>7、验证服务启动</p>
-<p>执行命令：<strong>curl localhost:80&#x2F;test&#x2F;get</strong></p>
-<p>返回结果 OK</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/09/Linux%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
         </p>
       
 

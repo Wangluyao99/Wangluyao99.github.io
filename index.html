@@ -152,6 +152,61 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-验证多线程任务执行完毕" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="如何验证多线程任务执行完毕？"><a href="#如何验证多线程任务执行完毕？" class="headerlink" title="如何验证多线程任务执行完毕？"></a>如何验证多线程任务执行完毕？</h4><p>1、可以采用isTerminated()方法检测多线程是否执行完毕。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled(fixedRate = 5000)</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> <span class="keyword">throw</span> InterruptedException&#123;</span><br><span class="line">       logger.info(<span class="string">&quot;定时任务开始-------&quot;</span>);</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">           exe.execute(<span class="keyword">new</span> <span class="title class_">TestThread</span>(i));</span><br><span class="line">       &#125;</span><br><span class="line">       exe.shutdown();</span><br><span class="line">       <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (exe.isTerminated()) &#123;</span><br><span class="line">               logger.info(<span class="string">&quot;线程执行完毕-------&quot;</span>);</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、可以采用CountDownLatch的await()方法实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scheduled(fixedDelay = 5000)</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">       logger.info(<span class="string">&quot;定时任务开始了 &quot;</span>);</span><br><span class="line">       <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">       </span><br><span class="line">       <span class="type">CountDownLatch</span> <span class="variable">countDownLatch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CountDownLatch</span>(count);</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">           <span class="keyword">new</span> <span class="title class_">SubThread</span>(i, countDownLatch).start();</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           System.out.println(<span class="string">&quot;等待&quot;</span>+ count +<span class="string">&quot;个线程运行完毕...&quot;</span>);</span><br><span class="line">           countDownLatch.await();</span><br><span class="line">           System.out.println(count +<span class="string">&quot;个线程已运行完毕&quot;</span>);&#125; </span><br><span class="line">       <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/17/%E9%AA%8C%E8%AF%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Openfeign" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -615,61 +670,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/26/MySQL-%E7%B4%A2%E5%BC%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-登录鉴权理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Session、Token、JWT-、OAuth2"><a href="#Session、Token、JWT-、OAuth2" class="headerlink" title="Session、Token、JWT 、OAuth2"></a>Session、Token、JWT 、OAuth2</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
-<li>Session是一种认证机制，基于cookie和sessionId，Session 存储在服务器端，Cookie 存储在客户端。</li>
-<li>Token、JWT是认证授权机制，JWT的token包括header（头部） + payload（负载 ）+ sign（签名）。Token的token包括uid（用户唯一身份标识）+ timestamp（当前时间戳） + sign（签名）</li>
-<li>OAuth2是授权框架，基于授权码code、client_id、client_secret等，授权第三方应用、多平台单点登录。</li>
-</ul>
-<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>基于session的设计是登录成功后，生成对应用户session信息的sessionId，存储sessionId与用户信息的映射并返回浏览器，浏览器将sessionId存储到cookie，下次携带cookie请求，通过sessionId查询用户信息。集群使用session共享，可以将session存到redis中，这样可以避免用户在每个应用服务器上都执行一次登录操作。结构简单，运行高效。</p>
-        
-          <a class="article-more-a" href="/2023/03/24/%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E7%90%86%E8%AE%BA/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/24/%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E7%90%86%E8%AE%BA/">展开全文 >></a>
         </p>
       
 

@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023/5 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="SSO单点登录1、单点登录单点登录(SingleSignOn，SSO)，意味着在多个应用系统中，用户只需一次登录就可以访问所有相互信任的应用系统。 2、单系统登录HTTP是无状态的协议，这意味着服务器无法确认用户的信息。衍生出Cookie + session登录机制。 3、多系统登录Session不共享问题、 Cookie跨域的问题单系统登录功能主要是用Session保存用户信息来实现的，多系统即">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/05/index.html">
+<meta property="og:url" content="http://example.com/2023/05/22/SSO%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SSO单点登录1、单点登录单点登录(SingleSignOn，SSO)，意味着在多个应用系统中，用户只需一次登录就可以访问所有相互信任的应用系统。 2、单系统登录HTTP是无状态的协议，这意味着服务器无法确认用户的信息。衍生出Cookie + session登录机制。 3、多系统登录Session不共享问题、 Cookie跨域的问题单系统登录功能主要是用Session保存用户信息来实现的，多系统即">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-22T15:32:30.883Z">
+<meta property="article:modified_time" content="2023-05-22T15:31:34.752Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,106 +154,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SSO单点登录" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SSO单点登录"><a href="#SSO单点登录" class="headerlink" title="SSO单点登录"></a>SSO单点登录</h3><h4 id="1、单点登录"><a href="#1、单点登录" class="headerlink" title="1、单点登录"></a>1、单点登录</h4><p>单点登录(SingleSignOn，SSO)，意味着在多个应用系统中，用户只需一次登录就可以访问所有相互信任的应用系统。</p>
+<h4 id="2、单系统登录"><a href="#2、单系统登录" class="headerlink" title="2、单系统登录"></a>2、单系统登录</h4><p>HTTP是无状态的协议，这意味着服务器无法确认用户的信息。衍生出Cookie + session登录机制。</p>
+<h4 id="3、多系统登录"><a href="#3、多系统登录" class="headerlink" title="3、多系统登录"></a>3、多系统登录</h4><h5 id="Session不共享问题、-Cookie跨域的问题"><a href="#Session不共享问题、-Cookie跨域的问题" class="headerlink" title="Session不共享问题、 Cookie跨域的问题"></a>Session不共享问题、 Cookie跨域的问题</h5><p>单系统登录功能主要是用Session保存用户信息来实现的，多系统即可能有多个Tomcat，而Session是依赖当前系统的Tomcat，所以系统A的Session和系统B的Session是不共享的。</p>
+<p>解决系统之间Session不共享问题方案：把Session数据放在Redis中（使用Redis模拟Session）</p>
+<h4 id="4、什么是CAS"><a href="#4、什么是CAS" class="headerlink" title="4、什么是CAS"></a>4、<strong>什么是CAS</strong></h4><p>CAS是由美国耶鲁大学发起的一个企业级开源项目，旨在为WEB应用系统提供一种可靠的单点登录解决方案（WEB SSO）。</p>
+<p>CAS分为CAS服务端和CAS客户端。CAS服务端负责完成对用户的认证工作，CAS服务端需要独立部署。CAS客户端集成到每个应用系统上。当用户需要在认证之后才能访问应用系统受保护资源时，应用系统判断该用户是否已认证，如果没有认证，则重定向到CAS服务端进行身份认证。CAS协议能适配大多数语言编写的应用系统，因此应用十分广泛。</p>
+<h4 id="5、CAS-流程"><a href="#5、CAS-流程" class="headerlink" title="5、CAS 流程"></a>5、CAS 流程</h4><p>CAS系统 （cas.qiandu.com）</p>
+<p>门户系统 （<a target="_blank" rel="noopener" href="http://www.qiandu.com)/">www.qiandu.com）</a></p>
+<p>邮箱系统（mail.qiandu.com）</p>
+<ol>
+<li>用户访问门户系统，门户系统是需要登录的，但用户现在没有登录。</li>
+<li>跳转到CAS认证服务，即CAS的登录系统。 CAS系统也没有登录，弹出用户登录页。</li>
+<li>用户填写用户名、密码，CAS系统进行认证后，将登录状态写入CAS的session，浏览器中写入cas.qiandu.com域下的Cookie。</li>
+<li>CAS系统登录完成后会生成一个ST（Service Ticket），然后跳转到门户系统，同时将ST作为参数传递给门户系统。</li>
+<li>门户系统拿到ST后，从后台向CAS系统发送请求，验证ST是否有效。</li>
+<li>验证通过后，门户系统将登录状态写入session并设置<a target="_blank" rel="noopener" href="http://www.qiandu.com域下的cookie./">www.qiandu.com域下的Cookie。</a></li>
+</ol>
+<p>至此，跨域单点登录就完成了。以后我们再访问门户系统时，门户就是登录的。接下来，我们再看看访问邮箱系统时的流程。</p>
+<ol>
+<li>用户访问邮箱系统，邮箱系统没有登录，跳转到CAS系统。</li>
+<li>由于CAS系统已经登录了，不需要重新登录认证。</li>
+<li>CAS系统生成ST，浏览器跳转到邮箱系统，并将ST作为参数传递给邮箱系统。</li>
+<li>邮箱系统拿到ST，后台访问CAS系统，验证ST是否有效。</li>
+<li>验证成功后，邮箱系统将登录状态写入session，并在mail.qiandu.com域下写入Cookie。</li>
+</ol>
+<p>这样，app2系统不需要走登录流程，就已经是登录了。SSO，app和app2在不同的域，它们之间的session不共享也是没问题的。</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1225308337/article/details/119040742">https://blog.csdn.net/qq1225308337/article/details/119040742</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/22/SSO%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2023-05-22T15:32:30.883Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/05/22/SSO%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/17/%E9%AA%8C%E8%AF%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95/" class="archive-article-date">
-  	<time datetime="2023-05-17T14:55:04.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/16/Openfeign/" class="archive-article-date">
-  	<time datetime="2023-05-16T14:57:14.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-16</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2023/05/17/%E9%AA%8C%E8%AF%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/05/%E4%B8%8D%E5%81%9C%E6%9C%8D%E6%9B%B4%E6%96%B0%E5%BA%94%E7%94%A8%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2023-05-05T14:35:22.570Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-05</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -272,8 +337,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

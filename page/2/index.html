@@ -152,6 +152,58 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL-索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MySQL索引"><a href="#MySQL索引" class="headerlink" title="MySQL索引"></a>MySQL索引</h3><p>索引是帮助MySQL高效获取数据的一种排好序的数据结构，底层实现是B+树。</p>
+<h5 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B+Tree"></a>B+Tree</h5><p>B+Tree是一种多路搜索树，所有的关键字（可以理解为数据）都存储在叶子节点（Leaf Page），非叶子节点（Index Page）并不存储真正的数据，所有记录节点都是按键值大小顺序存放在同一层叶子节点上。并且所有的叶子节点由指针连接。</p>
+<h5 id="索引种类"><a href="#索引种类" class="headerlink" title="索引种类"></a>索引种类</h5><p>普通索引、唯一索引、联合索引、全文索引</p>
+        
+          <a class="article-more-a" href="/2023/03/26/MySQL-%E7%B4%A2%E5%BC%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/26/MySQL-%E7%B4%A2%E5%BC%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-登录鉴权理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -612,68 +664,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/11/tips/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux系统安装Elasticsearch" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Linux系统安装Elasticsearch"><a href="#Linux系统安装Elasticsearch" class="headerlink" title="Linux系统安装Elasticsearch"></a>Linux系统安装Elasticsearch</h4><p>1、下载压缩包，解压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf elasticsearch-7.13.0-linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>2、运行elasticsearch</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>报错：Caused by: java.lang.RuntimeException: can not run elasticsearch as root</p>
-<p>原因：elasticsearch无法使用root启动。</p>
-<p>3、创建用户es</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">useradd es</span><br><span class="line"><span class="comment">#切换用户</span></span><br><span class="line">su es</span><br><span class="line"><span class="comment">#启动es</span></span><br><span class="line">./elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p>报错：Caused by: java.nio.file.AccessDeniedException: &#x2F;home&#x2F;elasticsearch-7.13.0&#x2F;config&#x2F;elasticsearch.yml</p>
-<p>原因：es用户没有elasticsearch目录权限</p>
-        
-          <a class="article-more-a" href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/">展开全文 >></a>
         </p>
       
 

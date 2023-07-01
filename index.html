@@ -152,6 +152,66 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jq-Linux操作JSON" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="jq：Linux操作JSON"><a href="#jq：Linux操作JSON" class="headerlink" title="jq：Linux操作JSON"></a>jq：Linux操作JSON</h4><p>官方文档：<a target="_blank" rel="noopener" href="https://jqlang.github.io/jq/">https://jqlang.github.io/jq/</a></p>
+<h5 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h5><ul>
+<li><p>jq是一个出色的命令行针对–&gt;JSON处理器，提供了用于查询、操作和使用JSON文件的大量功能，而且作为一个命令行工具，可配合UNIX管道使用，单行脚本处理JSON</p>
+</li>
+<li><p>jq可以对json数据进行’分片’、’过滤’、’映射’、’转换’；和sed、awk、grep等命令一样,可以让你轻松地把玩文本</p>
+</li>
+<li><p>它能’轻松地’把你拥有的数据’转换成’你期望的格式,而且需要写的程序通常也’比你期望’的更加简短</p>
+</li>
+<li><p>jq是用C编写，没有运行时依赖，所以几乎可以运行在任何系统上</p>
+</li>
+<li><p>预编译的二进制文件可以直接在Linux、OS和windows系统上运行</p></li></ul>
+        
+          <a class="article-more-a" href="/2023/07/01/jq-Linux%E6%93%8D%E4%BD%9CJSON/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/01/jq-Linux%E6%93%8D%E4%BD%9CJSON/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-awk使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -673,65 +733,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/04/05/%E5%AD%A6%E4%B9%A0SpringSecurity%E6%97%B6%E6%8A%A5%E9%94%99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis持久化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h3><p>Redis持久化两种方式：RDB 和 AOF </p>
-<h4 id="1、RDB"><a href="#1、RDB" class="headerlink" title="1、RDB"></a>1、RDB</h4><p>在指定的时间间隔内将内存中的数据集快照写入磁盘，实际操作过程是fork一个子进程，先将数据集写 入临时文件，写入成功后，再替换之前的文件，用二进制压缩存储。</p>
-<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><ul>
-<li><p>整个Redis数据库将只包含一个文件 dump.rdb，方便持久化。 </p>
-</li>
-<li><p>容灾性好，方便备份。 </p>
-</li>
-<li><p>性能最大化，fork 子进程来完成写操作，让主进程继续处理命令，所以是 IO 最大化。</p>
-</li>
-<li><p>相对于数据集大时，比 AOF 的启动效率更高。</p></li></ul>
-        
-          <a class="article-more-a" href="/2023/04/02/Redis%E6%8C%81%E4%B9%85%E5%8C%96/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/02/Redis%E6%8C%81%E4%B9%85%E5%8C%96/">展开全文 >></a>
         </p>
       
 

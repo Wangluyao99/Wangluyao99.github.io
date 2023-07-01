@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="jq：Linux操作JSON官方文档：https:&#x2F;&#x2F;jqlang.github.io&#x2F;jq&#x2F; 1、简介 jq是一个出色的命令行针对–&gt;JSON处理器，提供了用于查询、操作和使用JSON文件的大量功能，而且作为一个命令行工具，可配合UNIX管道使用，单行脚本处理JSON  jq可以对json数据进行’分片’、’过滤’、’映射’、’转换’；和sed、awk、grep等命令一样,可以让你轻松地把">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+<meta property="og:url" content="http://example.com/2023/07/01/jq-Linux%E6%93%8D%E4%BD%9CJSON/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="jq：Linux操作JSON官方文档：https:&#x2F;&#x2F;jqlang.github.io&#x2F;jq&#x2F; 1、简介 jq是一个出色的命令行针对–&gt;JSON处理器，提供了用于查询、操作和使用JSON文件的大量功能，而且作为一个命令行工具，可配合UNIX管道使用，单行脚本处理JSON  jq可以对json数据进行’分片’、’过滤’、’映射’、’转换’；和sed、awk、grep等命令一样,可以让你轻松地把">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-01T10:01:21.045Z">
+<meta property="article:modified_time" content="2023-07-01T10:04:22.550Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jq-Linux操作JSON" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="jq：Linux操作JSON"><a href="#jq：Linux操作JSON" class="headerlink" title="jq：Linux操作JSON"></a>jq：Linux操作JSON</h4><p>官方文档：<a target="_blank" rel="noopener" href="https://jqlang.github.io/jq/">https://jqlang.github.io/jq/</a></p>
+<h5 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h5><ul>
+<li><p>jq是一个出色的命令行针对–&gt;JSON处理器，提供了用于查询、操作和使用JSON文件的大量功能，而且作为一个命令行工具，可配合UNIX管道使用，单行脚本处理JSON</p>
+</li>
+<li><p>jq可以对json数据进行’分片’、’过滤’、’映射’、’转换’；和sed、awk、grep等命令一样,可以让你轻松地把玩文本</p>
+</li>
+<li><p>它能’轻松地’把你拥有的数据’转换成’你期望的格式,而且需要写的程序通常也’比你期望’的更加简短</p>
+</li>
+<li><p>jq是用C编写，没有运行时依赖，所以几乎可以运行在任何系统上</p>
+</li>
+<li><p>预编译的二进制文件可以直接在Linux、OS和windows系统上运行</p>
+<span id="more"></span></li>
+</ul>
+<h5 id="2、下载"><a href="#2、下载" class="headerlink" title="2、下载"></a>2、下载</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查是否存在jq</span></span><br><span class="line">yum list |grep -w jq</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装</span></span><br><span class="line">yum install -y jq</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>报错</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Desktop]# yum install -y jq</span><br><span class="line">Loaded plugins: fastestmirror, langpacks</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * centos-sclo-rh: mirrors.163.com</span><br><span class="line"> * centos-sclo-sclo: mirrors.163.com</span><br><span class="line">No package jq available.</span><br><span class="line">Error: Nothing to do</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h5 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h5></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、网络问题</span></span><br><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、镜像连接错误，安装epel-release</span></span><br><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+
+<p>再执行“yum install -y jq”，安装成功。</p>
+<h5 id="3、使用"><a href="#3、使用" class="headerlink" title="3、使用"></a>3、使用</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost home]# echo &#x27;&#123;&quot;commandId&quot;:&quot;11534&quot;,&quot;command&quot;:&quot;FF071B050000000000&quot;,&quot;commandStatus&quot;:&quot;指令已保存&quot;,&quot;productId&quot;:15047364,&quot;deviceId&quot;:&quot;051107d06173477ca0fa4d81cd1f7993&quot;,&quot;imei&quot;:&quot;869664049364253&quot;,&quot;createBy&quot;:&quot;transform-server&quot;,&quot;createTime&quot;:1652890858473,&quot;ttl&quot;:60&#125;&#x27; | jq .</span><br><span class="line">&#123;</span><br><span class="line">  &quot;commandId&quot;: &quot;11534&quot;,</span><br><span class="line">  &quot;command&quot;: &quot;FF071B050000000000&quot;,</span><br><span class="line">  &quot;commandStatus&quot;: &quot;指令已保存&quot;,</span><br><span class="line">  &quot;productId&quot;: 15047364,</span><br><span class="line">  &quot;deviceId&quot;: &quot;051107d06173477ca0fa4d81cd1f7993&quot;,</span><br><span class="line">  &quot;imei&quot;: &quot;869664049364253&quot;,</span><br><span class="line">  &quot;createBy&quot;: &quot;transform-server&quot;,</span><br><span class="line">  &quot;createTime&quot;: 1652890858473,</span><br><span class="line">  &quot;ttl&quot;: 60</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost home]# echo &#x27;&#123;&quot;commandId&quot;:&quot;11534&quot;,&quot;command&quot;:&quot;FF071B050000000000&quot;,&quot;commandStatus&quot;:&quot;指令已保存&quot;,&quot;productId&quot;:15047364,&quot;deviceId&quot;:&quot;051107d06173477ca0fa4d81cd1f7993&quot;,&quot;imei&quot;:&quot;869664049364253&quot;,&quot;createBy&quot;:&quot;transform-server&quot;,&quot;createTime&quot;:1652890858473,&quot;ttl&quot;:60&#125;&#x27; | jq .createBy</span><br><span class="line">&quot;transform-server&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost home]# echo &#x27;&#123;&quot;commandId&quot;:&quot;11534&quot;,&quot;command&quot;:&quot;FF071B050000000000&quot;,&quot;commandStatus&quot;:&quot;指令已保存&quot;,&quot;productId&quot;:15047364,&quot;deviceId&quot;:&quot;051107d06173477ca0fa4d81cd1f7993&quot;,&quot;imei&quot;:&quot;869664049364253&quot;,&quot;createBy&quot;:&quot;transform-server&quot;,&quot;createTime&quot;:1652890858473,&quot;ttl&quot;:60,&quot;list&quot;:&#123;&quot;a&quot;:&quot;123&quot;,&quot;b&quot;:&quot;456&quot;&#125;&#125;&#x27; | jq .list</span><br><span class="line">&#123;</span><br><span class="line">  &quot;a&quot;: &quot;123&quot;,</span><br><span class="line">  &quot;b&quot;: &quot;456&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/01/jq-Linux%E6%93%8D%E4%BD%9CJSON/" class="archive-article-date">
-  	<time datetime="2023-07-01T10:01:21.045Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/01/jq-Linux%E6%93%8D%E4%BD%9CJSON/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/06/29/awk%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2023-06-29T14:26:51.330Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-29</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/06/25/tail%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E5%B8%A6%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%97%A5%E5%BF%97/" class="archive-article-date">
-  	<time datetime="2023-06-25T14:49:51.417Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-25</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2023/06/29/awk%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/22/SSO%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2023-05-22T15:32:30.883Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-22</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/17/%E9%AA%8C%E8%AF%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95/" class="archive-article-date">
-  	<time datetime="2023-05-17T14:55:04.573Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/16/Openfeign/" class="archive-article-date">
-  	<time datetime="2023-05-16T14:57:14.246Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-16</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/05/05/%E4%B8%8D%E5%81%9C%E6%9C%8D%E6%9B%B4%E6%96%B0%E5%BA%94%E7%94%A8%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2023-05-05T14:35:22.570Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-05</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/14/SpringSecurity%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2023-04-14T15:27:33.588Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/07/SpringSecurity5%E6%96%B0%E5%8F%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2023-04-07T15:08:01.841Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-07</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/04/05/%E5%AD%A6%E4%B9%A0SpringSecurity%E6%97%B6%E6%8A%A5%E9%94%99/" class="archive-article-date">
-  	<time datetime="2023-04-05T01:28:37.717Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-05</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a><a class="page-number" href="/archives/2023/page/3/">3</a><a class="page-number" href="/archives/2023/page/4/">4</a><a class="extend next" rel="next" href="/archives/2023/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +346,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

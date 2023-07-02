@@ -152,6 +152,55 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-依赖配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="引入common包时，需要排除某些依赖的方式"><a href="#引入common包时，需要排除某些依赖的方式" class="headerlink" title="引入common包时，需要排除某些依赖的方式"></a>引入common包时，需要排除某些依赖的方式</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example.demo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>demo.common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/02/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jq-Linux操作JSON" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -677,62 +726,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/04/07/SpringSecurity5%E6%96%B0%E5%8F%98%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-学习SpringSecurity时报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="idea报错如下："><a href="#idea报错如下：" class="headerlink" title="idea报错如下："></a>idea报错如下：</h4><h5 id="1、java-lang-NoClassDefFoundError-javax-x2F-xml-x2F-bind-x2F-DatatypeConverter"><a href="#1、java-lang-NoClassDefFoundError-javax-x2F-xml-x2F-bind-x2F-DatatypeConverter" class="headerlink" title="1、java.lang.NoClassDefFoundError: javax&#x2F;xml&#x2F;bind&#x2F;DatatypeConverter"></a>1、java.lang.NoClassDefFoundError: javax&#x2F;xml&#x2F;bind&#x2F;DatatypeConverter</h5><p>报错原因： </p>
-<p>javax是javaEE的API，因此在java SE 9.0 中不再包含这个 Jar 包，java 9 中引入了模块的概念，默认情况下，Java SE中将不再包含java EE 的Jar包，而在 java 6 &#x2F; 7 &#x2F; 8 时关于这个API 都是捆绑在一起的 。那么9.0以上的版本找不到包自然就会报错。</p>
-<p>解决方法：</p>
-<ul>
-<li><p>将SDK的java版本降到1.8及以下</p>
-</li>
-<li><p>手动加入依赖jar包</p></li></ul>
-        
-          <a class="article-more-a" href="/2023/04/05/%E5%AD%A6%E4%B9%A0SpringSecurity%E6%97%B6%E6%8A%A5%E9%94%99/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/05/%E5%AD%A6%E4%B9%A0SpringSecurity%E6%97%B6%E6%8A%A5%E9%94%99/">展开全文 >></a>
         </p>
       
 

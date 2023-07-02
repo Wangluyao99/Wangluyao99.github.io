@@ -152,6 +152,63 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-视图映射配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="通过SpringMVC配置，将请求与页面直接映射"><a href="#通过SpringMVC配置，将请求与页面直接映射" class="headerlink" title="通过SpringMVC配置，将请求与页面直接映射"></a>通过SpringMVC配置，将请求与页面直接映射</h5><ul>
+<li>普通方法做请求与页面映射方式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.html是默认的，可以不用手动映射</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/login.html&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">loginPage</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/register.html&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">registerPage</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;register&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用springMVC的配置，避免多个空方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ViewWebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addViewControllers</span><span class="params">(iewControllerRegistry registry)</span>&#123;</span><br><span class="line">        registry.addViewController(<span class="string">&quot;/login.html&quot;</span>).setViewName(<span class="string">&quot;login&quot;</span>);</span><br><span class="line">        registry.addViewController(<span class="string">&quot;/register.html&quot;</span>).setViewName(<span class="string">&quot;register&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/02/%E8%A7%86%E5%9B%BE%E6%98%A0%E5%B0%84%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-依赖配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -675,57 +732,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/04/14/SpringSecurity%E5%85%A5%E9%97%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringSecurity5新变化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Spring-Security-5-7-0-M2-弃用了-WebSecurityConfigurerAdapter类"><a href="#Spring-Security-5-7-0-M2-弃用了-WebSecurityConfigurerAdapter类" class="headerlink" title="Spring Security 5.7.0-M2 弃用了 WebSecurityConfigurerAdapter类"></a>Spring Security 5.7.0-M2 弃用了 WebSecurityConfigurerAdapter类</h3><p>官网博客链接地址：<a target="_blank" rel="noopener" href="https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter">https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter</a></p>
-<h5 id="替代方案："><a href="#替代方案：" class="headerlink" title="替代方案："></a>替代方案：</h5><p>创建一个<code>SecurityFilterChain</code> bean来配置<code>HttpSecurity</code>的功能。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configurable</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SecurityFilterChain <span class="title function_">securityFilterChain</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        http    </span><br><span class="line">            	<span class="comment">// authorizeRequests授权请求</span></span><br><span class="line">                .authorizeRequests(authorize -&gt; authorize</span><br><span class="line">                        .antMatchers(<span class="string">&quot;/login.html&quot;</span>, <span class="string">&quot;/favicon.ico&quot;</span>).permitAll()<span class="comment">//不需要经过身份认证的资源</span></span><br><span class="line">                        .anyRequest().authenticated()<span class="comment">//其他任何请求都需要经过身份认证</span></span><br><span class="line">                )</span><br><span class="line">            	<span class="comment">// formLogin开启表单认证</span></span><br><span class="line">            	.formLogin();</span><br><span class="line">        <span class="keyword">return</span> http.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/07/SpringSecurity5%E6%96%B0%E5%8F%98%E5%8C%96/">展开全文 >></a>
         </p>
       
 

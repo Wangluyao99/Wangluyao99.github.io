@@ -152,6 +152,68 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringSecurity入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SpringSecurity使用入门"><a href="#SpringSecurity使用入门" class="headerlink" title="SpringSecurity使用入门"></a>SpringSecurity使用入门</h3><h5 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h5><p>SpringSecurity基于Spring框架，提供了一套Web应用安全的完整解决方案，核心功能包括用户认证（Authentication)和用户授权（Authorization）两部分。</p>
+<ul>
+<li>用户认证是指验证某个用户是否为系统中的合法主体，也就是说用户是否能访问该系统。</li>
+<li>用户授权是验证用户是否有权限执行某个操作。</li>
+</ul>
+<p><strong><code>SpringSecurity</code>的原理其实就是一个过滤器链，内部包含了各种功能的过滤器。</strong></p>
+<p>以下是过滤器链中主要的过滤器：</p>
+<ul>
+<li>UsernamePasswordAuthenticationFilter：负责处理我们在登陆页面填写了用户名密码后的登陆请求。</li>
+<li>ExceptionTranslationFilter：处理过滤器链中抛出的任何<code>AccessDeniedException</code>和<code>AuthenticationException</code> 。</li>
+<li>FilterSecurityInterceptor：负责权限校验的过滤器。</li>
+</ul>
+<h5 id="2、导入依赖"><a href="#2、导入依赖" class="headerlink" title="2、导入依赖"></a>2、导入依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3、创建springboot工程，创建一个hello请求"><a href="#3、创建springboot工程，创建一个hello请求" class="headerlink" title="3、创建springboot工程，创建一个hello请求"></a>3、创建springboot工程，创建一个hello请求</h5><p>请求该接口会自动重定向到<code>/login</code>，弹出SpringSecurity提供的登录页面，用户名user，密码打印在控制台。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/14/SpringSecurity%E5%85%A5%E9%97%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringSecurity5新变化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -605,60 +667,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/21/SpringCloud-Gateway/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DelayQueue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="DelayQueue"><a href="#DelayQueue" class="headerlink" title="DelayQueue"></a>DelayQueue</h2><h3 id="一、DelayQueue是什么"><a href="#一、DelayQueue是什么" class="headerlink" title="一、DelayQueue是什么"></a>一、DelayQueue是什么</h3><p>　　DelayQueue是一个无界的BlockingQueue，用于放置实现了Delayed接口的对象，其中的对象只能在其到期时才能从队列中取走。这种队列是有序的，即队头对象的延迟到期时间最长。注意：不能将null元素放置到这种队列中。</p>
-<h3 id="二、DelayQueue能做什么"><a href="#二、DelayQueue能做什么" class="headerlink" title="二、DelayQueue能做什么"></a>二、DelayQueue能做什么</h3><p>　1. 淘宝订单业务:下单之后如果三十分钟之内没有付款就自动取消订单。<br>　2. 饿了吗订餐通知:下单成功后60s之后给用户发送短信通知。</p>
-<p>　3.关闭空闲连接。服务器中，有很多客户端的连接，空闲一段时间之后需要关闭之。</p>
-<p>　4.缓存。缓存中的对象，超过了空闲时间，需要从缓存中移出。</p>
-<p>　5.任务超时处理。在网络协议滑动窗口请求应答式交互时，处理超时未响应的请求等。</p>
-        
-          <a class="article-more-a" href="/2023/03/20/DelayQueue/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/20/DelayQueue/">展开全文 >></a>
         </p>
       
 

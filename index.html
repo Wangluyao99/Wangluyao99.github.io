@@ -152,6 +152,65 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL如何解决幻读" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="MySQL是如何解决幻读的"><a href="#MySQL是如何解决幻读的" class="headerlink" title="MySQL是如何解决幻读的"></a>MySQL是如何解决幻读的</h4><p>4种隔离级别分别是读未提交、读已提交、可重复读和串行化读。MySQL默认隔离级别是可重复读。</p>
+<p>幻读是指一个事务中按照某个条件先后两次读取数据库，两次读取结果的结果集不同，强调新增。</p>
+<p>读数据库的操作也有两种情况，一种是普通读，另一种是当前读。</p>
+<ul>
+<li><p>普通读又叫快照读，也就是利用MVCC机制读取快照中的数据。不加锁的简单select都属于快照读。</p>
+</li>
+<li><p>当前读读取的是记录的最新版本，读取时会对读取的记录进行加锁, 其他事务就有可能阻塞。加锁的 SELECT，或者对数据进行增删改都会进行当前读。</p>
+</li>
+</ul>
+<p>不同的读模式，MySQL在可重复读隔离级别下的实现方式是不一样的。</p>
+        
+          <a class="article-more-a" href="/2023/07/04/MySQL%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%B9%BB%E8%AF%BB/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/04/MySQL%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%B9%BB%E8%AF%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-视图映射配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -670,68 +729,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/05/05/%E4%B8%8D%E5%81%9C%E6%9C%8D%E6%9B%B4%E6%96%B0%E5%BA%94%E7%94%A8%E6%96%B9%E6%A1%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringSecurity入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="SpringSecurity使用入门"><a href="#SpringSecurity使用入门" class="headerlink" title="SpringSecurity使用入门"></a>SpringSecurity使用入门</h3><h5 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h5><p>SpringSecurity基于Spring框架，提供了一套Web应用安全的完整解决方案，核心功能包括用户认证（Authentication)和用户授权（Authorization）两部分。</p>
-<ul>
-<li>用户认证是指验证某个用户是否为系统中的合法主体，也就是说用户是否能访问该系统。</li>
-<li>用户授权是验证用户是否有权限执行某个操作。</li>
-</ul>
-<p><strong><code>SpringSecurity</code>的原理其实就是一个过滤器链，内部包含了各种功能的过滤器。</strong></p>
-<p>以下是过滤器链中主要的过滤器：</p>
-<ul>
-<li>UsernamePasswordAuthenticationFilter：负责处理我们在登陆页面填写了用户名密码后的登陆请求。</li>
-<li>ExceptionTranslationFilter：处理过滤器链中抛出的任何<code>AccessDeniedException</code>和<code>AuthenticationException</code> 。</li>
-<li>FilterSecurityInterceptor：负责权限校验的过滤器。</li>
-</ul>
-<h5 id="2、导入依赖"><a href="#2、导入依赖" class="headerlink" title="2、导入依赖"></a>2、导入依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="3、创建springboot工程，创建一个hello请求"><a href="#3、创建springboot工程，创建一个hello请求" class="headerlink" title="3、创建springboot工程，创建一个hello请求"></a>3、创建springboot工程，创建一个hello请求</h5><p>请求该接口会自动重定向到<code>/login</code>，弹出SpringSecurity提供的登录页面，用户名user，密码打印在控制台。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/14/SpringSecurity%E5%85%A5%E9%97%A8/">展开全文 >></a>
         </p>
       
 

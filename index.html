@@ -152,6 +152,58 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-过滤器Filter的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="过滤器Filter的简单使用"><a href="#过滤器Filter的简单使用" class="headerlink" title="过滤器Filter的简单使用"></a>过滤器Filter的简单使用</h4><h5 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h5><p>JavaWeb的三大组件Servlet、Filter、Listener。Filter是过滤器，用来对Web服务器管理的Web资源进行拦截（如JSP, Servlet, 静态图片文件或静态html文件等）。</p>
+<h5 id="2、使用"><a href="#2、使用" class="headerlink" title="2、使用"></a>2、使用</h5><ul>
+<li><p>编写一个自定义过滤器， 实现Filter接口</p></li></ul>
+        
+          <a class="article-more-a" href="/2023/07/06/%E8%BF%87%E6%BB%A4%E5%99%A8Filter%E7%9A%84%E4%BD%BF%E7%94%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/06/%E8%BF%87%E6%BB%A4%E5%99%A8Filter%E7%9A%84%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL如何解决幻读" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -703,64 +755,9 @@
 
 
   
-    <article id="post-不停服更新应用方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="不停服更新应用方案"><a href="#不停服更新应用方案" class="headerlink" title="不停服更新应用方案"></a>不停服更新应用方案</h3><p>基本思路是：切流量，先将所有请求切到其他机器，等此机器更新完毕后，再允许请求发送到这个机器。</p>
-<p>解决方案一般有：蓝绿发布、滚动发布、灰度发布</p>
-<h5 id="使用Nacos的权重功能："><a href="#使用Nacos的权重功能：" class="headerlink" title="使用Nacos的权重功能："></a>使用Nacos的权重功能：</h5><p>Nacos可以配置实例的权重，如果权重改为0，则不会调到这个实例。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">将user1的权重设置为0</span><br><span class="line">更新user1</span><br><span class="line">user1启动完毕后，恢复user1的权重为1，将user2的权重设置为0</span><br><span class="line">更新user2</span><br><span class="line">恢复user2的权重为1</span><br></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<p>修改完之后，所有网关的请求都会转发到权重不为0的实例上边，但feign请求还是会到达权重为0的实例上边。</p>
-<p>解决方法：<strong>需要修改feign的负载均衡器（ribbon或者loadbalancer），将其改为从Nacos获得实例，根据权重选择实例。</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/05/05/%E4%B8%8D%E5%81%9C%E6%9C%8D%E6%9B%B4%E6%96%B0%E5%BA%94%E7%94%A8%E6%96%B9%E6%A1%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

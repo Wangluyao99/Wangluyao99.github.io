@@ -152,6 +152,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-搭建Hexo博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="搭建Hexo博客"><a href="#搭建Hexo博客" class="headerlink" title="搭建Hexo博客"></a>搭建Hexo博客</h4><h5 id="1、环境准备"><a href="#1、环境准备" class="headerlink" title="1、环境准备"></a>1、环境准备</h5><ul>
+<li><p>安装Node.js</p>
+</li>
+<li><p>安装Git</p>
+</li>
+<li><p>注册GitHub账号</p>
+</li>
+<li><p>安装cnpm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=http://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="注：在D盘创建blog文件夹，所有命令均在blog中进行git-bash操作"><a href="#注：在D盘创建blog文件夹，所有命令均在blog中进行git-bash操作" class="headerlink" title="注：在D盘创建blog文件夹，所有命令均在blog中进行git bash操作"></a>注：在D盘创建blog文件夹，所有命令均在blog中进行git bash操作</h5><h5 id="2、安装Hexo框架"><a href="#2、安装Hexo框架" class="headerlink" title="2、安装Hexo框架"></a>2、安装Hexo框架</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo cnpm install -g hexo-cli</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看hexo版本</span></span><br><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<h5 id="3、初始化博客"><a href="#3、初始化博客" class="headerlink" title="3、初始化博客"></a>3、初始化博客</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成博客 初始化博客</span></span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h5 id="4、安装Git部署插件"><a href="#4、安装Git部署插件" class="headerlink" title="4、安装Git部署插件"></a>4、安装Git部署插件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置_config.yml</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: <span class="string">&#x27;git&#x27;</span></span><br><span class="line">  repo: git@github.com:Guofuyinan/Guofuyinan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h5 id="5、安装yilia主题"><a href="#5、安装yilia主题" class="headerlink" title="5、安装yilia主题"></a>5、安装yilia主题</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载yilia主题到本地</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改hexo根目录下的 _config.yml 文件</span></span><br><span class="line">theme: yilia</span><br></pre></td></tr></table></figure>
+
+<h5 id="6、启动博客"><a href="#6、启动博客" class="headerlink" title="6、启动博客"></a>6、启动博客</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#启动本地博客服务(http://localhost:4000/	#本地访问地址)</span></span><br><span class="line">hexo s</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成</span></span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<h5 id="7、部署"><a href="#7、部署" class="headerlink" title="7、部署"></a>7、部署</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/01/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

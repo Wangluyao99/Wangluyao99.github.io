@@ -163,6 +163,7 @@
 <li>集群模式下session不能共享</li>
 </ul>
 <h5 id="完美的解决办法："><a href="#完美的解决办法：" class="headerlink" title="完美的解决办法："></a>完美的解决办法：</h5><p>使用SpringSession框架进行会话管理，将Session 信息存储在 Redis中（可配置其他存储，例如DB） </p>
+<p>Session 调用就会自动去Redis存取，实现 Session 共享需要在其他的系统上做同样的配置。</p>
         
           <a class="article-more-a" href="/2023/07/07/SpringSession/#more">more >></a>
         

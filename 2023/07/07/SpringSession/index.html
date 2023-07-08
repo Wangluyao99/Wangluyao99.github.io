@@ -16,7 +16,7 @@
 <meta property="og:description" content="SpringSession1、简介HTTP协议本身是无状态的，为了保存会话信息，浏览器Cookie通过SessionID标识会话请求，服务器以SessionID为key来存储会话信息。 2、分布式下Session共享问题： 不同服务的session不能共享（子域不能共享） 集群模式下session不能共享  完美的解决办法：使用SpringSession框架进行会话管理，将Session 信息存储">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-07T15:58:27.336Z">
-<meta property="article:modified_time" content="2023-07-07T15:58:15.254Z">
+<meta property="article:modified_time" content="2023-07-08T15:25:59.466Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -165,10 +165,10 @@
 <li>集群模式下session不能共享</li>
 </ul>
 <h5 id="完美的解决办法："><a href="#完美的解决办法：" class="headerlink" title="完美的解决办法："></a>完美的解决办法：</h5><p>使用SpringSession框架进行会话管理，将Session 信息存储在 Redis中（可配置其他存储，例如DB） </p>
+<p>Session 调用就会自动去Redis存取，实现 Session 共享需要在其他的系统上做同样的配置。</p>
 <span id="more"></span>
 
-<h5 id="3、原理"><a href="#3、原理" class="headerlink" title="3、原理"></a>3、原理</h5><p>待补充…</p>
-<h5 id="4、使用"><a href="#4、使用" class="headerlink" title="4、使用"></a>4、使用</h5><ul>
+<h5 id="3、使用"><a href="#3、使用" class="headerlink" title="3、使用"></a>3、使用</h5><ul>
 <li>导入依赖</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--redis 依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--SpringSession redis 集成依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -176,7 +176,7 @@
 <ul>
 <li>配置文件中配置</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">session:</span></span><br><span class="line">    <span class="attr">store-type:</span> <span class="string">redis</span> <span class="comment">#存储方式redis</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">session:</span></span><br><span class="line">    <span class="attr">store-type:</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">redis:</span></span><br><span class="line">      <span class="attr">namespace:</span> <span class="string">spring:session</span> <span class="comment">#如果不同的应用共用一个redis，应该为应用配置不同的namespace，这样才能区分这个Session是来自哪个应用</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>启动类上添加注解</li>
@@ -184,10 +184,14 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableRedisHttpSession</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>存储session</li>
+<li>获取session</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">setSession</span><span class="params">(HttpSession session)</span> &#123;</span><br><span class="line">    session.setAttribute(<span class="string">&quot;user&quot;</span>, <span class="string">&quot;value&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取session</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getSession</span><span class="params">(HttpServletRequest request)</span> &#123;</span><br><span class="line">    <span class="type">HttpSession</span> <span class="variable">session</span> <span class="operator">=</span> request.getSession();</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// session中存储信息</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">setSession</span><span class="params">(HttpSession session)</span> &#123;</span><br><span class="line">    session.setAttribute(<span class="string">&quot;user&quot;</span>, <span class="string">&quot;value&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h5 id="4、原理"><a href="#4、原理" class="headerlink" title="4、原理"></a>4、原理</h5><p>@EnableRedisHttpSession注解会引入RedisHttpSessionConfiguration.class，RedisHttpSessionConfiguration类中给容器中注入一个操作redis的SessionRepository（RedisIndexedSessionRepository，spring-session-data-redis:2.3.1.RELEASE）</p>
+<p>RedisHttpSessionConfiguration继承SpringHttpSessionConfiguration，SpringHttpSessionConfiguration中会初始化SessionRepositoryFilter过滤器，所有请求会通过该过滤器。过滤器中通过构造方法将RedisIndexedSessionRepository注入，操作redis中的session。</p>
+<p>执行doFilterInternal()方法，将HttpServletRequest封装成SessionRepositoryRequestWrapper，HttpServletResponse封装成SessionRepositoryResponseWrapper，传到后面的过滤器中。SessionRepositoryRequestWrapper中重写了getSession()的方法，从RedisIndexedSessionRepository中获取session，也就是从redis中获取session。</p>
+<p>原生获取session的方式是在HttpServletRequest中，引入spring session后，从SessionRepositoryRequestWrapper中获取session，由于重写了getSession()方法，session是从redis中获取。</p>
 
       
 

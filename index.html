@@ -152,6 +152,59 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-doFilter调用两次问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在Filter中执行两次doFilter-方法"><a href="#在Filter中执行两次doFilter-方法" class="headerlink" title="在Filter中执行两次doFilter()方法"></a>在Filter中执行两次doFilter()方法</h3><h5 id="1、现象"><a href="#1、现象" class="headerlink" title="1、现象"></a>1、现象</h5><p>在SSO单点登录的客户端使用<code>@WebFilter(filterName = &quot;SsoWebFilter&quot;, urlPatterns = &quot;/*&quot;)</code>注解的方式创建过滤器，但是SSO认证服务器回调Filter，执行两次doFilter()方法。</p>
+<p>项目只被加载了一次，回调时却执行两次doFilter()方法，</p>
+<h5 id="2、原因"><a href="#2、原因" class="headerlink" title="2、原因"></a>2、原因</h5><p>浏览器在发出请求的时候，会自动发出一个：&#x2F;favicon.ico请求。</p>
+<p>这是浏览器的一种机制，是一种默认行为，作用就是为了显示搜索栏中的图标。但是手动输入url访问页面，就不会发送&#x2F;favicon.ico请求。</p>
+        
+          <a class="article-more-a" href="/2023/07/10/doFilter%E8%B0%83%E7%94%A8%E4%B8%A4%E6%AC%A1%E9%97%AE%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/10/doFilter%E8%B0%83%E7%94%A8%E4%B8%A4%E6%AC%A1%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Redisson分布式信号量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -653,80 +706,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/06/25/tail%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E5%B8%A6%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%97%A5%E5%BF%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SSO单点登录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="SSO单点登录"><a href="#SSO单点登录" class="headerlink" title="SSO单点登录"></a>SSO单点登录</h3><h4 id="1、单点登录"><a href="#1、单点登录" class="headerlink" title="1、单点登录"></a>1、单点登录</h4><p>单点登录(SingleSignOn，SSO)，意味着在多个应用系统中，用户只需一次登录就可以访问所有相互信任的应用系统。</p>
-<h4 id="2、单系统登录"><a href="#2、单系统登录" class="headerlink" title="2、单系统登录"></a>2、单系统登录</h4><p>HTTP是无状态的协议，这意味着服务器无法确认用户的信息。衍生出Cookie + session登录机制。</p>
-<h4 id="3、多系统登录"><a href="#3、多系统登录" class="headerlink" title="3、多系统登录"></a>3、多系统登录</h4><h5 id="Session不共享问题、-Cookie跨域的问题"><a href="#Session不共享问题、-Cookie跨域的问题" class="headerlink" title="Session不共享问题、 Cookie跨域的问题"></a>Session不共享问题、 Cookie跨域的问题</h5><p>单系统登录功能主要是用Session保存用户信息来实现的，多系统即可能有多个Tomcat，而Session是依赖当前系统的Tomcat，所以系统A的Session和系统B的Session是不共享的。</p>
-<p>解决系统之间Session不共享问题方案：把Session数据放在Redis中（使用Redis模拟Session）</p>
-<h4 id="4、什么是CAS"><a href="#4、什么是CAS" class="headerlink" title="4、什么是CAS"></a>4、<strong>什么是CAS</strong></h4><p>CAS是由美国耶鲁大学发起的一个企业级开源项目，旨在为WEB应用系统提供一种可靠的单点登录解决方案（WEB SSO）。</p>
-<p>CAS分为CAS服务端和CAS客户端。CAS服务端负责完成对用户的认证工作，CAS服务端需要独立部署。CAS客户端集成到每个应用系统上。当用户需要在认证之后才能访问应用系统受保护资源时，应用系统判断该用户是否已认证，如果没有认证，则重定向到CAS服务端进行身份认证。CAS协议能适配大多数语言编写的应用系统，因此应用十分广泛。</p>
-<h4 id="5、CAS-流程"><a href="#5、CAS-流程" class="headerlink" title="5、CAS 流程"></a>5、CAS 流程</h4><p>CAS系统 （cas.qiandu.com）</p>
-<p>门户系统 （<a target="_blank" rel="noopener" href="http://www.qiandu.com)/">www.qiandu.com）</a></p>
-<p>邮箱系统（mail.qiandu.com）</p>
-<ol>
-<li>用户访问门户系统，门户系统是需要登录的，但用户现在没有登录。</li>
-<li>跳转到CAS认证服务，即CAS的登录系统。 CAS系统也没有登录，弹出用户登录页。</li>
-<li>用户填写用户名、密码，CAS系统进行认证后，将登录状态写入CAS的session，浏览器中写入cas.qiandu.com域下的Cookie。</li>
-<li>CAS系统登录完成后会生成一个ST（Service Ticket），然后跳转到门户系统，同时将ST作为参数传递给门户系统。</li>
-<li>门户系统拿到ST后，从后台向CAS系统发送请求，验证ST是否有效。</li>
-<li>验证通过后，门户系统将登录状态写入session并设置<a target="_blank" rel="noopener" href="http://www.qiandu.com域下的cookie./">www.qiandu.com域下的Cookie。</a></li>
-</ol>
-<p>至此，跨域单点登录就完成了。以后我们再访问门户系统时，门户就是登录的。接下来，我们再看看访问邮箱系统时的流程。</p>
-<ol>
-<li>用户访问邮箱系统，邮箱系统没有登录，跳转到CAS系统。</li>
-<li>由于CAS系统已经登录了，不需要重新登录认证。</li>
-<li>CAS系统生成ST，浏览器跳转到邮箱系统，并将ST作为参数传递给邮箱系统。</li>
-<li>邮箱系统拿到ST，后台访问CAS系统，验证ST是否有效。</li>
-<li>验证成功后，邮箱系统将登录状态写入session，并在mail.qiandu.com域下写入Cookie。</li>
-</ol>
-<p>这样，app2系统不需要走登录流程，就已经是登录了。SSO，app和app2在不同的域，它们之间的session不共享也是没问题的。</p>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1225308337/article/details/119040742">https://blog.csdn.net/qq1225308337/article/details/119040742</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/05/22/SSO%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/">展开全文 >></a>
         </p>
       
 

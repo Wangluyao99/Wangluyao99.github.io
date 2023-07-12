@@ -152,6 +152,56 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-EntityUtils报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="报错Attempted-read-from-closed-stream"><a href="#报错Attempted-read-from-closed-stream" class="headerlink" title="报错Attempted read from closed stream."></a>报错Attempted read from closed stream.</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">java.io.IOException: Attempted read from closed stream.  </span><br><span class="line">        at org.apache.http.impl.io.ContentLengthInputStream.read(ContentLengthInputStream.java:167)  </span><br><span class="line">        at org.apache.http.conn.EofSensorInputStream.read(EofSensorInputStream.java:137)  </span><br><span class="line">        at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)  </span><br><span class="line">        at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)  </span><br><span class="line">        at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)  </span><br><span class="line">        at java.io.InputStreamReader.read(InputStreamReader.java:167)  </span><br><span class="line">        at java.io.Reader.read(Reader.java:123)  </span><br><span class="line">        at org.apache.http.util.EntityUtils.toString(EntityUtils.java:244)  </span><br><span class="line">        at org.apache.http.util.EntityUtils.toString(EntityUtils.java:288)  </span><br><span class="line">       at javax.servlet.http.HttpServlet.service(HttpServlet.java:710) </span><br></pre></td></tr></table></figure>
+
+<p>在发送请求收到response后，使用EntityUtils.toString(HttpEntity)时候，流就已经关闭了，所以这个方法只能调用一次。否则就报在关闭的流中读取数据。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/12/EntityUtils%E6%8A%A5%E9%94%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-doFilter调用两次问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -643,69 +693,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/06/29/awk%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tail实时监控带关键字的日志" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="使用tail命令实时监控日志"><a href="#使用tail命令实时监控日志" class="headerlink" title="使用tail命令实时监控日志"></a>使用tail命令实时监控日志</h4><p>实时查看一个名为myapp.log的日志文件，可以使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> -f myapp.log</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> -100f myapp.log // 倒数100行</span><br></pre></td></tr></table></figure>
-
-<p>同时查看多个日志文件的内容，可以将多个文件名用空格分隔，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> -f myapp.log catalina.out</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用grep命令筛选关键字"><a href="#使用grep命令筛选关键字" class="headerlink" title="使用grep命令筛选关键字"></a>使用grep命令筛选关键字</h4><p>实现实时监控日志文件并筛选出包含指定关键字的行，例如，如果你想实时监控名为myapp.log的日志文件，并筛选出包含关键字”request”的行，可以使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> -f myapp.log | grep -i -n <span class="string">&quot;request&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>说明：该命令会从文件末尾开始输出文件内容，并且会不断地监视文件内容的变化。同时，grep命令会筛选出包含关键字”request”的行，并将这些行输出到控制台，并在每一行前显示行号。</p>
-<h4 id="使用awk命令格式化输出"><a href="#使用awk命令格式化输出" class="headerlink" title="使用awk命令格式化输出"></a>使用awk命令格式化输出</h4><p>awk命令可以对文本文件进行格式化输出，可以使用如下命令实现：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">&#x27;&#123;print $1, $2, $5&#125;&#x27;</span> /var/log/syslog</span><br></pre></td></tr></table></figure>
-
-<h4 id="将命令组合成管道，实现实时监控带有关键字的日志"><a href="#将命令组合成管道，实现实时监控带有关键字的日志" class="headerlink" title="将命令组合成管道，实现实时监控带有关键字的日志"></a>将命令组合成管道，实现实时监控带有关键字的日志</h4><p>将tail、grep和awk命令组合成管道，可以实现实时监控带有关键字的日志，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> -f /var/log/syslog | grep <span class="string">&quot;error&quot;</span> | awk <span class="string">&#x27;&#123;print $1, $2, $5&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/06/25/tail%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E5%B8%A6%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E6%97%A5%E5%BF%97/">展开全文 >></a>
         </p>
       
 

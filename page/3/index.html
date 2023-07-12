@@ -152,6 +152,61 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Hashmap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap是一个存取高效但是不保证有序的容器，默认容量16，加载因子0.75，底层数据结构采用数组、链表或红黑树的。</p>
+<p>第一次调用put方法时，会调用resize扩容方法进行初始化；</p>
+<p>非第一次调用，容量达到阈值，就会触发扩容：HashMap的扩容是用新数组替换旧数组，重新计算旧数组的元素插入到新数组中。</p>
+<p>如果扩容前容量达到最大值，那么阈值设置成int的最大值，如果没达到最大值，数组扩大为原来的两倍。然后将元素移到新数组。</p>
+<p>Java8移动元素很巧妙：HashMap确定桶下标的最后一步是将 key 的 hash 值对桶个数取模：hash%capacity</p>
+<p>对应的代码为：if ((e.hash &amp; oldCap) &#x3D;&#x3D; 0)  若为true，则不需要换位置。</p>
+<p>示例：原数组大小为16，扩容后为32。若原来有hash值为1和17两个数据，他们对16取余都是1，在同一个桶里；<br>扩容后，1对32取余仍然是1，而17对32取余却成了17，需要换个位置。</p>
+<p>注：y  &amp; （x - 1）和 y 对 x 取模效果是一样的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/29/Hashmap/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL-索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -616,54 +671,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/13/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-tips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1、Math-max"><a href="#1、Math-max" class="headerlink" title="1、Math.max()"></a>1、Math.max()</h4><p>Math.max()方法比较的是两个同类型数据的大小，取大值返回。</p>
-<h4 id="2、PathMatcher"><a href="#2、PathMatcher" class="headerlink" title="2、PathMatcher"></a>2、PathMatcher</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 路径匹配器</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">shouldSkipWhiteUrls</span><span class="params">(String currentUrl)</span> &#123;</span><br><span class="line">    <span class="comment">//路径匹配器(简介SpringMvc拦截器的匹配器)</span></span><br><span class="line">    <span class="comment">//比如/oauth/** 可以匹配/oauth/token    /oauth/check_token等</span></span><br><span class="line">    <span class="type">PathMatcher</span> <span class="variable">pathMatcher</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AntPathMatcher</span>();</span><br><span class="line">    <span class="keyword">for</span> (String skipPath : notAuthUrlProperties.getWhiteUrls()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pathMatcher.match(skipPath, currentUrl)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/11/tips/">展开全文 >></a>
         </p>
       
 

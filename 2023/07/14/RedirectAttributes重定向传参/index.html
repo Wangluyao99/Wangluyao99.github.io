@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="SpringMVC中使用RedirectAttributes重定向传参在使用springBoot进行web开发时，我们经常用到redirect来实现重定向，拼接url写法如下。 1234@RequestMapping(value &#x3D; &quot;&#x2F;auth&quot;, method&#x3D;RequestMethod.GET)public String auth()&amp;#123;    return &amp;q">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/page/4/index.html">
+<meta property="og:url" content="http://example.com/2023/07/14/RedirectAttributes%E9%87%8D%E5%AE%9A%E5%90%91%E4%BC%A0%E5%8F%82/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SpringMVC中使用RedirectAttributes重定向传参在使用springBoot进行web开发时，我们经常用到redirect来实现重定向，拼接url写法如下。 1234@RequestMapping(value &#x3D; &quot;&#x2F;auth&quot;, method&#x3D;RequestMethod.GET)public String auth()&amp;#123;    return &amp;q">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-14T13:56:30.773Z">
+<meta property="article:modified_time" content="2023-07-14T13:57:31.210Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,154 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-RedirectAttributes重定向传参" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SpringMVC中使用RedirectAttributes重定向传参"><a href="#SpringMVC中使用RedirectAttributes重定向传参" class="headerlink" title="SpringMVC中使用RedirectAttributes重定向传参"></a>SpringMVC中使用RedirectAttributes重定向传参</h3><p>在使用springBoot进行web开发时，我们经常用到redirect来实现重定向，拼接url写法如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/auth&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">auth</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/main?url=http://auth.server.come/seccess&amp;username=&quot;</span>jack<span class="string">&quot;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="SpringMVC-3-1版本之后推出专门用于重定向之后还能带参数跳转的工具类：RedirectAttributes"><a href="#SpringMVC-3-1版本之后推出专门用于重定向之后还能带参数跳转的工具类：RedirectAttributes" class="headerlink" title="SpringMVC 3.1版本之后推出专门用于重定向之后还能带参数跳转的工具类：RedirectAttributes"></a>SpringMVC 3.1版本之后推出专门用于重定向之后还能带参数跳转的工具类：<code>RedirectAttributes</code></h5><span id="more"></span>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/auth&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">auth</span><span class="params">(RedirectAttributes redirectAttribute)</span> &#123;</span><br><span class="line">	redirectAttribute.addAttribute(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;http://auth.server.come/seccess&quot;</span>);</span><br><span class="line">    redirectAttribute.addAttribute(<span class="string">&quot;username&quot;</span>, <span class="string">&quot;jack&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:http://auth.com&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/auth&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">auth</span><span class="params">(RedirectAttributes redirectAttribute)</span> &#123;</span><br><span class="line">	redirectAttribute.addFlashAttribute(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;http://auth.server.come/seccess&quot;</span>);</span><br><span class="line">    redirectAttribute.addFlashAttribute(<span class="string">&quot;username&quot;</span>, <span class="string">&quot;jack&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:http://auth.com&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>redirectAttribute.addAttribute()</code>:</p>
+<p>这种方法直接将传递的参数暴露在链接地址上，非常的不安全，慎用。</p>
+<p><code>redirectAttribute.addFlashAttributie()</code>:</p>
+<p>这种方法是隐藏了参数，链接地址上不直接暴露，但是能且只能在重定向的 “页面” 获取 param 参数值。</p>
+<p>其原理就是将设置的属性放到 session 中，session 中的属性在跳到页面后马上销毁。</p>
+<p>注意：这种方式在页面中可以正常获取，但是跳转目标是控制器方法的情况下，需要使用 @ModelAttribute 注解绑定参数后才能获取。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/auth&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">auth</span><span class="params">(RedirectAttributes redirectAttribute)</span> &#123;</span><br><span class="line">    redirectAttribute.addFlashAttribute(<span class="string">&quot;username&quot;</span>, <span class="string">&quot;jack&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/user/auth&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;user/auth&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getAttribute</span><span class="params">(<span class="meta">@ModelAttribute(&quot;username&quot;)</span> String name, Model model)</span> &#123;</span><br><span class="line">    String modelName=<span class="string">&quot;AttributeName:&quot;</span>+name;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;username&quot;</span>, name);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;home&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/13/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-03-13T14:57:46.392Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-13</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/14/RedirectAttributes%E9%87%8D%E5%AE%9A%E5%90%91%E4%BC%A0%E5%8F%82/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/11/tips/" class="archive-article-date">
-  	<time datetime="2023-03-11T14:43:34.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-11</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/10/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Elasticsearch/" class="archive-article-date">
-  	<time datetime="2023-03-10T14:58:08.400Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-10</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2023/07/12/EntityUtils%E6%8A%A5%E9%94%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/09/Linux%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2023-03-09T15:19:23.386Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-09</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/08/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Nginx/" class="archive-article-date">
-  	<time datetime="2023-03-08T13:09:11.698Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/07/Docker%20%E5%AE%89%E8%A3%85%20redis/" class="archive-article-date">
-  	<time datetime="2023-03-07T15:26:03.192Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-07</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/06/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Docker/" class="archive-article-date">
-  	<time datetime="2023-03-06T13:45:46.766Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-06</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/05/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Jmeter/" class="archive-article-date">
-  	<time datetime="2023-03-05T11:05:33.975Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-05</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2023-03-05T09:26:28.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-05</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/04/Linux%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85MySQL/" class="archive-article-date">
-  	<time datetime="2023-03-04T15:42:03.584Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-04</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2023/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2023/">1</a><a class="page-number" href="/archives/2023/page/2/">2</a><a class="page-number" href="/archives/2023/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2023/page/5/">5</a><a class="extend next" rel="next" href="/archives/2023/page/5/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +325,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

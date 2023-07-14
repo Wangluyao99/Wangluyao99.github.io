@@ -152,6 +152,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-awk使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="awk使用"><a href="#awk使用" class="headerlink" title="awk使用"></a>awk使用</h4><p>AWK 是一种处理文本文件的语言，是一个强大的文本分析工具。</p>
+<ul>
+<li>-F:  指定输入文件折分隔符，默认空格</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Desktop]# head -1 nbiot-transform-info.log |awk -F &#x27;-&#x27; &#x27;&#123;print $0&#125;&#x27;</span><br><span class="line">2022-05-19 00:00:00.158 [MqttAsyncExecutor-9] INFO  c.d.n.t.MqttMsgIpboxProcessor - [handleServerCmd,108] - 服务通信下行指令转发处理开始</span><br><span class="line">[root@localhost Desktop]# head -1 nbiot-transform-info.log |awk -F &#x27;-&#x27; &#x27;&#123;print $1&#125;&#x27;</span><br><span class="line">2022</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>解析：</p>
+<p><code>-F &#39;-&#39; </code>   以”-“为分隔符，</p>
+<p><code>&#39;&#123;print $0&#125;&#39; </code>   ‘{}’是固定写法，print打印，</p>
+<p><code>$0 </code>  指打印全部，<code>$1 </code>  指打印分隔后的第一个</p>
+</li>
+<li><p>与<code>sort</code>和<code>uniq</code>结合使用</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Desktop]# head -10 nbiot-transform-info.log | awk &#x27;&#123;print substr($0, 0,19)&#125;&#x27;| sort |uniq -c |sort -k 1 -n -r</span><br><span class="line">      4 2022-05-19 00:00:00</span><br><span class="line">      1 2022-05-19 00:00:50</span><br><span class="line">      1 2022-05-19 00:00:49</span><br><span class="line">      1 2022-05-19 00:00:41</span><br><span class="line">      1 2022-05-19 00:00:39</span><br><span class="line">      1 2022-05-19 00:00:36</span><br><span class="line">      1 2022-05-19 00:00:35</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>解析：</p>
+<p><code>head -10</code>  打印前十行，以流的形式传递下去</p>
+<p><code>substr($0,0,19)</code>  substr()函数，截取0-19个元素是时间</p>
+<p><code>sort</code>  对文本内容进行排序</p>
+<p><code>uniq</code>  uniq 命令用于检查及删除文本文件中重复出现的行列，一般与 sort 命令结合使用。</p>
+<p><code>uniq -c</code>     -c或–count 在每列旁边显示该行重复出现的次数。</p>
+<p><code>sort -k 1 -n -r</code>  </p>
+<ul>
+<li><p>-n 依照数值的大小排序。</p>
+</li>
+<li><p>[-k field1[,field2]] 按指定的列进行排序。</p>
+</li>
+<li><p>-r 以相反的顺序来排序。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/06/29/awk%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tail实时监控带关键字的日志" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -650,56 +732,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/04/02/Redis%E6%8C%81%E4%B9%85%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringCloud整合nacos启动报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="SpringCloud整合nacos启动报错"><a href="#SpringCloud整合nacos启动报错" class="headerlink" title="SpringCloud整合nacos启动报错"></a>SpringCloud整合nacos启动报错</h3><h5 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">***************************</span><br><span class="line">APPLICATION FAILED TO START</span><br><span class="line">***************************</span><br><span class="line"></span><br><span class="line">Description:</span><br><span class="line"></span><br><span class="line">No spring.config.<span class="keyword">import</span> property has been defined</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line"></span><br><span class="line">Add a spring.config.<span class="keyword">import</span>=configserver: property to your configuration.</span><br><span class="line">	If configuration is not required add spring.config.<span class="keyword">import</span>=optional:configserver: instead.</span><br><span class="line">	To disable <span class="built_in">this</span> check, set spring.cloud.config.enabled=<span class="literal">false</span> or </span><br><span class="line">	spring.cloud.config.<span class="keyword">import</span>-check.enabled=<span class="literal">false</span>.</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、解决办法"><a href="#2、解决办法" class="headerlink" title="2、解决办法"></a>2、解决办法</h5><p>Spring Cloud 新版本默认将 Bootstrap 禁用，需要将 spring-cloud-starter-bootstrap 依赖引入到工程中：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-bootstrap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/04/01/SpringCloud%E6%95%B4%E5%90%88nacos%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/">展开全文 >></a>
         </p>
       
 

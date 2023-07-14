@@ -152,6 +152,59 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-RedirectAttributes重定向传参" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SpringMVC中使用RedirectAttributes重定向传参"><a href="#SpringMVC中使用RedirectAttributes重定向传参" class="headerlink" title="SpringMVC中使用RedirectAttributes重定向传参"></a>SpringMVC中使用RedirectAttributes重定向传参</h3><p>在使用springBoot进行web开发时，我们经常用到redirect来实现重定向，拼接url写法如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/auth&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">auth</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/main?url=http://auth.server.come/seccess&amp;username=&quot;</span>jack<span class="string">&quot;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="SpringMVC-3-1版本之后推出专门用于重定向之后还能带参数跳转的工具类：RedirectAttributes"><a href="#SpringMVC-3-1版本之后推出专门用于重定向之后还能带参数跳转的工具类：RedirectAttributes" class="headerlink" title="SpringMVC 3.1版本之后推出专门用于重定向之后还能带参数跳转的工具类：RedirectAttributes"></a>SpringMVC 3.1版本之后推出专门用于重定向之后还能带参数跳转的工具类：<code>RedirectAttributes</code></h5>
+        
+          <a class="article-more-a" href="/2023/07/14/RedirectAttributes%E9%87%8D%E5%AE%9A%E5%90%91%E4%BC%A0%E5%8F%82/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/14/RedirectAttributes%E9%87%8D%E5%AE%9A%E5%90%91%E4%BC%A0%E5%8F%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-EntityUtils报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -611,88 +664,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/07/01/jq-Linux%E6%93%8D%E4%BD%9CJSON/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-awk使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="awk使用"><a href="#awk使用" class="headerlink" title="awk使用"></a>awk使用</h4><p>AWK 是一种处理文本文件的语言，是一个强大的文本分析工具。</p>
-<ul>
-<li>-F:  指定输入文件折分隔符，默认空格</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Desktop]# head -1 nbiot-transform-info.log |awk -F &#x27;-&#x27; &#x27;&#123;print $0&#125;&#x27;</span><br><span class="line">2022-05-19 00:00:00.158 [MqttAsyncExecutor-9] INFO  c.d.n.t.MqttMsgIpboxProcessor - [handleServerCmd,108] - 服务通信下行指令转发处理开始</span><br><span class="line">[root@localhost Desktop]# head -1 nbiot-transform-info.log |awk -F &#x27;-&#x27; &#x27;&#123;print $1&#125;&#x27;</span><br><span class="line">2022</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>解析：</p>
-<p><code>-F &#39;-&#39; </code>   以”-“为分隔符，</p>
-<p><code>&#39;&#123;print $0&#125;&#39; </code>   ‘{}’是固定写法，print打印，</p>
-<p><code>$0 </code>  指打印全部，<code>$1 </code>  指打印分隔后的第一个</p>
-</li>
-<li><p>与<code>sort</code>和<code>uniq</code>结合使用</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost Desktop]# head -10 nbiot-transform-info.log | awk &#x27;&#123;print substr($0, 0,19)&#125;&#x27;| sort |uniq -c |sort -k 1 -n -r</span><br><span class="line">      4 2022-05-19 00:00:00</span><br><span class="line">      1 2022-05-19 00:00:50</span><br><span class="line">      1 2022-05-19 00:00:49</span><br><span class="line">      1 2022-05-19 00:00:41</span><br><span class="line">      1 2022-05-19 00:00:39</span><br><span class="line">      1 2022-05-19 00:00:36</span><br><span class="line">      1 2022-05-19 00:00:35</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>解析：</p>
-<p><code>head -10</code>  打印前十行，以流的形式传递下去</p>
-<p><code>substr($0,0,19)</code>  substr()函数，截取0-19个元素是时间</p>
-<p><code>sort</code>  对文本内容进行排序</p>
-<p><code>uniq</code>  uniq 命令用于检查及删除文本文件中重复出现的行列，一般与 sort 命令结合使用。</p>
-<p><code>uniq -c</code>     -c或–count 在每列旁边显示该行重复出现的次数。</p>
-<p><code>sort -k 1 -n -r</code>  </p>
-<ul>
-<li><p>-n 依照数值的大小排序。</p>
-</li>
-<li><p>[-k field1[,field2]] 按指定的列进行排序。</p>
-</li>
-<li><p>-r 以相反的顺序来排序。</p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/06/29/awk%E4%BD%BF%E7%94%A8/">展开全文 >></a>
         </p>
       
 

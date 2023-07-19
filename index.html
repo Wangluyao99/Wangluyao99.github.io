@@ -152,6 +152,55 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-随机数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="生成随机数代码"><a href="#生成随机数代码" class="headerlink" title="生成随机数代码"></a>生成随机数代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Math.random()</span><br><span class="line">可以用来生成一个<span class="number">0</span>-<span class="number">1</span>之间的随机数Math.random()</span><br><span class="line">可以用来生成一个<span class="number">0</span>-<span class="number">10</span>之间的随机数(整数)Math.round(Math.random()*<span class="number">10</span>)</span><br><span class="line">可以用来生成一个<span class="number">0</span>-X之间的随机数(整数)Math.round(Math.random()*X)</span><br><span class="line">可以用来生成一个<span class="number">1</span>-<span class="number">10</span>之间的随机数(整数)Math.round(Math.random()*<span class="number">9</span>)+<span class="number">1</span></span><br><span class="line">可以用来生成一个<span class="number">1</span>-X之间的随机数(整数)Math.round(Math.random()*(X-<span class="number">1</span>))+<span class="number">1</span></span><br><span class="line">可以用来生成一个Y-X之间的随机数(整数)Math.round(Math.random()*(X-Y))+Y</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 6位随机验证码</span></span><br><span class="line">(<span class="type">int</span>)(Math.random()*<span class="number">9</span>+<span class="number">1</span>)*<span class="number">100000</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/07/19/%E9%9A%8F%E6%9C%BA%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-RedirectAttributes重定向传参" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -604,66 +653,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/07/02/%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jq-Linux操作JSON" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="jq：Linux操作JSON"><a href="#jq：Linux操作JSON" class="headerlink" title="jq：Linux操作JSON"></a>jq：Linux操作JSON</h4><p>官方文档：<a target="_blank" rel="noopener" href="https://jqlang.github.io/jq/">https://jqlang.github.io/jq/</a></p>
-<h5 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h5><ul>
-<li><p>jq是一个出色的命令行针对–&gt;JSON处理器，提供了用于查询、操作和使用JSON文件的大量功能，而且作为一个命令行工具，可配合UNIX管道使用，单行脚本处理JSON</p>
-</li>
-<li><p>jq可以对json数据进行’分片’、’过滤’、’映射’、’转换’；和sed、awk、grep等命令一样,可以让你轻松地把玩文本</p>
-</li>
-<li><p>它能’轻松地’把你拥有的数据’转换成’你期望的格式,而且需要写的程序通常也’比你期望’的更加简短</p>
-</li>
-<li><p>jq是用C编写，没有运行时依赖，所以几乎可以运行在任何系统上</p>
-</li>
-<li><p>预编译的二进制文件可以直接在Linux、OS和windows系统上运行</p></li></ul>
-        
-          <a class="article-more-a" href="/2023/07/01/jq-Linux%E6%93%8D%E4%BD%9CJSON/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/07/01/jq-Linux%E6%93%8D%E4%BD%9CJSON/">展开全文 >></a>
         </p>
       
 
